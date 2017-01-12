@@ -1,0 +1,1790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AIEditor</class>
+ <widget class="QFrame" name="AIEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Frame</string>
+  </property>
+  <property name="frameShape">
+   <enum>QFrame::StyledPanel</enum>
+  </property>
+  <property name="frameShadow">
+   <enum>QFrame::Raised</enum>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
+   </property>
+   <item row="0" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="Button_makeNewAIList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>New AI List</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_SaveAIList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Save AI List</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_OpenAIList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Open AI List</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="3" rowspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QPushButton" name="Button_AI_ReturnToPrevious">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Return to Previous Editor/Menu</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_57">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Editors</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_AI_MapEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Map Editor</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_AI_TurnEventsEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Turn Events Editor</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/.png/Calendar with circles_#222222_64px.png</normaloff>:/.png/Calendar with circles_#222222_64px.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_AI_CityEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>City Editor</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/.png/chess-horse-icon.png</normaloff>:/.png/chess-horse-icon.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_56">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Helper Scripts</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_51">
+         <property name="text">
+          <string>City Script:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_52">
+         <property name="text">
+          <string>Logo Folder:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_21">
+         <item>
+          <widget class="QLabel" name="label_CityHelper">
+           <property name="text">
+            <string>No City Script Selected.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="button_LoadCityScript">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_22">
+         <item>
+          <widget class="QLabel" name="label_LogoFolderHelper">
+           <property name="text">
+            <string>No Logo Folder Selected.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="button_LoadLogoFolder">
+           <property name="text">
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_53">
+         <property name="text">
+          <string>Current Save:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_FileSaveName">
+         <property name="text">
+          <string>File Has Not Been Saved</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_55">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>List of AI Companies</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="table_AICompanyList">
+       <column>
+        <property name="text">
+         <string>ID</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Name</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>HQ</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Owner</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Founding</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Death</string>
+        </property>
+       </column>
+       <column>
+        <property name="text">
+         <string>Funds</string>
+        </property>
+       </column>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_NewAICompany">
+       <property name="text">
+        <string>New</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_RemoveAICompany">
+       <property name="text">
+        <string>Remove</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>false</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>452</width>
+        <height>800</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>5</y>
+         <width>455</width>
+         <height>787</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <item>
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>AI ID:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Name:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Owner:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Head Quarters:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Founding Year:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QSpinBox" name="spin_FoundingYear">
+              <property name="minimum">
+               <number>1700</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+              <property name="value">
+               <number>1900</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_7">
+              <property name="text">
+               <string>Death Year:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_DeathYear">
+              <property name="minimum">
+               <number>1701</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+              <property name="value">
+               <number>1950</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <widget class="QLabel" name="label_8">
+            <property name="text">
+             <string>Logo:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QLineEdit" name="line_AILogo">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="combo_LogoList"/>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="0">
+           <widget class="QLabel" name="label_9">
+            <property name="text">
+             <string>Starting Funds:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="7" column="1">
+           <widget class="QLineEdit" name="line_StartingFunds"/>
+          </item>
+          <item row="8" column="0">
+           <widget class="QLabel" name="label_10">
+            <property name="text">
+             <string>Existing Loans:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLineEdit" name="line_ExistingLoans"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>Credit Rating:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="combo_CreditRating">
+              <item>
+               <property name="text">
+                <string>D</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>C</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>CC</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>CCC</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>B</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>BB</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>BBB</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>A</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>AA</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>AAA</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label_12">
+            <property name="text">
+             <string>Quick Finances:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QComboBox" name="combo_QuickFinances">
+            <item>
+             <property name="text">
+              <string>Giant</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Huge</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Large</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Medium</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Small</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Tiny</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Huge In Debt</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Medium In Debt</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Tiny In Debt</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="9" column="0">
+           <widget class="QLabel" name="label_13">
+            <property name="text">
+             <string>Quick Skills</string>
+            </property>
+           </widget>
+          </item>
+          <item row="9" column="1">
+           <widget class="QComboBox" name="combo_QuickSkills">
+            <item>
+             <property name="text">
+              <string>Superior</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Extremely Advanced</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Advanced</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Average</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Slightly Behind</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Talentless</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Startup</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bored 12 Year Old Kids...</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="10" column="0">
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>Skills-- Manufacturing:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="10" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QSpinBox" name="spin_ManuSkills">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_15">
+                <property name="text">
+                 <string>RnD:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spin_RnDSkills">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="label_16">
+                <property name="text">
+                 <string>Admin:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="spin_AdminSkills">
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>100</number>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="11" column="0">
+           <widget class="QLabel" name="label_17">
+            <property name="text">
+             <string>Skills-- Marketing:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="11" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QSpinBox" name="spin_MarketingSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_18">
+              <property name="text">
+               <string>Dealership Management: </string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_DealershipSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="12" column="0">
+           <widget class="QLabel" name="label_19">
+            <property name="text">
+             <string>Quick Design Skills:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="12" column="1">
+           <widget class="QComboBox" name="combo_QuickDesignSkills">
+            <item>
+             <property name="text">
+              <string>Superior</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Extremely Advanced</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Advanced</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Average</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Below Average</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Slightly Behind</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Behind</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>VENT GUI Designer's Skills</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Digital Homicide Skills</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="13" column="0">
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Design-- Engine:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="13" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <item>
+             <widget class="QSpinBox" name="spin_EngineDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_21">
+              <property name="text">
+               <string>Chassis:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_ChassisDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_22">
+              <property name="text">
+               <string>Gearbox:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_GearboxDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="14" column="0">
+           <widget class="QLabel" name="label_23">
+            <property name="text">
+             <string>Design--Body:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="14" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <widget class="QSpinBox" name="spin_BodyDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_24">
+              <property name="text">
+               <string>Luxury:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_LuxuryDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_25">
+              <property name="text">
+               <string>Safety:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_SafetyDesignSkills">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="15" column="0">
+           <widget class="QLabel" name="label_26">
+            <property name="text">
+             <string>Quick Image:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="15" column="1">
+           <widget class="QComboBox" name="combo_QuickImage">
+            <item>
+             <property name="text">
+              <string>Adored</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Loved</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Pleased</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Neutral</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Unknown/Disliked</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Hated</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Scum of the Earth</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="16" column="0">
+           <widget class="QLabel" name="label_27">
+            <property name="text">
+             <string>Image-- Global:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="16" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <item>
+             <widget class="QSpinBox" name="spin_GlobalImage">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_28">
+              <property name="text">
+               <string>Quality:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_QualityImage">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="17" column="0">
+           <widget class="QLabel" name="label_29">
+            <property name="text">
+             <string>Image-- Racing:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="17" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <item>
+             <widget class="QSpinBox" name="spin_RacingImage">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_30">
+              <property name="text">
+               <string>Workmanship:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spin_WorkmanImage">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>100</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="18" column="0">
+           <widget class="QLabel" name="label_31">
+            <property name="text">
+             <string>Quick Design Behavior:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="18" column="1">
+           <widget class="QComboBox" name="combo_QuickDesignBehavior">
+            <item>
+             <property name="text">
+              <string>Generic Manufacturer</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Upper Class Generic</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Lower Class Generic</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Performance Generic</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Truck Company</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Performance Company</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ultra Rich High Performance</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Fun Handling</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Luxury Company</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Economic Company</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Micro Car Company</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Safety First</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Green</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="19" column="0">
+           <widget class="QLabel" name="label_32">
+            <property name="text">
+             <string>Behavoir--Perform:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <item>
+             <widget class="QSpinBox" name="spin_HQID">
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="combo_CityList">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <item>
+             <widget class="QSpinBox" name="spin_OwnerID">
+              <property name="maximum">
+               <number>9999</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="combo_OwnerList">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="lineEdit_AIName"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="Label_AIID">
+            <property name="text">
+             <string>PlaceHolder</string>
+            </property>
+           </widget>
+          </item>
+          <item row="19" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_PerformanceBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_34">
+              <property name="text">
+               <string>Driveability:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_DriveBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_35">
+              <property name="text">
+               <string>Luxury:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_LuxuryBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="20" column="0">
+           <widget class="QLabel" name="label_36">
+            <property name="text">
+             <string>Behavoirs--Safety:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="20" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_17">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_SafetyBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_37">
+              <property name="text">
+               <string>Fuel:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_FuelBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_38">
+              <property name="text">
+               <string>Power:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_PowereBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="21" column="0">
+           <widget class="QLabel" name="label_39">
+            <property name="text">
+             <string>Behavoirs--Cargo:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="22" column="0">
+           <widget class="QLabel" name="label_40">
+            <property name="text">
+             <string>Quick Aggressions:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="0">
+           <widget class="QLabel" name="label_41">
+            <property name="text">
+             <string>Agressions--Sales:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="21" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_18">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_CargoBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Dependability:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_DependBehave">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QCheckBox" name="check_GenericDesign">
+              <property name="text">
+               <string>Generic Designs</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="22" column="1">
+           <widget class="QComboBox" name="combo_QuickAgression">
+            <item>
+             <property name="text">
+              <string>Passive</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Average</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Aggressive</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Aggressive Expansion</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Aggressive Costs</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Best Quality</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Look for Profits</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Close to Home.</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="24" column="0">
+           <widget class="QLabel" name="label_42">
+            <property name="text">
+             <string>Agressions--Costs:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="23" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_SalesAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_43">
+              <property name="text">
+               <string>Build:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_BuildAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_44">
+              <property name="text">
+               <string>Marketing:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_MarketingAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="25" column="0">
+           <widget class="QLabel" name="label_45">
+            <property name="text">
+             <string>Agression--Expansion:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="26" column="0">
+           <widget class="QLabel" name="label_46">
+            <property name="text">
+             <string>Clusting:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="24" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_CostsAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_47">
+              <property name="text">
+               <string>Quality:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_QualityAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_48">
+              <property name="text">
+               <string>Price:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_PriceAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="25" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_19">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_ExpansionAggression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_33">
+              <property name="text">
+               <string>Design:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_DesignAgression">
+              <property name="minimum">
+               <double>0.010000000000000</double>
+              </property>
+              <property name="maximum">
+               <double>1.000000000000000</double>
+              </property>
+              <property name="singleStep">
+               <double>0.050000000000000</double>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="26" column="1">
+           <layout class="QHBoxLayout" name="horizontalLayout_20">
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_BuildingClustering"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_49">
+              <property name="text">
+               <string>Design Export:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spin_DesignExport"/>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_50">
+              <property name="text">
+               <string>Design Import:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QDoubleSpinBox" name="spiner_ImportDesign"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_SaveAINode">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>50</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Save AI Company</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Button_makeNewAIList</tabstop>
+  <tabstop>button_SaveAIList</tabstop>
+  <tabstop>button_OpenAIList</tabstop>
+  <tabstop>Button_AI_ReturnToPrevious</tabstop>
+  <tabstop>lineEdit_AIName</tabstop>
+  <tabstop>spin_OwnerID</tabstop>
+  <tabstop>combo_OwnerList</tabstop>
+  <tabstop>spin_HQID</tabstop>
+  <tabstop>combo_CityList</tabstop>
+  <tabstop>spin_FoundingYear</tabstop>
+  <tabstop>spin_DeathYear</tabstop>
+  <tabstop>line_AILogo</tabstop>
+  <tabstop>combo_LogoList</tabstop>
+  <tabstop>combo_QuickFinances</tabstop>
+  <tabstop>line_StartingFunds</tabstop>
+  <tabstop>line_ExistingLoans</tabstop>
+  <tabstop>combo_CreditRating</tabstop>
+  <tabstop>combo_QuickSkills</tabstop>
+  <tabstop>spin_ManuSkills</tabstop>
+  <tabstop>spin_RnDSkills</tabstop>
+  <tabstop>spin_AdminSkills</tabstop>
+  <tabstop>spin_MarketingSkills</tabstop>
+  <tabstop>spin_DealershipSkills</tabstop>
+  <tabstop>combo_QuickDesignSkills</tabstop>
+  <tabstop>spin_EngineDesignSkills</tabstop>
+  <tabstop>spin_ChassisDesignSkills</tabstop>
+  <tabstop>spin_GearboxDesignSkills</tabstop>
+  <tabstop>spin_BodyDesignSkills</tabstop>
+  <tabstop>spin_LuxuryDesignSkills</tabstop>
+  <tabstop>spin_SafetyDesignSkills</tabstop>
+  <tabstop>combo_QuickImage</tabstop>
+  <tabstop>spin_GlobalImage</tabstop>
+  <tabstop>spin_QualityImage</tabstop>
+  <tabstop>spin_RacingImage</tabstop>
+  <tabstop>spin_WorkmanImage</tabstop>
+  <tabstop>combo_QuickDesignBehavior</tabstop>
+  <tabstop>spin_PerformanceBehave</tabstop>
+  <tabstop>spin_DriveBehave</tabstop>
+  <tabstop>spin_LuxuryBehave</tabstop>
+  <tabstop>spin_SafetyBehave</tabstop>
+  <tabstop>spin_FuelBehave</tabstop>
+  <tabstop>spin_PowereBehave</tabstop>
+  <tabstop>spin_CargoBehave</tabstop>
+  <tabstop>spin_DependBehave</tabstop>
+  <tabstop>check_GenericDesign</tabstop>
+  <tabstop>combo_QuickAgression</tabstop>
+  <tabstop>spin_SalesAggression</tabstop>
+  <tabstop>spin_BuildAggression</tabstop>
+  <tabstop>spin_MarketingAggression</tabstop>
+  <tabstop>spin_CostsAggression</tabstop>
+  <tabstop>spin_QualityAggression</tabstop>
+  <tabstop>spin_PriceAggression</tabstop>
+  <tabstop>spin_ExpansionAggression</tabstop>
+  <tabstop>spin_DesignAgression</tabstop>
+  <tabstop>spin_BuildingClustering</tabstop>
+  <tabstop>spin_DesignExport</tabstop>
+  <tabstop>spiner_ImportDesign</tabstop>
+  <tabstop>button_SaveAINode</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>button_LoadCityScript</tabstop>
+  <tabstop>button_LoadLogoFolder</tabstop>
+  <tabstop>table_AICompanyList</tabstop>
+  <tabstop>button_NewAICompany</tabstop>
+  <tabstop>button_RemoveAICompany</tabstop>
+  <tabstop>Button_AI_MapEditor</tabstop>
+  <tabstop>Button_AI_TurnEventsEditor</tabstop>
+  <tabstop>Button_AI_CityEditor</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
