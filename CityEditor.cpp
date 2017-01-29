@@ -474,6 +474,9 @@ void CityEditor::on_Button_CE_SaveCityList_clicked()
 {    
     saveFileName = QFileDialog::getSaveFileName(this, "Save File", "","XML Files (*.xml)");
 
+    if (!saveFileName.endsWith(".xml"))
+        saveFileName += ".xml";
+
     ui->Label_CE_CurrentSaveName->setText(saveFileName);
 
     //Save the city script xml

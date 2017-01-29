@@ -42,6 +42,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include <QWidget>
 #include "BaseContainerStorage.h"
+#include <QString>
+#include <QMap>
 
 
 namespace Ui {
@@ -52,6 +54,28 @@ class MapDataTool : public QWidget
 {
     Q_OBJECT
 
+    class MapChangeData
+    {
+        public:
+            int year;
+            QString cityTexture;
+            QString branchTexture;
+            QString factoryTexture;
+            QString mapFileName;
+            QString turnBasedChange;
+            QString regionalMap;
+            double  tlLat,tlLong,trLat,trLong;
+            double  blLat,blLong,brLat,brLong;
+    };
+
+    class mapAIData
+    {
+        public:
+        QString fileName;
+        QString description;
+        int number;
+    };
+
 public:
     explicit MapDataTool(widgetContainerStorage wsc, QWidget *parent = 0);
     ~MapDataTool();
@@ -60,15 +84,49 @@ public:
 private slots:
     void on_Button_MapTools_ReturnToMain_clicked();
     void on_Button_MapTool_CityEditor_clicked();
-
     void on_Button_MapTool_AIEditor_clicked();
-
     void on_Button_MapTool_TurnEventsEditor_clicked();
+    void on_Radio_MapTools_DotCity_toggled(bool checked);
+    void on_ToolButton_MapTools_MapArtZipLocationFinder_clicked();
+    void on_ToolButton_MapTools_CityScriptFolderFinder_clicked();
+    void on_Button_MapTools_CityArtZipLocationFinder_clicked();
+    void on_Button_MapTools_TurnEventsXMLFileLocationFinder_clicked();
+    void on_Button_MapTools_NewspaperZipFileLocationFinder_clicked();
+    void on_Button_MapTools_AIScriptFolderFinder_clicked();
+    void on_Button_MapTools_AiLogoZipLocationFinder_clicked();
+    void on_Button_MapTools_AddMapArtworkToLoader_clicked();
+    void on_Button_MapTools_RemoveMapArtworkToLoader_clicked();
+    void on_Table_MapTools_MapArtLoadingYears_cellClicked(int row, int column);
+    void on_Button_MapTools_AddCityScriptYearLoader_clicked();
+    void on_Button_MapTools_RemoveCityScriptYearLoader_clicked();
+    void on_Table_MapTools_CityScriptLoadingYears_cellClicked(int row, int column);
+    void on_Button_MapTools_AddStartingAINumbersAndFile_clicked();
+    void on_Button_MapTools_RemoveStartingAINumberAndFile_clicked();
+    void on_Table_MapTools_StartingAINumbersAndFiles_cellClicked(int row,
+                                                                 int column);
+    void on_Button_MapData_Save_clicked();
+    void on_Button_MapData_Open_clicked();
+    void on_Button_MapTools_MapPictureFinder_clicked();
+    void on_Button_MapData_Export_clicked();
+    void on_Button_MapTools_FlagZipFileFinder_clicked();
 
 private:
     Ui::MapDataTool *ui;
     widgetContainerStorage cp_wsc;
+    QMap<int,MapChangeData> mapChangeMap;
+    QMap<int, QString> cityScriptMap;
+    QMap<QString, mapAIData> AIScriptMap;
 
+    void fillMapArtworkTable();
+    void fillCityScriptTable();
+    void fillAIScriptTable();
+
+    void saveMapLoaderData(QString fileName);
+    void openMapFile(QString openFileName);
+    void exportMap(QString parentFolder);
+    void saveMapInfoBaseFile(QString mapFolder);
+    void saveLoaderForModToolsExport(QString folder);
+    bool checkExportErrors();
 
 };
 

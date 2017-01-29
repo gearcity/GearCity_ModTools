@@ -2762,6 +2762,9 @@ void TurnEventsEditor::on_Button_SaveList_clicked()
     //Get File Name
     QString saveFileName = QFileDialog::getSaveFileName(this, "Save File", "","XML Files (*.xml)");
 
+    if (!saveFileName.endsWith(".xml"))
+        saveFileName += ".xml";
+
     ui->Label_CurrentSaveFiles->setText(saveFileName);
 
     //Actually Save File

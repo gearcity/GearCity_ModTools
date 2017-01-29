@@ -467,6 +467,9 @@ void AIEditor::on_button_SaveAIList_clicked()
 {   
     saveFileName = QFileDialog::getSaveFileName(this, "Save File", "","XML Files (*.xml)");
 
+    if (!saveFileName.endsWith(".xml"))
+        saveFileName += ".xml";
+
     ui->label_FileSaveName->setText(saveFileName);
 
     //Call function to actually save.
