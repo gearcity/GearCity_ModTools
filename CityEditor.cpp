@@ -153,7 +153,7 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
    saveDS.ecoGrowth = ui->SpinBox_CE_EcoGrowth->value();
    saveDS.resourceRates = ui->SpinBox_CE_ResourceRates->value();
    saveDS.fuelCosts = ui->SpinBox_CE_FuelCosts->value();
-   saveDS.infRates = ui->SpinBox_CE_FuelCosts->value();
+   saveDS.infRates = ui->SpinBox_CE_InfRates->value();
    saveDS.skillRates = ui->SpinBox_CE_SkillRates->value();
    saveDS.avgWages = ui->LineEdit_CE_AvgWages->text().toInt();
    saveDS.manuSkill = ui->SpinBox_CE_ManufacturingSkills->value();
@@ -368,7 +368,7 @@ void CityEditor::on_Table_CE_CitiesInList_clicked(const QModelIndex &index)
     ui->LineEdit_CE_Heading->setText((*mapIT).headingFileName);
     ui->SpinBox_CE_CordsLong->setValue((*mapIT).cordLong);
     ui->SpinBox_CE_CordsLat->setValue((*mapIT).cordLat);
-    ui->Combo_CE_CityRegion->setCurrentIndex((*mapIT).region);
+    ui->Combo_CE_CityRegion->setCurrentIndex((*mapIT).region-1);
 
 }
 
@@ -474,13 +474,16 @@ void CityEditor::on_Button_CE_SaveCityList_clicked()
 {    
     saveFileName = QFileDialog::getSaveFileName(this, "Save File", "","XML Files (*.xml)");
 
-    if (!saveFileName.endsWith(".xml"))
-        saveFileName += ".xml";
+    if (saveFileName != "")
+    {
+        if (!saveFileName.endsWith(".xml"))
+            saveFileName += ".xml";
 
-    ui->Label_CE_CurrentSaveName->setText(saveFileName);
+        ui->Label_CE_CurrentSaveName->setText(saveFileName);
 
-    //Save the city script xml
-    saveXML();
+        //Save the city script xml
+        saveXML();
+    }
 }
 
 //This is the function that actually saves the city script to file.
@@ -614,6 +617,8 @@ void CityEditor::on_Button_CE_LoadCityList_clicked()
        openXML(openFileName,false);
        fillTableList();
        ui->Label_CE_CurrentSaveName->setText(openFileName);
+       QModelIndex index = ui->Table_CE_CitiesInList->model()->index(1,0,QModelIndex());
+       on_Table_CE_CitiesInList_clicked(index);
    }
    else
    {
@@ -750,6 +755,8 @@ void CityEditor::on_Button_CE_InterpolationSourceFinder_clicked()
         openXML(openFileName,true);
         fillTableList();
         ui->Label_CE_InterpolationSource->setText(openFileName);
+        QModelIndex index = ui->Table_CE_CitiesInList->model()->index(1,0,QModelIndex());
+        on_Table_CE_CitiesInList_clicked(index);
     }
     else
     {
@@ -774,7 +781,7 @@ void CityEditor::interpolateValues(int key)
     if(cityMap.contains(key))
         editMap = true;
 
-    int yearDif = ui->SpinBox_CE_InterpolateYear->value() - ui->SpinBox_CE_CityListYear->value();
+    double yearDif = ui->SpinBox_CE_InterpolateYear->value() - ui->SpinBox_CE_CityListYear->value();
 
 
     //Widgets is the same as city id so we're changing growth values.
@@ -785,15 +792,17 @@ void CityEditor::interpolateValues(int key)
 
      ui->SpinBox_CE_PopulationGrowth->setValue(populationGrowth);
 
+
      double capitaGrowth = pow(((*it).perCapita / ui->LineEdit_CE_PerCapita->text().toDouble()),
             (1.0/(yearDif)));
+
 
      ui->SpinBox_CE_EcoGrowth->setValue(capitaGrowth);
 
      double manuGrowth = pow(((*it).manuSkill / static_cast<double>(ui->SpinBox_CE_ManufacturingSkills->value())),
             (1.0/(yearDif)));
 
-     ui->SpinBox_CE_EcoGrowth->setValue(manuGrowth);
+     ui->SpinBox_CE_ManuGrowth->setValue(manuGrowth);
     }
 
     // We're interpolating data in the city maps as well
@@ -876,3 +885,9 @@ void CityEditor::on_Button_CE_TurnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
 }
+
+void CityEditor::on_LineEdit_CE_PerCapita_editingFinished()
+{
+    ui->LineEdit_CE_AvgWages->setText(QString::number(ui->LineEdit_CE_PerCapita->text().toInt()/12));
+}
+

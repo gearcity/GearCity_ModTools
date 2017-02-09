@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>720</height>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>12</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="Tab_Settings">
         <attribute name="title">
@@ -555,7 +555,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Office_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1899</number>
               </property>
               <property name="maximum">
                <number>2020</number>

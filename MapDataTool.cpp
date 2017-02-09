@@ -113,6 +113,8 @@ void MapDataTool::on_Radio_MapTools_DotCity_toggled(bool checked)
         ui->spinBox_RegionalCoords_BL_Lat->setVisible(true);
         ui->spinBox_RegionalCoords_BR_Lat->setVisible(true);
         ui->spinBox_RegionalCoords_BR_Long->setVisible(true);
+        ui->checkbox_Maptools_IndividualTextures->setVisible(false);
+        ui->checkbox_Maptools_IndividualTextures->setChecked(false);
 
         ui->label_MapChanger_MapFileName->setText("Material Name:");
 
@@ -139,6 +141,8 @@ void MapDataTool::on_Radio_MapTools_DotCity_toggled(bool checked)
         ui->spinBox_RegionalCoords_BL_Lat->setVisible(false);
         ui->spinBox_RegionalCoords_BR_Lat->setVisible(false);
         ui->spinBox_RegionalCoords_BR_Long->setVisible(false);
+        ui->checkbox_Maptools_IndividualTextures->setVisible(true);
+
 
         ui->label_MapChanger_MapFileName->setText("Map File Name:");
     }
@@ -330,6 +334,8 @@ void MapDataTool::on_Button_MapTools_AddMapArtworkToLoader_clicked()
             mcd.brLat = 0;
             mcd.brLong = 0;
         }
+
+        mcd.individualTextures = "False";
     }
     else //Well, it's a dot scene, make sure the file is a .scene file.
     {
@@ -353,6 +359,15 @@ void MapDataTool::on_Button_MapTools_AddMapArtworkToLoader_clicked()
         mcd.blLong = 0;
         mcd.brLat = 0;
         mcd.brLong = 0;
+
+        if(ui->checkbox_Maptools_IndividualTextures->isChecked())
+        {
+             mcd.individualTextures = "True";
+        }
+        else
+        {
+             mcd.individualTextures = "False";
+        }
 
     }
 
@@ -436,6 +451,15 @@ void MapDataTool::on_Table_MapTools_MapArtLoadingYears_cellClicked(int row, int 
        ui->spinBox_RegionalCoords_BL_Long->setValue((*mcmIT).blLong);
        ui->spinBox_RegionalCoords_BR_Long->setValue((*mcmIT).brLat);
        ui->spinBox_RegionalCoords_BR_Long->setValue((*mcmIT).brLong);
+
+       if((*mcmIT).individualTextures == "True")
+       {
+           ui->checkbox_Maptools_IndividualTextures->setChecked(true);
+       }
+       else
+       {
+           ui->checkbox_Maptools_IndividualTextures->setChecked(false);
+       }
     }
 }
 
@@ -639,6 +663,7 @@ void MapDataTool::saveMapLoaderData(QString fileName)
             xmlWriter.writeAttribute("branchTexture",(*it).branchTexture);
             xmlWriter.writeAttribute("factoryTexture",(*it).factoryTexture);
             xmlWriter.writeAttribute("turnBasedChange",(*it).turnBasedChange);
+            xmlWriter.writeAttribute("individualTextures",(*it).individualTextures);
             xmlWriter.writeAttribute("regionalMap",(*it).regionalMap);
                 xmlWriter.writeAttribute("tlLat",QString::number((*it).tlLat));
                 xmlWriter.writeAttribute("tlLong",QString::number((*it).tlLong));
@@ -810,6 +835,15 @@ void MapDataTool::openMapFile(QString openFileName)
         else
         {
             mcd.turnBasedChange = "False";
+        }
+
+        if(!subElement.attributeNode("individualTextures").isNull())
+        {
+            mcd.individualTextures = subElement.attributeNode("individualTextures").value();
+        }
+        else
+        {
+            mcd.individualTextures = "False";
         }
 
         if(!subElement.attributeNode("regionalMap").isNull())
@@ -1136,6 +1170,7 @@ void MapDataTool::saveMapInfoBaseFile(QString mapFolder)
                   xmlWriter.writeAttribute("branchTexture",(*it).branchTexture);
                   xmlWriter.writeAttribute("factoryTexture",(*it).factoryTexture);
                   xmlWriter.writeAttribute("turnBasedChange",(*it).turnBasedChange);
+                  xmlWriter.writeAttribute("individualTextures",(*it).individualTextures);
                   xmlWriter.writeAttribute("regionalMap",(*it).regionalMap);
                       xmlWriter.writeAttribute("tlLat",QString::number((*it).tlLat));
                       xmlWriter.writeAttribute("tlLong",QString::number((*it).tlLong));
@@ -1248,6 +1283,7 @@ void MapDataTool::saveLoaderForModToolsExport(QString folder)
             xmlWriter.writeAttribute("branchTexture",(*it).branchTexture);
             xmlWriter.writeAttribute("factoryTexture",(*it).factoryTexture);
             xmlWriter.writeAttribute("turnBasedChange",(*it).turnBasedChange);
+            xmlWriter.writeAttribute("individualTextures",(*it).individualTextures);
             xmlWriter.writeAttribute("regionalMap",(*it).regionalMap);
                 xmlWriter.writeAttribute("tlLat",QString::number((*it).tlLat));
                 xmlWriter.writeAttribute("tlLong",QString::number((*it).tlLong));

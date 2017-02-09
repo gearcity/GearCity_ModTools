@@ -878,6 +878,13 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_19">
         <item>
+         <widget class="QCheckBox" name="checkbox_Maptools_IndividualTextures">
+          <property name="text">
+           <string>Individual Textures</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QCheckBox" name="CheckBox_MapArtTools_ChangeMapEveryTurn">
           <property name="text">
            <string>Map Changes Every Month</string>

@@ -70,6 +70,28 @@ private slots:
     void on_Button_AIEditor_clicked();
     void on_Button_TurnEventsEditor_clicked();
 
+    void on_Button_ModDataTools_clicked();
+
+    void on_Button_ScenarioDataTools_clicked();
+
+    void on_Button_LocalizationEditor_clicked();
+
+    void on_Button_ComponentEditor_clicked();
+
+    void on_Button_NewsPaperEditor_clicked();
+
+    void on_Button_MagazineEditor_clicked();
+
+    void on_Button_DYKEditor_clicked();
+
+    void on_Button_LogoEditor_clicked();
+
+    void on_Button_MusicEditor_clicked();
+
+    void on_Button_PreMadeVehicleLoader_clicked();
+
+    void on_Button_Racing_clicked();
+
 private:
      Ui::MainWindow *ui;
 

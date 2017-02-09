@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -119,4 +119,103 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     cityEditorTool->resize(this->width(), this->height());
     aiEditorTool->resize(this->width(), this->height());
     turnEventEditorTool->resize(this->width(), this->height());
+}
+
+void MainWindow::on_Button_ModDataTools_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_ScenarioDataTools_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_LocalizationEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_ComponentEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_NewsPaperEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_MagazineEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_DYKEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_LogoEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_MusicEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_PreMadeVehicleLoader_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
+}
+
+void MainWindow::on_Button_Racing_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
+                          "It will be before v1.22\n\nOnly Map "
+                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
+                          "functional at this time.");
+    return;
 }

@@ -89,6 +89,8 @@ private slots:
 
     void on_Button_CE_TurnEventsEditor_clicked();
 
+    void on_LineEdit_CE_PerCapita_editingFinished();
+
 private:
     Ui::CityEditor *ui;
     widgetContainerStorage cp_wsc;

@@ -66,6 +66,7 @@ class MapDataTool : public QWidget
             QString regionalMap;
             double  tlLat,tlLong,trLat,trLong;
             double  blLat,blLong,brLat,brLong;
+            QString individualTextures;
     };
 
     class mapAIData

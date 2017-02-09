@@ -391,7 +391,7 @@ void TurnEventsEditor::refreshOfficeTable()
 {
     int rowNumber = 0;
     int month = 1;
-    int year = 1900;
+    int year = 1899;
 
     //Limit data within the bounds of the game
     int startYearLimit = ui->Spin_StartingYear->value()*12;
@@ -406,7 +406,7 @@ void TurnEventsEditor::refreshOfficeTable()
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
     {
         //if the turn is not in the current game years, go to the next entry in the map
-        if(it.key()<startYearLimit || it.key()>finishYearLimit)
+        if(it.key()<startYearLimit-12 || it.key()>finishYearLimit)
             continue;
 
         //if there is a change in the office file add to the table and combo boxes
@@ -2762,13 +2762,16 @@ void TurnEventsEditor::on_Button_SaveList_clicked()
     //Get File Name
     QString saveFileName = QFileDialog::getSaveFileName(this, "Save File", "","XML Files (*.xml)");
 
-    if (!saveFileName.endsWith(".xml"))
-        saveFileName += ".xml";
+    if (saveFileName != "")
+    {
+        if (!saveFileName.endsWith(".xml"))
+            saveFileName += ".xml";
 
-    ui->Label_CurrentSaveFiles->setText(saveFileName);
+        ui->Label_CurrentSaveFiles->setText(saveFileName);
 
-    //Actually Save File
-    saveXML(saveFileName);
+        //Actually Save File
+        saveXML(saveFileName);
+    }
 }
 
 
@@ -2796,24 +2799,39 @@ void TurnEventsEditor::saveXML(QString saveFileName)
 
     xmlWriter.writeStartElement("Evts");
     int month=0, year=0;
+    bool yearOpen = false;
 
     //Loop through Map and write the data
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
     {
         //Check to make sure we're only saving the data between the starting year and finish year
-        if(it.key()<startYearLimit || it.key()>finishYearLimit)
+        if(it.key()<startYearLimit-12 || it.key()>finishYearLimit)
             continue;
 
-        year = it.key()/12;
+        if(year != it.key()/12)
+        {
+            if(it.key()%12 != 0)
+            {
+
+                if(yearOpen)
+                    xmlWriter.writeEndElement(); //Year
+
+
+                year = it.key()/12;
+                xmlWriter.writeStartElement("year");
+                       xmlWriter.writeAttribute("y",QString::number(year));
+                yearOpen = true;
+            }
+        }
+
+
+
         month = it.key()%12;
         if(month == 0)
         {
-            month = 1;
-            year++;
+            month = 12;
         }
 
-        xmlWriter.writeStartElement("year");
-               xmlWriter.writeAttribute("y",QString::number(year));
 
           xmlWriter.writeStartElement("turn");
                xmlWriter.writeAttribute("t",QString::number(month));
@@ -2947,9 +2965,12 @@ void TurnEventsEditor::saveXML(QString saveFileName)
 
          xmlWriter.writeEndElement(); //Turn
 
-      xmlWriter.writeEndElement(); //Year
+
 
     }
+
+    if(yearOpen)
+        xmlWriter.writeEndElement(); //Year
 
      xmlWriter.writeEndDocument();
 
