@@ -111,6 +111,8 @@ private slots:
     void on_Button_MapData_Export_clicked();
     void on_Button_MapTools_FlagZipFileFinder_clicked();
 
+    void on_Button_MapTool_MaterialEditor_clicked();
+
 private:
     Ui::MapDataTool *ui;
     widgetContainerStorage cp_wsc;

@@ -54,11 +54,17 @@ MainWindow::MainWindow(QWidget *parent) :
     wsc.AIEditorCW = ui->AIEditorWidgetContainer;
     wsc.TurnEventEditorCW = ui->TurnEventEditorWidgetContainer;
 
+    //Create child windows/edits before creating editors
+    wsc.MaterialEditorWindow = new MaterialMakerWindow(this);
+
     //Create the forms and send the objects the container widgets to attach to.
     mapTool = new MapDataTool(wsc, ui->MapDataToolWidgetContainer);
     cityEditorTool = new CityEditor(wsc, ui->CityEditorWidgetContainer);
     aiEditorTool = new AIEditor(wsc, ui->AIEditorWidgetContainer);
     turnEventEditorTool = new TurnEventsEditor(wsc, ui->TurnEventEditorWidgetContainer);
+
+
+
 
     //Raise up the main menu container widget.
     wsc.MainMenuCW->raise();
@@ -72,6 +78,7 @@ MainWindow::~MainWindow()
     delete cityEditorTool;
     delete aiEditorTool;
     delete turnEventEditorTool;
+    delete wsc.MaterialEditorWindow;
 
 }
 

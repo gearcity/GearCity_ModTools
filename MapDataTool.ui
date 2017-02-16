@@ -131,6 +131,19 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="Button_MapTool_MaterialEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Material Editor</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>

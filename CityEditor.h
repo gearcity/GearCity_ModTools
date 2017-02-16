@@ -47,6 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QMap>
 #include <QModelIndex>
 #include <QFile>
+#include "TurnEventsData.h"
 
 
 namespace Ui {
@@ -91,12 +92,15 @@ private slots:
 
     void on_LineEdit_CE_PerCapita_editingFinished();
 
+    void on_button_CE_AA_SelectTurnEvents_clicked();
+
 private:
     Ui::CityEditor *ui;
     widgetContainerStorage cp_wsc;
     QMap<int,CityData::dataStore> cityMap;
     QMap<int,CityData::dataStore> interpolateMap;
     QString saveFileName;
+    QMap<int,TurnData::TE_Data> turnEventMap;
 
     void fillTableList();
     bool checkNewCityData(CityData::dataStore saveDS);

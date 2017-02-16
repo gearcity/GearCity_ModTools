@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     ComponentsManager.cpp \
     AIManager.cpp \
     TurnEventsData.cpp \
-    TurnEventTreeGrower.cpp
+    TurnEventTreeGrower.cpp \
+    MaterialMakerWindow.cpp
 
 HEADERS  += MainWindow.h \
     MapDataTool.h \
@@ -39,10 +40,12 @@ HEADERS  += MainWindow.h \
     LocalizationManager.h \
     ComponentsManager.h \
     AIManager.h \
-    TurnEventTreeGrower.h
+    TurnEventTreeGrower.h \
+    MaterialMakerWindow.h
 
 FORMS    += MainWindow.ui \
     MapDataTool.ui \
     CityEditor.ui \
     AIEditor.ui \
-    TurnEventsEditor.ui
+    TurnEventsEditor.ui \
+    MaterialMakerWindow.ui

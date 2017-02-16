@@ -233,13 +233,15 @@ void TurnEventsEditor::on_Button_SetCityScriptFile_clicked()
            id = ui->Combo_City_Flag_Editable->findText((*it).flagFileName);
            if(id == -1)
            {
-            ui->Combo_City_Flag_Editable->addItem((*it).flagFileName,QVariant((*it).id));
+            ui->Combo_City_Flag_Editable->addItem((*it).flagFileName,
+                                                  QVariant((*it).cityCountry));
            }
 
            id = ui->Combo_City_Nation_Editable->findText((*it).cityCountry);
            if(id == -1)
            {
-            ui->Combo_City_Nation_Editable->addItem((*it).cityCountry,QVariant((*it).id));
+            ui->Combo_City_Nation_Editable->addItem((*it).cityCountry,
+                                                    QVariant((*it).cityCountry));
            }
         }
 
@@ -304,10 +306,19 @@ void TurnEventsEditor::on_Button_SetAIScript_clicked()
     {
         //Create AI Manager
         aiMan = new AIManager(openFileName,cp_wsc.TurnEventEditorCW);
-        ui->Label_AIScriptFile->setText(openFileName);
 
-        //refresh tables and trees
-        refreshAllTablesAndTrees();
+        if(aiMan->getMap().size() > 0)
+        {
+             ui->Label_AIScriptFile->setText(openFileName);
+
+            //refresh tables and trees
+            refreshAllTablesAndTrees();
+        }
+        else
+        {
+            delete aiMan;
+            aiMan = 0;
+        }
 
     }
     else
@@ -2148,19 +2159,31 @@ void TurnEventsEditor::on_Button_Car_Remove_clicked()
 //City Spinners Changed, set various Combos if info is there
 void TurnEventsEditor::on_Spin_City_CityID_editingFinished()
 {
+    QString countryName = "";
+
+    for(QMap<int, CityData::dataStore>::iterator it = cityMap.begin(); it != cityMap.end();
+        ++it)
+    {
+        if(it.key() == ui->Spin_City_CityID->value())
+        {
+            countryName = (*it).cityCountry;
+            break;
+        }
+    }
+
     int comboIndex = ui->Combo_City_Cities->findData(QVariant(ui->Spin_City_CityID->value()));
     if(comboIndex != -1)
     {
       ui->Combo_City_Cities->setCurrentIndex(comboIndex);
     }
 
-    comboIndex = ui->Combo_City_Flag_Editable->findData(QVariant(ui->Spin_City_CityID->value()));
+    comboIndex = ui->Combo_City_Flag_Editable->findData(QVariant(countryName));
     if(comboIndex != -1)
     {
       ui->Combo_City_Flag_Editable->setCurrentIndex(comboIndex);
     }
 
-    comboIndex = ui->Combo_City_Nation_Editable->findData(QVariant(ui->Spin_City_CityID->value()));
+    comboIndex = ui->Combo_City_Nation_Editable->findData(QVariant(countryName));
     if(comboIndex != -1)
     {
       ui->Combo_City_Nation_Editable->setCurrentIndex(comboIndex);
@@ -2171,16 +2194,28 @@ void TurnEventsEditor::on_Spin_City_CityID_editingFinished()
 //City Combos Changed, set spinners and combos as needed
 void TurnEventsEditor::on_Combo_City_Cities_currentIndexChanged(int index)
 {
-    int selectorID = ui->Combo_Car_SelectionID->itemData(index).toInt();
-    ui->Spin_Car_SelectionID->setValue(selectorID);
+    int selectorID = ui->Combo_City_Cities->itemData(index).toInt();
+    ui->Spin_City_CityID->setValue(selectorID);
 
-    int comboIndex = ui->Combo_City_Flag_Editable->findData(QVariant(selectorID));
+    QString countryName = "";
+
+    for(QMap<int, CityData::dataStore>::iterator it = cityMap.begin(); it != cityMap.end();
+        ++it)
+    {
+        if(it.key() == selectorID)
+        {
+            countryName = (*it).cityCountry;
+            break;
+        }
+    }
+
+    int comboIndex = ui->Combo_City_Flag_Editable->findData(QVariant(countryName));
     if(comboIndex != -1)
     {
       ui->Combo_City_Flag_Editable->setCurrentIndex(comboIndex);
     }
 
-    comboIndex = ui->Combo_City_Nation_Editable->findData(QVariant(selectorID));
+    comboIndex = ui->Combo_City_Nation_Editable->findData(QVariant(countryName));
     if(comboIndex != -1)
     {
       ui->Combo_City_Nation_Editable->setCurrentIndex(comboIndex);
@@ -2982,4 +3017,5 @@ void TurnEventsEditor::saveXML(QString saveFileName)
 
 
 }
+
 

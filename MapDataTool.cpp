@@ -44,6 +44,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 
+
 //Create map data tool
 MapDataTool::MapDataTool(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),
@@ -1457,4 +1458,9 @@ bool MapDataTool::checkExportErrors()
     }
 
     return true;
+}
+
+void MapDataTool::on_Button_MapTool_MaterialEditor_clicked()
+{
+    cp_wsc.MaterialEditorWindow->show();
 }

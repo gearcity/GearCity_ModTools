@@ -325,7 +325,7 @@ void CityEditor::fillTableList()
         if(!comboHeadList.contains((*it).headingFileName))
         {
           ui->Combobox_CE_HeaderSelector->addItem((*it).headingFileName);
-          comboFlagList.push_back((*it).headingFileName);
+          comboHeadList.push_back((*it).headingFileName);
         }
     }
 }
@@ -350,6 +350,8 @@ void CityEditor::on_Table_CE_CitiesInList_clicked(const QModelIndex &index)
     //Fill widget infos.
     ui->Label_CE_CityID->setText(QString::number((*mapIT).id));
     ui->LineEdit_CE_CityName->setText((*mapIT).cityName);
+    ui->DropDown_CE_ExistingCountries->setCurrentIndex(
+                ui->DropDown_CE_ExistingCountries->findText((*mapIT).cityCountry));
     ui->LineEdit_CE_CityCountry->setText((*mapIT).cityCountry);
     ui->LineEdit_CE_Population->setText(QString::number((*mapIT).population));
     ui->SpinBox_CE_PopulationGrowth->setValue((*mapIT).popGrowth);
@@ -369,6 +371,7 @@ void CityEditor::on_Table_CE_CitiesInList_clicked(const QModelIndex &index)
     ui->SpinBox_CE_CordsLong->setValue((*mapIT).cordLong);
     ui->SpinBox_CE_CordsLat->setValue((*mapIT).cordLat);
     ui->Combo_CE_CityRegion->setCurrentIndex((*mapIT).region-1);
+
 
 }
 
@@ -891,3 +894,14 @@ void CityEditor::on_LineEdit_CE_PerCapita_editingFinished()
     ui->LineEdit_CE_AvgWages->setText(QString::number(ui->LineEdit_CE_PerCapita->text().toInt()/12));
 }
 
+
+void CityEditor::on_button_CE_AA_SelectTurnEvents_clicked()
+{
+    QString openFileName =  QFileDialog::getOpenFileName(this, "Open Turn Events File", "",
+                                                         "XML Files (*.xml)");
+
+    if (openFileName != "")
+    {
+        TurnData *td =
+    }
+}

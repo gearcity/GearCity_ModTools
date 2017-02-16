@@ -50,6 +50,9 @@ ComponentsManager::ComponentsManager(QString openFileName, QWidget *widget)
     QFile file(openFileName);
     if(!file.open(QFile::ReadOnly | QFile::Text))
     {
+        QMessageBox::critical(widget,"Could Not open file!!!!",
+                              "We had a problem reading this file!");
+
         processedFile = false;
              return;
     }
@@ -65,6 +68,8 @@ ComponentsManager::ComponentsManager(QString openFileName, QWidget *widget)
     //Error in prasing XML file
     if(!doc.setContent(&file,&errorMsg,&errorLine,&errorColumn))
     {
+        QMessageBox::critical(widget,"Error opening file!!!!",
+                              "This file is not valid xml!");
         processedFile = false;
        return;
     }
@@ -73,6 +78,8 @@ ComponentsManager::ComponentsManager(QString openFileName, QWidget *widget)
     QDomElement rootNode = doc.firstChildElement("Components");
     if(rootNode.isNull())
     {
+        QMessageBox::critical(widget,"Error opening file!!!!",
+                              "This file is a components xml for the game!");
         processedFile = false;
         return;
     }

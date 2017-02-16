@@ -42,6 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include <QWidget>
 #include <QGroupBox>
+#include <QMainWindow>
 
 
 class widgetContainerStorage
@@ -52,6 +53,8 @@ class widgetContainerStorage
         QWidget *CityEditorCW;
         QWidget *AIEditorCW;
         QWidget *TurnEventEditorCW;
+
+        QMainWindow *MaterialEditorWindow;
 };
 
 
