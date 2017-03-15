@@ -48,7 +48,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QModelIndex>
 #include <QFile>
 #include "TurnEventsData.h"
-
+#include "AIManager.h"
+#include <QStringList>
 
 namespace Ui {
 class CityEditor;
@@ -61,6 +62,11 @@ class CityEditor : public QFrame
 public:
     explicit CityEditor(widgetContainerStorage wsc, QWidget *parent = 0);
     ~CityEditor();
+    QMap<int,CityData::dataStore> getCityMapForExternalUse();
+    void openXML(QString openFileName, bool interpolater);
+    void setSaveFileNameExternally(QString fileName);
+    void setCityMapExternally(QMap<int,CityData::dataStore> newMap);
+    void saveXML();
 
 private slots:
     void on_Button_CE_ReturnToPrevious_clicked();
@@ -85,14 +91,13 @@ private slots:
     void on_SpinBox_CE_InterpolateYear_editingFinished();
     void on_Button_CityEditor_CancelInterpolater_clicked();
     void on_Button_CE_AIEditor_clicked();
-
-
-
     void on_Button_CE_TurnEventsEditor_clicked();
-
     void on_LineEdit_CE_PerCapita_editingFinished();
-
     void on_button_CE_AA_SelectTurnEvents_clicked();
+    void on_button_CE_AA_AddAIFile_clicked();
+    void on_button_CE_AA_RemoveAIFile_clicked();
+    void on_button_CE_AA_AddCity_clicked();
+    void on_button_CE_AA_RemoveCity_clicked();
 
 private:
     Ui::CityEditor *ui;
@@ -101,12 +106,21 @@ private:
     QMap<int,CityData::dataStore> interpolateMap;
     QString saveFileName;
     QMap<int,TurnData::TE_Data> turnEventMap;
+    QMap<QString,QMap<int, AIManager::AIInfo> > mapOfAIMaps;
+    QMap<QString, QMap<int,CityData::dataStore> > cityAdjustMap;
+
+
+
+
+    QString turnEventFileName;
 
     void fillTableList();
     bool checkNewCityData(CityData::dataStore saveDS);
-    void saveXML();
-    void openXML(QString openFileName, bool interpolater);
     void interpolateValues(int key);
+    void fillAIAdjustList();
+    void fillCityAdjustList();
+
+
 };
 
 #endif // CITYEDITOR_H

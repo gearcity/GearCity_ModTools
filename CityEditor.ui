@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>753</height>
+    <width>1292</width>
+    <height>790</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,173 +29,6 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0" rowspan="2" colspan="4">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="Button_CE_NewCityList">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>New City List</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_CE_SaveCityList">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Save City List</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_CE_LoadCityList">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Load City List</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="4" rowspan="4">
-    <layout class="QVBoxLayout" name="verticalLayout_6">
-     <item>
-      <widget class="QPushButton" name="Button_CE_ReturnToPrevious">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Return to Previous Editor/Menu</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_5">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_32">
-       <property name="font">
-        <font>
-         <pointsize>15</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Editors</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_6">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_CE_MapEditor">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Map Editor</string>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_CE_TurnEventsEditor">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Turn Events Editor</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/.png/Calendar with circles_#222222_64px.png</normaloff>:/.png/Calendar with circles_#222222_64px.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_CE_AIEditor">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>50</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>AI Editor</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/.png/chess-horse-icon.png</normaloff>:/.png/chess-horse-icon.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>16</width>
-         <height>16</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
    <item row="2" column="0" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
@@ -231,13 +64,6 @@
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>City ID:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="Label_CE_CityID">
-         <property name="text">
-          <string>PlaceHolderForID</string>
          </property>
         </widget>
        </item>
@@ -502,28 +328,28 @@
          </property>
         </widget>
        </item>
-       <item row="18" column="0">
+       <item row="19" column="0">
         <widget class="QLabel" name="label_20">
          <property name="text">
           <string>Flag:</string>
          </property>
         </widget>
        </item>
-       <item row="19" column="0">
+       <item row="20" column="0">
         <widget class="QLabel" name="label_21">
          <property name="text">
           <string>Heading Pictures:</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="0">
+       <item row="21" column="0">
         <widget class="QLabel" name="label_22">
          <property name="text">
           <string>Coordinates:</string>
          </property>
         </widget>
        </item>
-       <item row="20" column="1">
+       <item row="21" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="label_25">
@@ -573,14 +399,14 @@
          </item>
         </layout>
        </item>
-       <item row="21" column="0">
+       <item row="22" column="0">
         <widget class="QLabel" name="label_23">
          <property name="text">
           <string>Region</string>
          </property>
         </widget>
        </item>
-       <item row="21" column="1">
+       <item row="22" column="1">
         <widget class="QComboBox" name="Combo_CE_CityRegion">
          <item>
           <property name="text">
@@ -614,7 +440,7 @@
          </item>
         </widget>
        </item>
-       <item row="18" column="1">
+       <item row="19" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
           <widget class="QLineEdit" name="LineEdit_CE_Flag">
@@ -631,7 +457,7 @@
          </item>
         </layout>
        </item>
-       <item row="19" column="1">
+       <item row="20" column="1">
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
           <widget class="QLineEdit" name="LineEdit_CE_Heading">
@@ -648,6 +474,33 @@
          </item>
         </layout>
        </item>
+       <item row="18" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>Buyer Rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="1">
+        <widget class="QDoubleSpinBox" name="SpinBox_CE_BuyerRating">
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="SpinBox_CE_CityID">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999</number>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -659,12 +512,179 @@
      </item>
     </layout>
    </item>
+   <item row="0" column="4" rowspan="4">
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QPushButton" name="Button_CE_ReturnToPrevious">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Return to Previous Editor/Menu</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_32">
+       <property name="font">
+        <font>
+         <pointsize>15</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Editors</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_CE_MapEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Map Editor</string>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_CE_TurnEventsEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Turn Events Editor</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/.png/Calendar with circles_#222222_64px.png</normaloff>:/.png/Calendar with circles_#222222_64px.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_CE_AIEditor">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>AI Editor</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>:/.png/chess-horse-icon.png</normaloff>:/.png/chess-horse-icon.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="0" rowspan="2" colspan="4">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="Button_CE_NewCityList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>New City List</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_CE_SaveCityList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Save City List</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_CE_LoadCityList">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Load City List</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="2" column="2">
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
       <widget class="QTabWidget" name="tab_CityEditor_Middle">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab_3">
         <attribute name="title">
@@ -996,6 +1016,30 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QCheckBox" name="checkBox_CE_AutoAdjustCityFiles">
+           <property name="text">
+            <string>Other City Files</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QListWidget" name="list_CE_AA_CityList"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_CE_AA_AddCity">
+           <property name="text">
+            <string>Add City File</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_CE_AA_RemoveCity">
+           <property name="text">
+            <string>Remove City File</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </widget>
@@ -1041,6 +1085,7 @@
   <tabstop>SpinBox_CE_ManuGrowth</tabstop>
   <tabstop>SpinBox_CE_GovernmentConflict</tabstop>
   <tabstop>SpinBox_CE_TaxRate</tabstop>
+  <tabstop>SpinBox_CE_BuyerRating</tabstop>
   <tabstop>LineEdit_CE_Flag</tabstop>
   <tabstop>LineEdit_CE_Heading</tabstop>
   <tabstop>SpinBox_CE_CordsLat</tabstop>
@@ -1065,6 +1110,18 @@
   <tabstop>Combobox_CE_FlagSelector</tabstop>
   <tabstop>Combobox_CE_HeaderSelector</tabstop>
   <tabstop>Button_CityEditor_CancelInterpolater</tabstop>
+  <tabstop>SpinBox_CE_CityID</tabstop>
+  <tabstop>tab_CityEditor_Middle</tabstop>
+  <tabstop>checkBox_CE_AutoAdjustTurnEvents</tabstop>
+  <tabstop>button_CE_AA_SelectTurnEvents</tabstop>
+  <tabstop>checkBox_CE_AutoAdjustAIFiles</tabstop>
+  <tabstop>list_CE_AA_AIFiles</tabstop>
+  <tabstop>button_CE_AA_AddAIFile</tabstop>
+  <tabstop>button_CE_AA_RemoveAIFile</tabstop>
+  <tabstop>checkBox_CE_AutoAdjustCityFiles</tabstop>
+  <tabstop>list_CE_AA_CityList</tabstop>
+  <tabstop>button_CE_AA_AddCity</tabstop>
+  <tabstop>button_CE_AA_RemoveCity</tabstop>
  </tabstops>
  <resources/>
  <connections/>

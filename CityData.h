@@ -66,6 +66,7 @@ public:
         double manuGrowth;
         int gov;
         double taxRate;
+        double buyerRate;
 
         QString flagFileName;
         QString headingFileName;

@@ -60,6 +60,11 @@ public:
     explicit AIEditor(widgetContainerStorage wsc, QWidget *parent = 0);
     ~AIEditor();
 
+
+    void setSaveFileNameExternally(QString tmpFileName);
+    void setAIMapExternally(QMap<int, AIManager::AIInfo> tmpMap);
+    void saveXML();
+
 private slots:
     void on_Button_AI_ReturnToPrevious_clicked();
     void on_Button_AI_MapEditor_clicked();
@@ -102,7 +107,7 @@ private:
     void resetAINode();
     QString getExistingNameByID(int id);
     int getExistingIDByName(QString name);
-    void saveXML();
+
     void openAIScript(QString fileName);
     void openCityXML(QString openFileName);
     int getCityIDByName(QString name);

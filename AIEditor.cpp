@@ -1349,3 +1349,13 @@ void AIEditor::on_Button_AI_TurnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
 }
+
+void AIEditor::setSaveFileNameExternally(QString tmpFileName)
+{
+    saveFileName = tmpFileName;
+}
+
+void AIEditor::setAIMapExternally(QMap<int, AIManager::AIInfo> tmpMap)
+{
+    aiMap = tmpMap;
+}

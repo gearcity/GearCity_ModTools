@@ -48,6 +48,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 #include <qmath.h>
+#include "TurnEventsEditor.h"
+#include "AIEditor.h"
 
 //Create City Editor Tool
 CityEditor::CityEditor(widgetContainerStorage wsc, QWidget *parent) :
@@ -72,6 +74,9 @@ CityEditor::CityEditor(widgetContainerStorage wsc, QWidget *parent) :
 
     //Start a new list
     ui->Button_CE_NewCityList->click();
+
+    //used for saving adjusted turn event.
+    turnEventFileName = "";
 
 }
 
@@ -101,7 +106,7 @@ void CityEditor::on_Button_CE_NewCityList_clicked()
     cityMap.clear();
     interpolateMap.clear();
 
-    ui->Label_CE_CityID->setText("1");
+    ui->SpinBox_CE_CityID->setValue(1);
     ui->LineEdit_CE_CityName->setText("");
     ui->LineEdit_CE_CityCountry->setText("");
     ui->DropDown_CE_ExistingCountries->clear();
@@ -118,6 +123,7 @@ void CityEditor::on_Button_CE_NewCityList_clicked()
     ui->SpinBox_CE_ManuGrowth->setValue(1);
     ui->SpinBox_CE_GovernmentConflict->setValue(1);
     ui->SpinBox_CE_TaxRate->setValue(1);
+    ui->SpinBox_CE_BuyerRating->setValue(1);
     ui->LineEdit_CE_Flag->setText("");
     ui->LineEdit_CE_Heading->setText("");
     ui->SpinBox_CE_CordsLong->setValue(0);
@@ -143,7 +149,8 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
 
     //Put all the information into the city data storage class
    CityData::dataStore saveDS;
-   saveDS.id = ui->Label_CE_CityID->text().toInt();
+   //saveDS.id = ui->Label_CE_CityID->text().toInt();
+   saveDS.id = ui->SpinBox_CE_CityID->value();
 
    saveDS.cityName = ui->LineEdit_CE_CityName->text();
    saveDS.cityCountry = ui->LineEdit_CE_CityCountry->text();
@@ -160,6 +167,7 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
    saveDS.manuGrowth = ui->SpinBox_CE_ManuGrowth->value();
    saveDS.gov = ui->SpinBox_CE_GovernmentConflict->value();
    saveDS.taxRate = ui->SpinBox_CE_TaxRate->value();
+   saveDS.buyerRate = ui->SpinBox_CE_BuyerRating->value();
    saveDS.flagFileName = ui->LineEdit_CE_Flag->text();
    saveDS.headingFileName = ui->LineEdit_CE_Heading->text();
    saveDS.cordLong = ui->SpinBox_CE_CordsLong->value();
@@ -175,17 +183,127 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
    //Check if city map contains the city, if not add it as new.
      if(cityMap.contains(saveDS.id))
      {
-        cityMap.find(saveDS.id).value() = saveDS;
+        if(cityMap.find(saveDS.id).value().cityName == saveDS.cityName)
+        {
+            (*cityMap.find(saveDS.id)) = saveDS;
+        }
+        else
+        {
+            QMessageBox::StandardButton answer;
+              answer = QMessageBox::question(this, "Overwrite Existing City", "Do you wish to "
+              "overwrite the existing city with this ID?",
+                                            QMessageBox::Yes|QMessageBox::No);
+
+            if(answer == QMessageBox::Yes)
+            {
+               (*cityMap.find(saveDS.id)) = saveDS;
+            }
+            else
+            {
+                QMap<int,CityData::dataStore> newCityMap;
+                for(QMap<int,CityData::dataStore>::Iterator itcm = cityMap.begin();
+                    itcm != cityMap.end(); ++itcm)
+                {
+                    if(itcm.key() >= saveDS.id)
+                    {
+                        (*itcm).id++;
+                        newCityMap.insert(itcm.key()+1,itcm.value());
+                    }
+                    else
+                    {
+                        newCityMap.insert(itcm.key(),itcm.value());
+                    }
+                }
+
+                //Autoadjust turn events
+                if(ui->checkBox_CE_AutoAdjustTurnEvents->isChecked())
+                {
+                    if(!turnEventMap.empty())
+                    {
+                        for(QMap<int,TurnData::TE_Data>::Iterator it = turnEventMap.begin();
+                            it != turnEventMap.end(); ++it)
+                        {
+                            for(QList<TurnData::TE_CityEvts>::Iterator celIT =
+                                (*it).CityEvtList.begin(); celIT != (*it).CityEvtList.end();)
+                            {
+                                if((*celIT).id >= saveDS.id)
+                                {
+                                    (*celIT).id++;
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+
+                //Autoadjust AI
+                if(ui->checkBox_CE_AutoAdjustAIFiles->isChecked())
+                {
+                    if(!mapOfAIMaps.empty())
+                    {
+                        for(QMap<QString,QMap<int, AIManager::AIInfo> >::Iterator it = mapOfAIMaps.begin();
+                            it != mapOfAIMaps.end(); ++it)
+                        {
+                            for(QMap<int, AIManager::AIInfo>::Iterator aiIT = (*it).begin();
+                                aiIT != (*it).end(); ++aiIT)
+                            {
+
+                                if((*aiIT).hq >= saveDS.id)
+                                {
+                                    (*aiIT).hq++;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //Add to other city files...
+                if(ui->checkBox_CE_AutoAdjustCityFiles->isChecked())
+                {
+                    if(!cityAdjustMap.empty())
+                    {
+                        for(QMap<QString,QMap<int, CityData::dataStore> >::Iterator it = cityAdjustMap.begin();
+                            it != cityAdjustMap.end(); ++it)
+                        {
+                            QMap<int, CityData::dataStore> rekeyedMap;
+                            for(QMap<int, CityData::dataStore>::Iterator cdIT = (*it).begin();
+                                cdIT != (*it).end(); ++cdIT)
+                            {
+                                if((*cdIT).id < saveDS.id)
+                                {
+                                    rekeyedMap.insert(cdIT.key(),cdIT.value());
+                                }
+                                else if((*cdIT).id > saveDS.id)
+                                {
+                                    (*cdIT).id++;
+                                    rekeyedMap.insert((*cdIT).id,cdIT.value());
+                                }
+
+                            }
+
+                            rekeyedMap.insert(saveDS.id,saveDS);
+                            (*it) = rekeyedMap;
+                        }
+                    }
+                }
+
+                cityMap = newCityMap;
+                cityMap.insert(saveDS.id,saveDS);
+            }
+        }
      }
      else
      {
         cityMap.insert(saveDS.id,saveDS);
-        ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+        //ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+        ui->SpinBox_CE_CityID->setValue(cityMap.size()+1);
      }
 
    //Refresh table list
    fillTableList();
 
+ui->SpinBox_CE_CityID->setMaximum(cityMap.size()+1);
 
 }
 
@@ -348,7 +466,8 @@ void CityEditor::on_Table_CE_CitiesInList_clicked(const QModelIndex &index)
     QMap<int,CityData::dataStore>::iterator mapIT = cityMap.find(selectedID);
 
     //Fill widget infos.
-    ui->Label_CE_CityID->setText(QString::number((*mapIT).id));
+    //ui->Label_CE_CityID->setText(QString::number((*mapIT).id));
+    ui->SpinBox_CE_CityID->setValue((*mapIT).id);
     ui->LineEdit_CE_CityName->setText((*mapIT).cityName);
     ui->DropDown_CE_ExistingCountries->setCurrentIndex(
                 ui->DropDown_CE_ExistingCountries->findText((*mapIT).cityCountry));
@@ -366,6 +485,7 @@ void CityEditor::on_Table_CE_CitiesInList_clicked(const QModelIndex &index)
     ui->SpinBox_CE_ManuGrowth->setValue((*mapIT).manuGrowth);
     ui->SpinBox_CE_GovernmentConflict->setValue((*mapIT).gov);
     ui->SpinBox_CE_TaxRate->setValue((*mapIT).taxRate);
+    ui->SpinBox_CE_BuyerRating->setValue((*mapIT).buyerRate);
     ui->LineEdit_CE_Flag->setText((*mapIT).flagFileName);
     ui->LineEdit_CE_Heading->setText((*mapIT).headingFileName);
     ui->SpinBox_CE_CordsLong->setValue((*mapIT).cordLong);
@@ -403,7 +523,8 @@ void CityEditor::on_Combobox_CE_HeaderSelector_currentIndexChanged(const QString
 //Make a new city, reset city widget information
 void CityEditor::on_Button_CE_MakeNewCity_clicked()
 {
-    ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    //ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    ui->SpinBox_CE_CityID->setValue(cityMap.size()+1);
     ui->LineEdit_CE_CityName->setText("");
     ui->LineEdit_CE_CityCountry->setText("");
     ui->DropDown_CE_ExistingCountries->clear();
@@ -420,6 +541,7 @@ void CityEditor::on_Button_CE_MakeNewCity_clicked()
     ui->SpinBox_CE_ManuGrowth->setValue(1);
     ui->SpinBox_CE_GovernmentConflict->setValue(1);
     ui->SpinBox_CE_TaxRate->setValue(1);
+    ui->SpinBox_CE_BuyerRating->setValue(1);
     ui->LineEdit_CE_Flag->setText("");
     ui->LineEdit_CE_Heading->setText("");
     ui->SpinBox_CE_CordsLong->setValue(0);
@@ -430,7 +552,8 @@ void CityEditor::on_Button_CE_MakeNewCity_clicked()
 //Clone selected city from table
 void CityEditor::on_Button_CE_NewCloneCity_clicked()
 {
-    ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    //ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    ui->SpinBox_CE_CityID->setValue(cityMap.size()+1);
     ui->LineEdit_CE_CityName->setText("");
 }
 
@@ -467,9 +590,106 @@ void CityEditor::on_Button_CE_RemoveSelectedCity_clicked()
     cityMap.clear();
     cityMap = tmpMap;
 
-    ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    //ui->Label_CE_CityID->setText(QString::number(cityMap.size()+1));
+    ui->SpinBox_CE_CityID->setValue(cityMap.size()+1);
+
+    //If turnevents adjustment has been selected, and there is turn events data loaded. Lets re-id
+    //city events.
+    bool deleteIT = false;
+
+
+    if(ui->checkBox_CE_AutoAdjustTurnEvents->isChecked())
+    {
+        if(!turnEventMap.empty())
+        {
+            for(QMap<int,TurnData::TE_Data>::Iterator it = turnEventMap.begin();
+                it != turnEventMap.end(); ++it)
+            {
+                for(QList<TurnData::TE_CityEvts>::Iterator celIT = (*it).CityEvtList.begin();
+                    celIT != (*it).CityEvtList.end();)
+                {
+                    if((*celIT).id == selectedID)
+                    {
+                        deleteIT = true;
+                    }
+                    else if((*celIT).id > selectedID)
+                    {
+                        (*celIT).id--;
+                    }
+
+
+
+                    if(deleteIT)
+                    {
+                        deleteIT = false;
+                        celIT = (*it).CityEvtList.erase(celIT);
+                    }
+                    else
+                    {
+                        ++celIT;
+                    }
+                }
+
+            }
+        }
+    }
+
+    //Now we do the same for AI, if the adjustment is selected, we go through each AI file and
+    //Change the hq locations.
+    if(ui->checkBox_CE_AutoAdjustAIFiles->isChecked())
+    {
+        if(!mapOfAIMaps.empty())
+        {
+            for(QMap<QString,QMap<int, AIManager::AIInfo> >::Iterator it = mapOfAIMaps.begin();
+                it != mapOfAIMaps.end(); ++it)
+            {
+                for(QMap<int, AIManager::AIInfo>::Iterator aiIT = (*it).begin();
+                    aiIT != (*it).end(); ++aiIT)
+                {
+
+                    if((*aiIT).hq > selectedID)
+                    {
+                        (*aiIT).hq--;
+                    }
+                }
+            }
+        }
+    }
+
+    //Finally Clean out other City Files
+    deleteIT = false;
+
+    if(ui->checkBox_CE_AutoAdjustCityFiles->isChecked())
+    {
+        if(!cityAdjustMap.empty())
+        {
+            for(QMap<QString,QMap<int, CityData::dataStore> >::Iterator it = cityAdjustMap.begin();
+                it != cityAdjustMap.end(); ++it)
+            {
+                QMap<int, CityData::dataStore> rekeyedMap;
+                for(QMap<int, CityData::dataStore>::Iterator cdIT = (*it).begin();
+                    cdIT != (*it).end();  ++cdIT)
+                {
+                    if((*cdIT).id < selectedID)
+                    {
+                        rekeyedMap.insert(cdIT.key(),cdIT.value());
+                    }
+                    else if((*cdIT).id > selectedID)
+                    {
+                        (*cdIT).id--;
+                        rekeyedMap.insert((*cdIT).id,cdIT.value());
+                    }
+
+                }
+
+                (*it) = rekeyedMap;
+            }
+        }
+    }
 
     fillTableList();
+
+    ui->SpinBox_CE_CityID->setMaximum(cityMap.size()+1);
 }
 
 //Set save file name
@@ -486,6 +706,40 @@ void CityEditor::on_Button_CE_SaveCityList_clicked()
 
         //Save the city script xml
         saveXML();
+    }
+
+    if(ui->checkBox_CE_AutoAdjustTurnEvents->isChecked() && turnEventFileName != "")
+    {
+       TurnEventsEditor* tee = new TurnEventsEditor(cp_wsc,cp_wsc.CityEditorCW);
+           tee->setTurnEventMap(turnEventMap);
+           tee->saveXML(turnEventFileName);
+       delete tee;
+    }
+
+    if(ui->checkBox_CE_AutoAdjustAIFiles->isChecked())
+    {
+        for(QMap<QString,QMap<int, AIManager::AIInfo> >::Iterator it = mapOfAIMaps.begin();
+            it != mapOfAIMaps.end(); ++it)
+        {
+            AIEditor* aie = new AIEditor(cp_wsc,cp_wsc.CityEditorCW);
+                aie->setSaveFileNameExternally(it.key());
+                aie->setAIMapExternally(it.value());
+                aie->saveXML();
+             delete aie;
+        }
+    }
+
+    if(ui->checkBox_CE_AutoAdjustCityFiles->isChecked())
+    {
+        for(QMap<QString,QMap<int, CityData::dataStore> >::Iterator it = cityAdjustMap.begin();
+            it != cityAdjustMap.end(); ++it)
+        {
+            CityEditor* ce = new CityEditor(cp_wsc,cp_wsc.CityEditorCW);
+                ce->setSaveFileNameExternally(it.key());
+                ce->setCityMapExternally((*it));
+                ce->saveXML();
+            delete ce;
+        }
     }
 }
 
@@ -596,6 +850,8 @@ void CityEditor::saveXML()
             xmlWriter.writeEndElement(); //CORDS
 
             xmlWriter.writeTextElement("REGION",QString::number((*it).region));
+            xmlWriter.writeTextElement("BUYRATE",QString::number((*it).buyerRate));
+
         xmlWriter.writeEndElement(); // City
     }
 
@@ -703,6 +959,7 @@ void CityEditor::openXML(QString openFileName, bool interpolater)
    dsData.cordLat = cityElement.firstChildElement("CORDS").attributeNode("lat").value().toDouble();
    dsData.cordLong = cityElement.firstChildElement("CORDS").attributeNode("long").value().toDouble();
    dsData.region = cityElement.firstChildElement("REGION").text().toInt();
+   dsData.buyerRate = cityElement.firstChildElement("BUYRATE").text().toDouble();
 
    //if we're opening interpolating map, we need to do it here
    if(interpolater)
@@ -788,7 +1045,7 @@ void CityEditor::interpolateValues(int key)
 
 
     //Widgets is the same as city id so we're changing growth values.
-    if(ui->Label_CE_CityID->text().toInt() == key)
+    if(ui->SpinBox_CE_CityID->value() == key)
     {
      double populationGrowth = pow(((*it).population / ui->LineEdit_CE_Population->text().toDouble()),
             (1.0/(yearDif)));
@@ -833,25 +1090,25 @@ void CityEditor::interpolateValues(int key)
 //Population edited, interpolate if we need to.
 void CityEditor::on_LineEdit_CE_Population_textEdited(const QString &arg1)
 {
-    interpolateValues(ui->Label_CE_CityID->text().toInt());
+    interpolateValues(ui->SpinBox_CE_CityID->value());
 }
 
 //Percapita edited, interpolate if we need to.
 void CityEditor::on_LineEdit_CE_PerCapita_textEdited(const QString &arg1)
 {
-    interpolateValues(ui->Label_CE_CityID->text().toInt());
+    interpolateValues(ui->SpinBox_CE_CityID->value());
 }
 
 //Manufacturing skill edited, interpolate if we need to.
 void CityEditor::on_SpinBox_CE_ManufacturingSkills_editingFinished()
 {
-    interpolateValues(ui->Label_CE_CityID->text().toInt());
+    interpolateValues(ui->SpinBox_CE_CityID->value());
 }
 
 //City edited, interpolate if we need to.
 void CityEditor::on_SpinBox_CE_CityListYear_editingFinished()
 {
-    interpolateValues(ui->Label_CE_CityID->text().toInt());
+    interpolateValues(ui->SpinBox_CE_CityID->value());
     for(QMap<int,CityData::dataStore>::iterator it = cityMap.begin(); it != cityMap.end(); ++it)
     {
         interpolateValues(it.key());
@@ -861,7 +1118,7 @@ void CityEditor::on_SpinBox_CE_CityListYear_editingFinished()
 //Base Year edited, interpolate if we need to.
 void CityEditor::on_SpinBox_CE_InterpolateYear_editingFinished()
 {
-    interpolateValues(ui->Label_CE_CityID->text().toInt());
+    interpolateValues(ui->SpinBox_CE_CityID->value());
     for(QMap<int,CityData::dataStore>::iterator it = cityMap.begin(); it != cityMap.end(); ++it)
     {
         interpolateValues(it.key());
@@ -891,7 +1148,7 @@ void CityEditor::on_Button_CE_TurnEventsEditor_clicked()
 
 void CityEditor::on_LineEdit_CE_PerCapita_editingFinished()
 {
-    ui->LineEdit_CE_AvgWages->setText(QString::number(ui->LineEdit_CE_PerCapita->text().toInt()/12));
+   ui->LineEdit_CE_AvgWages->setText(QString::number(ui->LineEdit_CE_PerCapita->text().toInt()/12));
 }
 
 
@@ -902,6 +1159,101 @@ void CityEditor::on_button_CE_AA_SelectTurnEvents_clicked()
 
     if (openFileName != "")
     {
-        TurnData *td =
+        TurnData *td = new TurnData(openFileName, cp_wsc.CityEditorCW,0);
+        turnEventMap = td->getTurnMap();
+        delete td;
+        turnEventFileName = openFileName;
     }
+
+
+}
+
+void CityEditor::on_button_CE_AA_AddAIFile_clicked()
+{
+    QString openFileName =  QFileDialog::getOpenFileName(this, "Open AI File", "",
+                                                         "XML Files (*.xml)");
+
+    if (openFileName != "")
+    {
+        AIManager *ai = new AIManager(openFileName,cp_wsc.CityEditorCW);
+        mapOfAIMaps.insert(openFileName, ai->getMap());
+        fillAIAdjustList();
+        delete ai;
+
+    }
+}
+
+
+void CityEditor::fillAIAdjustList()
+{
+    ui->list_CE_AA_AIFiles->clear();
+    for(QMap<QString,QMap<int, AIManager::AIInfo> >::Iterator it = mapOfAIMaps.begin();
+        it != mapOfAIMaps.end(); ++it)
+    {
+        ui->list_CE_AA_AIFiles->addItem(it.key());
+    }
+
+}
+
+
+
+void CityEditor::on_button_CE_AA_RemoveAIFile_clicked()
+{
+    QModelIndex index = ui->list_CE_AA_AIFiles->currentIndex();
+    QString text = index.data(Qt::DisplayRole).toString();
+
+    mapOfAIMaps.remove(text);
+    fillAIAdjustList();
+}
+
+void CityEditor::on_button_CE_AA_AddCity_clicked()
+{
+    QString openFileName =  QFileDialog::getOpenFileName(this, "Open City File", "",
+                                                         "XML Files (*.xml)");
+
+    if (openFileName != "")
+    {
+        CityEditor* ce = new CityEditor(cp_wsc,cp_wsc.CityEditorCW);
+        ce->openXML(openFileName, false);
+        cityAdjustMap.insert(openFileName, ce->getCityMapForExternalUse());
+        delete ce;
+    }
+
+    fillCityAdjustList();
+
+}
+
+void CityEditor::on_button_CE_AA_RemoveCity_clicked()
+{
+    QModelIndex index = ui->list_CE_AA_CityList->currentIndex();
+    QString text = index.data(Qt::DisplayRole).toString();
+
+    cityAdjustMap.remove(text);
+    fillCityAdjustList();
+}
+
+QMap<int,CityData::dataStore> CityEditor::getCityMapForExternalUse()
+{
+    return cityMap;
+}
+
+void CityEditor::fillCityAdjustList()
+{
+    ui->list_CE_AA_CityList->clear();
+    for(QMap<QString,QMap<int, CityData::dataStore> >::Iterator it =
+        cityAdjustMap.begin(); it != cityAdjustMap.end(); ++it)
+    {
+        ui->list_CE_AA_CityList->addItem(it.key());
+    }
+
+}
+
+void CityEditor::setSaveFileNameExternally(QString fileName)
+{
+    saveFileName = fileName;
+}
+
+void CityEditor::setCityMapExternally(QMap<int,CityData::dataStore> newMap)
+{
+    cityMap = newMap;
 }

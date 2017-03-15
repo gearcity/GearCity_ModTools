@@ -64,6 +64,9 @@ public:
     explicit TurnEventsEditor(widgetContainerStorage wsc, QWidget *parent = 0);
     ~TurnEventsEditor();
 
+    void saveXML(QString saveFileName);
+    void setTurnEventMap(QMap<int,TurnData::TE_Data> tmpMap);
+
 private slots:
 
     void on_Button_TE_ReturnToPrevious_clicked();
@@ -148,7 +151,7 @@ private:
     void refreshCityEventsTable();
     void refreshNewsPaperTable();
 
-    void saveXML(QString saveFileName);
+
 
 };
 

@@ -109,6 +109,7 @@ CityData::CityData(QString openFileName, QWidget *widget)
        dsData.cordLat = cityElement.firstChildElement("CORDS").attributeNode("lat").value().toDouble();
        dsData.cordLong = cityElement.firstChildElement("CORDS").attributeNode("long").value().toDouble();
        dsData.region = cityElement.firstChildElement("REGION").text().toInt();
+       dsData.buyerRate = cityElement.firstChildElement("BUYRATE").text().toDouble();
 
 
         dsMap.insert(dsData.id,dsData);

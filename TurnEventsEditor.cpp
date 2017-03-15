@@ -1043,19 +1043,34 @@ void TurnEventsEditor::on_Table_Office_cellClicked(int row, int column)
 void TurnEventsEditor::on_Button_Office_AddEdit_clicked()
 {
     //Get turn
-    int turn = ui->Spin_Office_Month->value() + (ui->Spin_Office_Year->value()*12);
+    int year = ui->Spin_Office_Year->value();
+    int stopYear = year;
+    int turn = 0;
 
-    //If turn exists, we edit. If not, we insert
-    if(turnMap.contains(turn))
+    if(ui->checkbox_TE_OfficeYearlyAdd->isChecked())
     {
-        turnMap.find(turn).value().officeFile = ui->Combo_Office_File_Editable->currentText();
+     stopYear = ui->Spin_Office_YearAutoStop->value();
     }
-    else
+
+    do
     {
-        TurnData::TE_Data teda = blankTE_Data;
-        teda.officeFile = ui->Combo_Office_File_Editable->currentText();
-        turnMap.insert(turn,teda);
+        turn = ui->Spin_Office_Month->value() + (year*12);
+
+        //If turn exists, we edit. If not, we insert
+        if(turnMap.contains(turn))
+        {
+            turnMap.find(turn).value().officeFile = ui->Combo_Office_File_Editable->currentText();
+        }
+        else
+        {
+            TurnData::TE_Data teda = blankTE_Data;
+            teda.officeFile = ui->Combo_Office_File_Editable->currentText();
+            turnMap.insert(turn,teda);
+        }
+
+        year++;
     }
+    while(year < stopYear);
 
     //Refresh Office Table and Tree
     int startYearLimit = ui->Spin_StartingYear->value()*12;
@@ -3018,4 +3033,7 @@ void TurnEventsEditor::saveXML(QString saveFileName)
 
 }
 
-
+void TurnEventsEditor::setTurnEventMap(QMap<int,TurnData::TE_Data> tmpMap)
+{
+    turnMap = tmpMap;
+}

@@ -25,7 +25,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>11</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="Tab_Settings">
         <attribute name="title">
@@ -585,6 +585,23 @@
               </property>
               <property name="editable">
                <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QCheckBox" name="checkbox_TE_OfficeYearlyAdd">
+              <property name="text">
+               <string>Add Year Until:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QSpinBox" name="Spin_Office_YearAutoStop">
+              <property name="minimum">
+               <number>1899</number>
+              </property>
+              <property name="maximum">
+               <number>2020</number>
               </property>
              </widget>
             </item>
