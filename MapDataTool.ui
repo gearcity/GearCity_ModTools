@@ -933,10 +933,30 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TL_Lat"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TL_Lat">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-90.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>90.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TL_Long"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TL_Long">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-180.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>180.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_regional_topright">
@@ -946,10 +966,30 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TR_Lat"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TR_Lat">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-90.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>90.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TR_Long"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_TR_Long">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-180.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>180.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -963,10 +1003,30 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BL_Lat"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BL_Lat">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-90.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>90.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BL_Long"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BL_Long">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-180.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>180.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_regional_BottomRight">
@@ -976,10 +1036,30 @@
          </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BR_Lat"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BR_Lat">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-90.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>90.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item>
-         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BR_Long"/>
+         <widget class="QDoubleSpinBox" name="spinBox_RegionalCoords_BR_Long">
+          <property name="decimals">
+           <number>4</number>
+          </property>
+          <property name="minimum">
+           <double>-180.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>180.000000000000000</double>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

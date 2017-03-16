@@ -318,9 +318,9 @@ void MapDataTool::on_Button_MapTools_AddMapArtworkToLoader_clicked()
             mcd.tlLong = ui->spinBox_RegionalCoords_TL_Long->value();
             mcd.trLat = ui->spinBox_RegionalCoords_TR_Lat->value();
             mcd.trLong = ui->spinBox_RegionalCoords_TR_Long->value();
-            mcd.blLat = ui->spinBox_RegionalCoords_BL_Long->value();
+            mcd.blLat = ui->spinBox_RegionalCoords_BL_Lat->value();
             mcd.blLong = ui->spinBox_RegionalCoords_BL_Long->value();
-            mcd.brLat = ui->spinBox_RegionalCoords_BR_Long->value();
+            mcd.brLat = ui->spinBox_RegionalCoords_BR_Lat->value();
             mcd.brLong = ui->spinBox_RegionalCoords_BR_Long->value();
         }
         else

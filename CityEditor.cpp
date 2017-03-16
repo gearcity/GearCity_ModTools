@@ -560,11 +560,12 @@ void CityEditor::on_Button_CE_NewCloneCity_clicked()
 //Remove selected city from city map
 void CityEditor::on_Button_CE_RemoveSelectedCity_clicked()
 {
-    if(ui->Table_CE_CitiesInList->selectedItems().empty())
-        return;
+    /*if(ui->Table_CE_CitiesInList->selectedItems().empty())
+        return;*/
 
-    int selectedRow = ui->Table_CE_CitiesInList->selectionModel()->currentIndex().row();
-    int selectedID = ui->Table_CE_CitiesInList->item(selectedRow,0)->text().toInt();
+    //int selectedRow = ui->Table_CE_CitiesInList->selectionModel()->currentIndex().row();
+    int selectedID = ui->SpinBox_CE_CityID->value();
+    //ui->Table_CE_CitiesInList->item(selectedRow,0)->text().toInt();
 
     cityMap.remove(selectedID);
 
@@ -690,6 +691,11 @@ void CityEditor::on_Button_CE_RemoveSelectedCity_clicked()
     fillTableList();
 
     ui->SpinBox_CE_CityID->setMaximum(cityMap.size()+1);
+    if(selectedID <= cityMap.size())
+    {
+        QModelIndex index = ui->Table_CE_CitiesInList->model()->index(selectedID-1,0,QModelIndex());
+        on_Table_CE_CitiesInList_clicked(index);
+     }
 }
 
 //Set save file name
@@ -876,7 +882,7 @@ void CityEditor::on_Button_CE_LoadCityList_clicked()
        openXML(openFileName,false);
        fillTableList();
        ui->Label_CE_CurrentSaveName->setText(openFileName);
-       QModelIndex index = ui->Table_CE_CitiesInList->model()->index(1,0,QModelIndex());
+       QModelIndex index = ui->Table_CE_CitiesInList->model()->index(0,0,QModelIndex());
        on_Table_CE_CitiesInList_clicked(index);
    }
    else
