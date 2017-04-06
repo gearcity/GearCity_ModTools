@@ -40,6 +40,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include <QMessageBox>
+#include <QDesktopServices>
+#include <QUrl>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -53,6 +55,19 @@ MainWindow::MainWindow(QWidget *parent) :
     wsc.CityEditorCW = ui->CityEditorWidgetContainer;
     wsc.AIEditorCW = ui->AIEditorWidgetContainer;
     wsc.TurnEventEditorCW = ui->TurnEventEditorWidgetContainer;
+    wsc.ModToolCW = ui->ModDataToolWidgetContainer;
+    wsc.NameListCW = ui->NameListToolWidgetContainer;
+    wsc.NewsPaperCW = ui->NewsArticlesWidgetContainer;
+    wsc.ReviewsCW = ui->ReviewsWidgetContainer;
+    wsc.ComponentsCW = ui->ComponentsEditorWidgetContainer;
+    wsc.RacingCW = ui->RacingSeriesEditorWidgetContainer;
+    wsc.ContractsCW = ui->ContractsInfoWidgetContainer;
+    wsc.LogoEditorCW = ui->PlayerLogoEditorWidgetContainer;
+    wsc.MusicEditorCW = ui->MusicEditorWidgetContainer;
+    wsc.DYKEditorCW = ui->DidYouKnowWidgetContainer;
+    wsc.PreMadeEditorCW = ui->PreMadeVehicleWidgetContainer;
+    wsc.ScenarioEditorCW = ui->ScenarioWidgetContainer;
+
 
     //Create child windows/edits before creating editors
     wsc.MaterialEditorWindow = new MaterialMakerWindow(this);
@@ -62,8 +77,18 @@ MainWindow::MainWindow(QWidget *parent) :
     cityEditorTool = new CityEditor(wsc, ui->CityEditorWidgetContainer);
     aiEditorTool = new AIEditor(wsc, ui->AIEditorWidgetContainer);
     turnEventEditorTool = new TurnEventsEditor(wsc, ui->TurnEventEditorWidgetContainer);
+    modEditorTool = new ModEditor(wsc,ui->ModDataToolWidgetContainer);
 
-
+    componentsEditorTool = new ComponentsEditor(wsc, ui->ComponentsEditorWidgetContainer);
+    dykTool = new DYKEditor(wsc, ui->DidYouKnowWidgetContainer);
+    musicTool = new MusicEditor(wsc, ui->MusicEditorWidgetContainer);
+    nameListTool = new NameListEditor(wsc, ui->NameListToolWidgetContainer);
+    newsArticleTool = new NewspaperArticleEditor(wsc, ui->NewsArticlesWidgetContainer);
+    playerLogoTool = new PlayerLogoEditor(wsc, ui->PlayerLogoEditorWidgetContainer);
+    premadeCarsTool = new PreMadeVehicleEditor(wsc, ui->PreMadeVehicleWidgetContainer);
+    racingTool = new RacingSeriesEditor(wsc, ui->RacingSeriesEditorWidgetContainer);
+    reviewTool = new ReviewsEditor(wsc, ui->ReviewsWidgetContainer);
+    scenarioTool = new ScenarioEditor(wsc, ui->ScenarioWidgetContainer);
 
 
     //Raise up the main menu container widget.
@@ -78,7 +103,19 @@ MainWindow::~MainWindow()
     delete cityEditorTool;
     delete aiEditorTool;
     delete turnEventEditorTool;
+    delete modEditorTool;
     delete wsc.MaterialEditorWindow;
+
+    delete componentsEditorTool;
+    delete dykTool;
+    delete musicTool;
+    delete nameListTool;
+    delete newsArticleTool;
+    delete playerLogoTool;
+    delete premadeCarsTool;
+    delete racingTool;
+    delete reviewTool;
+    delete scenarioTool;
 
 }
 
@@ -120,109 +157,130 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     wsc.CityEditorCW->resize(this->width(), this->height());
     wsc.AIEditorCW->resize(this->width(), this->height());
     wsc.TurnEventEditorCW->resize(this->width(), this->height());
+    wsc.ModToolCW->resize(this->width(), this->height());
+    wsc.NameListCW->resize(this->width(), this->height());
+    wsc.NewsPaperCW->resize(this->width(), this->height());
+    wsc.ReviewsCW->resize(this->width(), this->height());
+    wsc.ComponentsCW->resize(this->width(), this->height());
+    wsc.RacingCW->resize(this->width(), this->height());
+    wsc.ContractsCW->resize(this->width(), this->height());
+    wsc.LogoEditorCW->resize(this->width(), this->height());
+    wsc.MusicEditorCW->resize(this->width(), this->height());
+    wsc.DYKEditorCW->resize(this->width(), this->height());
+    wsc.PreMadeEditorCW->resize(this->width(), this->height());
+    wsc.ScenarioEditorCW->resize(this->width(), this->height());
 
     //Resize the object forms based on the Main Window size.
     mapTool->resize(this->width(), this->height());
     cityEditorTool->resize(this->width(), this->height());
     aiEditorTool->resize(this->width(), this->height());
     turnEventEditorTool->resize(this->width(), this->height());
+    modEditorTool->resize(this->width(), this->height());
+    componentsEditorTool->resize(this->width(), this->height());
+    dykTool->resize(this->width(), this->height());
+    musicTool->resize(this->width(), this->height());
+    nameListTool->resize(this->width(), this->height());
+    newsArticleTool->resize(this->width(), this->height());
+    playerLogoTool->resize(this->width(), this->height());
+    premadeCarsTool->resize(this->width(), this->height());
+    racingTool->resize(this->width(), this->height());
+    reviewTool->resize(this->width(), this->height());
+    scenarioTool->resize(this->width(), this->height());
+
+
 }
 
 void MainWindow::on_Button_ModDataTools_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    //Raise the Mod Editor
+    wsc.ModToolCW->raise();
     return;
 }
 
 void MainWindow::on_Button_ScenarioDataTools_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    QMessageBox::critical(this,"Sorry!","Sorry! The Scenario system is not implemented yet.");
+     //wsc.ScenarioEditorCW->raise();
     return;
 }
 
 void MainWindow::on_Button_LocalizationEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    if(!QDesktopServices::openUrl(QUrl("http://185.52.1.98")))
+    {
+        QMessageBox::critical(this,"Sorry!","Sorry! We were unable to open your web browser."
+                              "Please visit http://185.52.1.98/ to use our translation system.");
+    }
     return;
 }
 
 void MainWindow::on_Button_ComponentEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.ComponentsCW->raise();
     return;
 }
 
 void MainWindow::on_Button_NewsPaperEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.NewsPaperCW->raise();
     return;
 }
 
 void MainWindow::on_Button_MagazineEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.ReviewsCW->raise();
     return;
 }
 
 void MainWindow::on_Button_DYKEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.DYKEditorCW->raise();
     return;
 }
 
 void MainWindow::on_Button_LogoEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.LogoEditorCW->raise();
     return;
 }
 
 void MainWindow::on_Button_MusicEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.MusicEditorCW->raise();
     return;
 }
 
 void MainWindow::on_Button_PreMadeVehicleLoader_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.PreMadeEditorCW->raise();
     return;
 }
 
 void MainWindow::on_Button_Racing_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry. This Feature hasn't been implemented yet! "
-                          "It will be before v1.22\n\nOnly Map "
-                          "Tools, City Editor, Turn Events Editor, and AI Editor are "
-                          "functional at this time.");
+    wsc.RacingCW->raise();
     return;
+}
+
+void MainWindow::on_button_ContractEditor_clicked()
+{
+    QMessageBox::critical(this,"Sorry!","Sorry! This will be implemented after the contract"
+                          "redesign coming in v1.23.");
+   // wsc.ContractsCW->raise();
+}
+
+void MainWindow::on_button_NameListEditor_clicked()
+{
+    wsc.NameListCW->raise();
+}
+
+void MainWindow::on_button_ddsConverter_clicked()
+{
+#if defined(Q_WS_X11)
+    QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD."
+                          "\n\nPlease look into the DDS conversion plugin for GIMP "
+                          "or use ImageMagick's commandline converter."
+                          "\n\nYou may also be able to find webbased converters online as well.");
+#else
+#endif
 }

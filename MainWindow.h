@@ -48,6 +48,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "TurnEventsEditor.h"
 #include "BaseContainerStorage.h"
 #include "MaterialMakerWindow.h"
+#include "ModEditor.h"
+#include "ComponentsEditor.h"
+#include "DYKEditor.h"
+#include "MusicEditor.h"
+#include "NameListEditor.h"
+#include "NewspaperArticleEditor.h"
+#include "PlayerLogoEditor.h"
+#include "PreMadeVehicleEditor.h"
+#include "RacingSeriesEditor.h"
+#include "ReviewsEditor.h"
+#include "ScenarioEditor.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -82,6 +94,12 @@ private slots:
     void on_Button_PreMadeVehicleLoader_clicked();
     void on_Button_Racing_clicked();
 
+    void on_button_ContractEditor_clicked();
+
+    void on_button_NameListEditor_clicked();
+
+    void on_button_ddsConverter_clicked();
+
 private:
      Ui::MainWindow *ui;
 
@@ -90,6 +108,18 @@ private:
      CityEditor *cityEditorTool;
      AIEditor *aiEditorTool;
      TurnEventsEditor *turnEventEditorTool;
+     ModEditor *modEditorTool;
+
+     ComponentsEditor *componentsEditorTool;
+     DYKEditor *dykTool;
+     MusicEditor *musicTool;
+     NameListEditor *nameListTool;
+     NewspaperArticleEditor *newsArticleTool;
+     PlayerLogoEditor *playerLogoTool;
+     PreMadeVehicleEditor *premadeCarsTool;
+     RacingSeriesEditor *racingTool;
+     ReviewsEditor *reviewTool;
+     ScenarioEditor *scenarioTool;
 
      //Widget Storage Container for all Editor containers
      //This is to be used to raise and lower various editors in the program.

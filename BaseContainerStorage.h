@@ -53,6 +53,18 @@ class widgetContainerStorage
         QWidget *CityEditorCW;
         QWidget *AIEditorCW;
         QWidget *TurnEventEditorCW;
+        QWidget *ModToolCW;
+        QWidget *NameListCW;
+        QWidget *NewsPaperCW;
+        QWidget *ReviewsCW;
+        QWidget *ComponentsCW;
+        QWidget *RacingCW;
+        QWidget *ContractsCW;
+        QWidget *LogoEditorCW;
+        QWidget *MusicEditorCW;
+        QWidget *DYKEditorCW;
+        QWidget *PreMadeEditorCW;
+        QWidget *ScenarioEditorCW;
 
         QMainWindow *MaterialEditorWindow;
 };

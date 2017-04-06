@@ -26,7 +26,25 @@ SOURCES += main.cpp\
     AIManager.cpp \
     TurnEventsData.cpp \
     TurnEventTreeGrower.cpp \
-    MaterialMakerWindow.cpp
+    MaterialMakerWindow.cpp \
+    ModEditor.cpp \
+    ReviewsEditor.cpp \
+    NameListEditor.cpp \
+    NewspaperArticleEditor.cpp \
+    ComponentsEditor.cpp \
+    RacingSeriesEditor.cpp \
+    ContractInformationEditor.cpp \
+    PlayerLogoEditor.cpp \
+    MusicEditor.cpp \
+    DYKEditor.cpp \
+    PreMadeVehicleEditor.cpp \
+    ScenarioEditor.cpp
+
+ macx{
+    SOURCES +=  OSXHelper.cpp
+}
+
+
 
 HEADERS  += MainWindow.h \
     MapDataTool.h \
@@ -41,11 +59,36 @@ HEADERS  += MainWindow.h \
     ComponentsManager.h \
     AIManager.h \
     TurnEventTreeGrower.h \
-    MaterialMakerWindow.h
+    MaterialMakerWindow.h \
+    ModEditor.h \
+    OSXHelper.h \
+    ReviewsEditor.h \
+    NameListEditor.h \
+    NewspaperArticleEditor.h \
+    ComponentsEditor.h \
+    RacingSeriesEditor.h \
+    ContractInformationEditor.h \
+    PlayerLogoEditor.h \
+    MusicEditor.h \
+    DYKEditor.h \
+    PreMadeVehicleEditor.h \
+    ScenarioEditor.h
 
 FORMS    += MainWindow.ui \
     MapDataTool.ui \
     CityEditor.ui \
     AIEditor.ui \
     TurnEventsEditor.ui \
-    MaterialMakerWindow.ui
+    MaterialMakerWindow.ui \
+    ModEditor.ui \
+    ReviewsEditor.ui \
+    NameListEditor.ui \
+    NewspaperArticleEditor.ui \
+    ComponentsEditor.ui \
+    RacingSeriesEditor.ui \
+    ContractInformationEditor.ui \
+    PlayerLogoEditor.ui \
+    MusicEditor.ui \
+    DYKEditor.ui \
+    PreMadeVehicleEditor.ui \
+    ScenarioEditor.ui

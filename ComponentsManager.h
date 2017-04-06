@@ -88,6 +88,10 @@ public:
         QString possibleCyl, possibleFuel, possibleInduction;
         int localName, localDescription, localPara;
 
+        QStringList supportCyl;
+        QStringList supportFuel;
+        QStringList supportInduct;
+
     };
     class EngineCylinderComps
     {
@@ -113,7 +117,7 @@ public:
     {
         public:
         QString name, typeName, about, picture;
-        int year, death, limit;
+        int year, death, group;
         double cost, designCost, design, manu, fuel, reliability, weight, finish, rpm, smooth, size;
         double popIndex;
         int skill, selectionIndex;
@@ -139,12 +143,15 @@ public:
         int skill, selectionIndex;
         QString possibleGears, possibleAddons;
         int localName, localDescription, localPara;
+
+        QStringList possiblegearsList;
+        int trans, reverse, overdrive, limited;
     };
 
     class GearGearsComps
     {
         public:
-        QString name, typeName, about, picture, shift;
+        QString name, typeName, about, picture;
         int year, death, gears, skill, selectionIndex;
         double popIndex;
         int localName, localDescription, localPara;
@@ -171,7 +178,8 @@ public:
     {
         public:
         QString name, typeName, model, picture;
-        int year, death, autoMirror, autoPaint;
+        int year, death,designreq, autoMirror, autoPaint;
+        int decal, height, width;
         int localName, localDescription, localPara;
     };
     class CarTypes
@@ -189,7 +197,16 @@ public:
 
     };
 
-    //Will move this out of class and out of xml file
+    class aiPopData
+    {
+        public:
+            int year;
+            float fuel, performance, luxury, costs, ovrpop;
+            int id;
+            QString name;
+    };
+
+    /*//Will move this out of class and out of xml file
     class RacingSeries
     {
         public:
@@ -211,7 +228,7 @@ public:
         double ccMod, weightMod, fuelMod, hpMod, widthMod, lengthMod;
         int localeName;
 
-    };
+    };*/
 
     class ComponentDataLists
     {
@@ -230,8 +247,8 @@ public:
             QList<CarModels> carModelsList;
             QList<AccessoriesModels> accessoriesList;
             QList<CarTypes> cartypesList;
-            QList<RacingSeries> racingSeriesList;
-            QList<ContractEngines> contractEnginesList;
+          /*  QList<RacingSeries> racingSeriesList;
+            QList<ContractEngines> contractEnginesList;*/
     };
 
 
@@ -239,10 +256,21 @@ public:
     ComponentsManager(QString openFileName, QWidget *widget);
     void createComponentSelectorCombo(QComboBox *combo, QComboBox *carCombo,                                      
                                       LocalizationManager *lm = 0);
+
+    ComponentDataLists returnDataList();
+    QMap<QString, ComponentsManager::aiPopData> returnPopsMap();
+
+    bool parseAIComponentsPopularity(QString openFileName, QWidget *widget);
     bool isGood();
+
+    static bool saveComponentsXMLFile(QString componentsFileName,
+                                                    ComponentsManager::ComponentDataLists saveData);
+    static bool saveComponentsPopXMLFile(QString popFileName,
+                            QMap<QString, ComponentsManager::aiPopData> savePop);
 
 private:
     ComponentDataLists dataList;
+    QMap<QString, ComponentsManager::aiPopData> aiPops;
 
     void chassisFrameRead(QDomElement element);
     void chassisSuspensionRead(QDomElement element);
