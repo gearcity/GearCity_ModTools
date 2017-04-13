@@ -32,7 +32,9 @@ private slots:
 
     void on_button_saveLogoFile_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_button_returntomain_clicked();
+
+    void on_button_DDSImageConverter_clicked();
 
 private:
     Ui::PlayerLogoEditor *ui;

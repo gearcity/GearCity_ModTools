@@ -91,6 +91,12 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
     selectedTableCityMapKey = "";
     selectedTableTurnMapKey = "";
 
+    musicFilePath = "";
+    musicFolderPath = "";
+
+    plPath = "";
+
+
 
     ui->checkBox_Artwork_ComponentImages->hide();
     ui->checkBox_Artwork_Vehicles->hide();
@@ -99,6 +105,9 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
     ui->button_SelectComponentImages->hide();
     ui->button_SelectVehicleArtwork->hide();
 
+    ui->label_MusicFolderHead->hide();
+    ui->label_selectedMusicFile->hide();
+    ui->button_MusicFolderSelector->hide();
 
 
 }
@@ -482,6 +491,12 @@ void ModEditor::on_button_NewMod_clicked()
     ui->label_SelectedComponentImages->setText("No File Selected");
     ui->label_SelectedVehicleArtwork->setText("No File Selected");
 
+    ui->label_selectedMusicFile->setText("No File Selected");
+    ui->label_selectedMusicFolder->setText("No File Selected");
+    ui->label_selectedPlayerLogos->setText("No File Selected");
+
+
+
     ui->lineedit_AIModDescription->setText("");
     ui->lineEdit_Author->setText("");
     ui->lineEdit_ModName->setText("");
@@ -527,6 +542,10 @@ void ModEditor::on_button_NewMod_clicked()
     selectedTableAIMapKey = "";
     selectedTableCityMapKey = "";
     selectedTableTurnMapKey = "";
+    musicFilePath = "";
+    musicFolderPath = "";
+
+    plPath = "";
     modMapList.clear();
 
     aiMapMap.clear();
@@ -654,6 +673,32 @@ void ModEditor::saveForEditor(QString saveFileName)
                     xmlWriter.writeCharacters(MiscArtworkFile);
                 }
         xmlWriter.writeEndElement(); //ArtworkMisc
+
+
+        xmlWriter.writeStartElement("MusicFile");
+           xmlWriter.writeAttribute("Override",QString::number(
+                                      ui->checkBox_Music->isChecked()));
+                if(ui->checkBox_Music->isChecked())
+                {
+                    QFileInfo fi(musicFilePath);
+                     xmlWriter.writeAttribute("FileName", fi.fileName());
+                    xmlWriter.writeCharacters(musicFilePath);
+                }
+        xmlWriter.writeEndElement(); //MusicFile
+
+        xmlWriter.writeStartElement("PlayerLogos");
+           xmlWriter.writeAttribute("Override",QString::number(
+                                      ui->checkBox_playerLogo->isChecked()));
+                if(ui->checkBox_playerLogo->isChecked())
+                {
+                    QFileInfo fi(plPath);
+                     xmlWriter.writeAttribute("FileName", fi.fileName());
+                    xmlWriter.writeCharacters(plPath);
+                }
+        xmlWriter.writeEndElement(); //PlayerLogos
+
+
+        xmlWriter.writeTextElement("MusicFolder",musicFolderPath);
 
 
 
@@ -787,6 +832,7 @@ void ModEditor::openFile(QString openFileName)
     QDomElement baseElement;
     QDomElement subElement;
 
+
     //Parse TurnEvents.xml file.
     if(!doc.setContent(&file,&errorMsg,&errorLine,&errorColumn))
     {
@@ -853,6 +899,26 @@ void ModEditor::openFile(QString openFileName)
                 baseElement.attributeNode("Override").value().toInt());
     ui->Label_SelectedMiscArtwork->setText(baseElement.text());
     MiscArtworkFile = baseElement.text();
+
+    baseElement = rootNode.firstChildElement("MusicFile");
+    ui->checkBox_Music->setChecked(
+                baseElement.attributeNode("Override").value().toInt());
+    ui->label_selectedMusicFile->setText(baseElement.text());
+    musicFilePath = baseElement.text();
+
+    baseElement = rootNode.firstChildElement("PlayerLogos");
+    ui->checkBox_playerLogo->setChecked(
+                baseElement.attributeNode("Override").value().toInt());
+    ui->label_selectedPlayerLogos->setText(baseElement.text());
+    plPath = baseElement.text();
+
+    baseElement = rootNode.firstChildElement("MusicFolder");
+    musicFolderPath = baseElement.text();
+    if(musicFolderPath == "")
+        ui->label_selectedMusicFolder->setText("No File Selected");
+    else
+        ui->label_selectedMusicFolder->setText(baseElement.text());
+
 
     baseElement = rootNode.firstChildElement("ComponentsPop");
     ui->label_SelectedComponentPop->setText(baseElement.text());
@@ -1053,6 +1119,11 @@ void ModEditor::exportMod(QString parentFolder)
     QString src_componentImage = componentImagesFile;
     QString src_vehicleArtwork = vehicleArtworkFile;
     QString src_MiscArtwork = MiscArtworkFile;
+    QString src_Music = musicFilePath;
+    QString src_PlayerLogo = plPath;
+
+    QString src_MusicFolder = musicFolderPath;
+
 
     QMap<QString,aiModMaps> src_aiMapMap = aiMapMap;
     QMap<QString,citiesModMaps> src_cityMapMap = cityMapMap;
@@ -1126,6 +1197,28 @@ void ModEditor::exportMod(QString parentFolder)
                 modPrefix+"VehicleArtwork.zip";
     }
 
+    if(ui->checkBox_Music->isChecked())
+    {
+        QFile::copy(musicFilePath, modFolder+modPrefix+"Music.xml");
+        musicFilePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
+                modPrefix+"Music.xml";
+
+        if(musicFolderPath != "")
+        {
+            QFile::copy(musicFolderPath, modFolder+modPrefix+"Music/");
+            musicFilePath = modFolder+modPrefix+"Music/";
+        }
+    }
+
+    if(ui->checkBox_playerLogo->isChecked())
+    {
+        QFile::copy(plPath, modFolder+modPrefix+"PlayerLogos.xml");
+        plPath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
+                modPrefix+"PlayerLogos.xml";
+
+
+    }
+
     for(QMap<QString,aiModMaps>::Iterator it = aiMapMap.begin(); it != aiMapMap.end(); ++it)
     {
         QFile::copy((*it).filePath, modFolder+modPrefix+(*it).fileName);
@@ -1170,7 +1263,11 @@ void ModEditor::exportMod(QString parentFolder)
     MiscArtworkFile = src_MiscArtwork;
     aiMapMap = src_aiMapMap;
     cityMapMap = src_cityMapMap;
-    turnMapMap = src_turnMapMap;
+    turnMapMap = src_turnMapMap;    
+    musicFilePath = src_Music;
+    plPath = src_PlayerLogo;
+    musicFolderPath = src_MusicFolder;
+
 
     for(QMap<QString,aiModMaps>::Iterator it = aiMapMap.begin(); it != aiMapMap.end(); ++it)
     {
@@ -1317,3 +1414,59 @@ void ModEditor::on_button_SelectMiscArtwork_clicked()
        ui->Label_SelectedMiscArtwork->setText(MiscArtworkFile);
    }
 }
+
+
+void ModEditor::on_checkBox_Music_stateChanged(int arg1)
+{
+    if(arg1)
+    {
+        ui->label_MusicFolderHead->show();
+        ui->label_selectedMusicFile->show();
+        ui->button_MusicFolderSelector->show();
+
+    }
+    else
+    {
+        ui->label_MusicFolderHead->hide();
+        ui->label_selectedMusicFile->hide();
+        ui->button_MusicFolderSelector->hide();
+    }
+}
+
+
+void ModEditor::on_button_MusicFileSelector_clicked()
+{
+    musicFilePath =  QFileDialog::getOpenFileName(this, "Select Music File", "",
+                                                        "xml File (*.xml)");
+   //set label with filename.
+   if (musicFilePath != "")
+   {
+       ui->label_selectedMusicFile->setText(musicFilePath);
+   }
+}
+
+void ModEditor::on_button_MusicFolderSelector_clicked()
+{
+    musicFolderPath = QFileDialog::getExistingDirectory(this, "Select Folder With Music", "",
+                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    //set label with folder path.
+    if (musicFolderPath != "")
+    {
+        ui->label_selectedMusicFolder->setText(musicFolderPath);
+    }
+}
+
+
+
+void ModEditor::on_button_PlayerLogoFileSelector_clicked()
+{
+    plPath =  QFileDialog::getOpenFileName(this, "Select Player Logo File", "",
+                                                        "xml File (*.xml)");
+   //set label with filename.
+   if (plPath != "")
+   {
+       ui->label_selectedPlayerLogos->setText(plPath);
+   }
+}
+

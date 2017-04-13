@@ -867,6 +867,24 @@
        </property>
       </widget>
      </item>
+     <item row="10" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <item>
+        <widget class="QLabel" name="Label_SelectedMiscArtwork">
+         <property name="text">
+          <string>No File Selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="button_SelectMiscArtwork">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
      <item row="12" column="0">
       <widget class="QCheckBox" name="checkBox_RacingSeries">
        <property name="text">
@@ -917,17 +935,74 @@
        </item>
       </layout>
      </item>
-     <item row="10" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_13">
+     <item row="14" column="0">
+      <widget class="QCheckBox" name="checkBox_Music">
+       <property name="text">
+        <string>Music</string>
+       </property>
+      </widget>
+     </item>
+     <item row="14" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_14">
        <item>
-        <widget class="QLabel" name="Label_SelectedMiscArtwork">
+        <widget class="QLabel" name="label_selectedMusicFile">
          <property name="text">
           <string>No File Selected</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QToolButton" name="button_SelectMiscArtwork">
+        <widget class="QToolButton" name="button_MusicFileSelector">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="15" column="0">
+      <widget class="QLabel" name="label_MusicFolderHead">
+       <property name="text">
+        <string>Music Folder:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="15" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_Music">
+       <item>
+        <widget class="QLabel" name="label_selectedMusicFolder">
+         <property name="text">
+          <string>No Folder Selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="button_MusicFolderSelector">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="16" column="0">
+      <widget class="QCheckBox" name="checkBox_playerLogo">
+       <property name="text">
+        <string>Player Logos:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="16" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_16">
+       <item>
+        <widget class="QLabel" name="label_selectedPlayerLogos">
+         <property name="text">
+          <string>No File Selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="button_PlayerLogoFileSelector">
          <property name="text">
           <string>...</string>
          </property>

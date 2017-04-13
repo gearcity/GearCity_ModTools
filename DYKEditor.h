@@ -32,8 +32,12 @@ private slots:
 
     void on_listWidget_dyk_itemClicked(QListWidgetItem *item);
 
+    void on_button_ReturnToMain_clicked();
+
 private:
     Ui::DYKEditor *ui;
+
+    widgetContainerStorage cp_wsc;
 
     QStringList dykList;
     void fillListWidget();

@@ -41,7 +41,7 @@ private:
     {
         public:
         int startYear, endYear, use;
-        QString Name, File;
+        QString Artist, Name, File;
     };
 
     Ui::MusicEditor *ui;

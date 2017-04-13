@@ -42,6 +42,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QMessageBox>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QProcess>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -281,6 +283,10 @@ void MainWindow::on_button_ddsConverter_clicked()
                           "\n\nPlease look into the DDS conversion plugin for GIMP "
                           "or use ImageMagick's commandline converter."
                           "\n\nYou may also be able to find webbased converters online as well.");
-#else
+#elif defined(Q_WS_WIN)
+    QProcess *process = new QProcess(this);
+    QString file = QDir::currentPath() + "/Aorta.exe";
+    QMessageBox::critical(this,"Sorry!",file);
+    process->startDetached(file);
 #endif
 }

@@ -83,28 +83,28 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="2" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Song Name:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
+     <item row="3" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Song File:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Play Location:</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="0">
+     <item row="5" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
         <string>Start Year:</string>
@@ -129,7 +129,7 @@
        </item>
       </layout>
      </item>
-     <item row="4" column="1">
+     <item row="5" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QSpinBox" name="spinBox_startYear">
@@ -166,13 +166,13 @@
        </item>
       </layout>
      </item>
-     <item row="1" column="1">
+     <item row="2" column="1">
       <widget class="QLineEdit" name="lineEdit_songName"/>
      </item>
-     <item row="2" column="1">
+     <item row="3" column="1">
       <widget class="QComboBox" name="comboBox_songFile"/>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QComboBox" name="comboBox_playLocation">
        <item>
         <property name="text">
@@ -189,9 +189,14 @@
          <string>Intro</string>
         </property>
        </item>
+       <item>
+        <property name="text">
+         <string>Game Over</string>
+        </property>
+       </item>
       </widget>
      </item>
-     <item row="5" column="0" colspan="2">
+     <item row="6" column="0" colspan="2">
       <widget class="QPushButton" name="button_add">
        <property name="minimumSize">
         <size>
@@ -204,7 +209,7 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0" colspan="2">
+     <item row="7" column="0" colspan="2">
       <widget class="QPushButton" name="button_remove">
        <property name="minimumSize">
         <size>
@@ -217,10 +222,25 @@
        </property>
       </widget>
      </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Artist</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_artist"/>
+     </item>
     </layout>
    </item>
    <item row="1" column="0">
     <widget class="QTableWidget" name="table_music">
+     <column>
+      <property name="text">
+       <string>Artist</string>
+      </property>
+     </column>
      <column>
       <property name="text">
        <string>Name</string>

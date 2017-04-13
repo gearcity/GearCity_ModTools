@@ -41,6 +41,7 @@ void MusicEditor::on_button_add_clicked()
     md.File = ui->comboBox_songFile->currentText();
     md.Name = ui->lineEdit_songName->text();
     md.use = ui->comboBox_playLocation->currentIndex();
+    md.Artist = ui->lineEdit_artist->text();
 
     musicMap.insert(md.Name+"-"+ui->comboBox_playLocation->currentText(), md);
 
@@ -67,17 +68,21 @@ void MusicEditor::fillTable()
     int i = 0;
     for(QMap<QString,MusicData>::Iterator it = musicMap.begin(); it != musicMap.end(); ++it)
     {
-        ui->table_music->setItem(i,0,new QTableWidgetItem((*it).Name));
-        ui->table_music->setItem(i,1,new QTableWidgetItem((*it).File));
+        ui->table_music->setItem(i,0,new QTableWidgetItem((*it).Artist));
+        ui->table_music->setItem(i,1,new QTableWidgetItem((*it).Name));
+        ui->table_music->setItem(i,2,new QTableWidgetItem((*it).File));
         if((*it).use == 0)
-            ui->table_music->setItem(i,1,new QTableWidgetItem("All States"));
+            ui->table_music->setItem(i,3,new QTableWidgetItem("All States"));
         else if((*it).use == 1)
-            ui->table_music->setItem(i,1,new QTableWidgetItem("RnD"));
+            ui->table_music->setItem(i,3,new QTableWidgetItem("RnD"));
+        else if((*it).use == 2)
+            ui->table_music->setItem(i,3,new QTableWidgetItem("Intro"));
         else
-            ui->table_music->setItem(i,1,new QTableWidgetItem("Intro"));
+            ui->table_music->setItem(i,3,new QTableWidgetItem("Game Over"));
 
-        ui->spinBox_endYear->setValue((*it).endYear);
-        ui->spinBox_startYear->setValue((*it).startYear);
+        ui->table_music->setItem(i,4,new QTableWidgetItem(QString::number((*it).startYear)));
+        ui->table_music->setItem(i,5,new QTableWidgetItem(QString::number((*it).endYear)));
+
 
         i++;
     }
@@ -98,6 +103,8 @@ void MusicEditor::on_table_music_cellClicked(int row, int column)
     ui->comboBox_playLocation->setCurrentIndex((*mapIT).use);
     ui->comboBox_songFile->setCurrentIndex(
                 ui->comboBox_songFile->findText((*mapIT).File));
+
+    ui->lineEdit_artist->setText((*mapIT).Artist);
 }
 
 
@@ -162,8 +169,10 @@ void MusicEditor::on_button_openList_clicked()
               KeyName += "All States";
           else if(use == 1)
               KeyName += "RnD";
-          else
+          else if(use == 2)
               KeyName += "Intro";
+          else
+              KeyName += "Game Over";
 
           MusicData md;
           md.Name = Element.attributeNode("Name").value();
@@ -171,6 +180,7 @@ void MusicEditor::on_button_openList_clicked()
           md.startYear = Element.attributeNode("StartYear").value().toInt();
           md.endYear = Element.attributeNode("EndYear").value().toInt();
           md.use = Element.attributeNode("Use").value().toInt();
+          md.Artist = Element.attributeNode("Artist").value();
 
           musicMap.insert(KeyName,md);
 
@@ -222,6 +232,7 @@ void MusicEditor::on_button_saveList_clicked()
     for(QMap<QString,MusicData>::iterator it = musicMap.begin(); it != musicMap.end(); ++it)
     {
         xmlWriter.writeStartElement("Music");
+               xmlWriter.writeAttribute("Artist",(*it).Artist);
                xmlWriter.writeAttribute("Name",(*it).Name);
                xmlWriter.writeAttribute("StartYear",QString::number((*it).startYear));
                xmlWriter.writeAttribute("EndYear",QString::number((*it).endYear));

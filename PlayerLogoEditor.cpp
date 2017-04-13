@@ -4,6 +4,7 @@
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 #include <QFileDialog>
+#include <QProcess>
 
 PlayerLogoEditor::PlayerLogoEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),
@@ -47,6 +48,8 @@ void PlayerLogoEditor::on_button_addLogo_clicked()
     }
 
     logoMap.insert(name,file);
+
+    fillTable();
 }
 
 void PlayerLogoEditor::on_button_removeLogo_clicked()
@@ -204,7 +207,25 @@ void PlayerLogoEditor::on_button_saveLogoFile_clicked()
 
 }
 
-void PlayerLogoEditor::on_pushButton_5_clicked()
+
+void PlayerLogoEditor::on_button_returntomain_clicked()
 {
     cp_wsc.LogoEditorCW->lower();
+}
+
+
+void PlayerLogoEditor::on_button_DDSImageConverter_clicked()
+{
+
+    #if defined(Q_WS_X11)
+        QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD."
+                              "\n\nPlease look into the DDS conversion plugin for GIMP "
+                              "or use ImageMagick's commandline converter."
+                              "\n\nYou may also be able to find webbased converters online as well.");
+    #elif defined(Q_WS_WIN)
+        QProcess *process = new QProcess(this);
+        QString file = QDir::currentPath() + "/Aorta.exe";
+        QMessageBox::critical(this,"Sorry!",file);
+        process->startDetached(file);
+    #endif
 }

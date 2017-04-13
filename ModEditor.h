@@ -73,6 +73,16 @@ private slots:
 
     void on_button_SelectMiscArtwork_clicked();
 
+
+    void on_checkBox_Music_stateChanged(int arg1);
+
+    void on_button_MusicFileSelector_clicked();
+
+    void on_button_MusicFolderSelector_clicked();
+
+    void on_button_PlayerLogoFileSelector_clicked();
+
+
 private:
     class aiModMaps
     {
@@ -131,6 +141,11 @@ private:
     QString cityFilePath;
     QString turnFileName;
     QString turnFilePath;
+
+    QString musicFilePath;
+    QString musicFolderPath;
+    QString plPath;
+
 
     QString componentImagesFile;
     QString vehicleArtworkFile;

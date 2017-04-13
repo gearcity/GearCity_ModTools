@@ -10,6 +10,7 @@ DYKEditor::DYKEditor(widgetContainerStorage wsc, QWidget *parent) :
     ui(new Ui::DYKEditor)
 {
     ui->setupUi(this);
+    cp_wsc = wsc;
 }
 
 DYKEditor::~DYKEditor()
@@ -155,4 +156,9 @@ void DYKEditor::on_listWidget_dyk_itemClicked(QListWidgetItem *item)
 {
     ui->textEdit_dyk->clear();
     ui->textEdit_dyk->insertPlainText(item->text());
+}
+
+void DYKEditor::on_button_ReturnToMain_clicked()
+{
+    cp_wsc.DYKEditorCW->lower();
 }
