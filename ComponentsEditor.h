@@ -143,9 +143,10 @@ private slots:
     void on_button_saveComponentsFiles_clicked();
 
 
-    void on_checkBox_accessory_decal_stateChanged(int arg1);
 
-    void on_pushButton_4_clicked();
+    void on_checkBox_accessory_decal_clicked();
+
+    void on_button_returnToMain_clicked();
 
 private:
 

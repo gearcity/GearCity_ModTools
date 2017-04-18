@@ -42,6 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
+#include "OSXHelper.h"
 
 ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

@@ -488,6 +488,11 @@ void ComponentsManager::engineValveRead(QDomElement element)
         data.rpm = element.attributeNode("rpm").value().toDouble();
         data.smooth = element.attributeNode("smooth").value().toDouble();
         data.size = element.attributeNode("size").value().toDouble();
+        if(!element.attributeNode("power").isNull())
+            data.power = element.attributeNode("power").value().toDouble();
+        else
+            data.power = 1;
+
         data.skill = element.attributeNode("skill").value().toInt();
         data.popIndex = element.attributeNode("popindex").value().toDouble();
         data.selectionIndex = element.attributeNode("selectionIndex").value().toInt();
@@ -1409,6 +1414,8 @@ bool ComponentsManager::saveComponentsXMLFile(QString componentsFileName,
                xmlWriter.writeAttribute("rpm",QString::number((*it).rpm));
                xmlWriter.writeAttribute("smooth",QString::number((*it).smooth));
                xmlWriter.writeAttribute("size",QString::number((*it).size));
+               xmlWriter.writeAttribute("power",QString::number((*it).power));
+
 
                xmlWriter.writeAttribute("skill",QString::number((*it).skill));
 
@@ -1484,8 +1491,8 @@ bool ComponentsManager::saveComponentsXMLFile(QString componentsFileName,
                xmlWriter.writeAttribute("death",QString::number((*it).death));
                xmlWriter.writeAttribute("shift",(*it).shift);
 
-               xmlWriter.writeAttribute("cost",QString::number((*it).costs));
-               xmlWriter.writeAttribute("designcost",QString::number((*it).designCosts));
+               xmlWriter.writeAttribute("costs",QString::number((*it).costs));
+               xmlWriter.writeAttribute("designcosts",QString::number((*it).designCosts));
                xmlWriter.writeAttribute("weight",QString::number((*it).weight));
                xmlWriter.writeAttribute("complex",QString::number((*it).complex));
 

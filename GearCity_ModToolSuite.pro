@@ -42,6 +42,8 @@ SOURCES += main.cpp\
 
  macx{
     SOURCES +=  OSXHelper.cpp
+    QMAKE_LFLAGS += -F/System/Library/Frameworks/
+    LIBS += -framework CoreFoundation
 }
 
 

@@ -11,7 +11,12 @@ ComponentsEditor::ComponentsEditor(widgetContainerStorage wsc, QWidget *parent) 
 {
     ui->setupUi(this);
 
-    cp_wsc = wsc;
+    cp_wsc = wsc;   
+
+    ui->label_accessory_height->hide();
+    ui->label_accessory_width->hide();
+    ui->spinBox_accessories_width->hide();
+    ui->spinBox_accessory_height->hide();
 }
 
 ComponentsEditor::~ComponentsEditor()
@@ -1043,6 +1048,7 @@ void ComponentsEditor::on_button_valve_add_clicked()
         ev.design = ui->spinBox_valve_design->value();
         ev.manu = ui->spinBox_valve_manu->value();
         ev.size = ui->spinBox_valve_size->value();
+        ev.power = ui->spinBox_Valve_Power->value();
         ev.fuel = ui->spinBox_valve_fuel->value();
         ev.reliability = ui->spinBox_valve_reliability->value();
         ev.weight = ui->spinBox_valve_weight->value();
@@ -1154,6 +1160,7 @@ void ComponentsEditor::on_table_valve_cellClicked(int row, int column)
              ui->spinBox_valve_design->setValue(ev.design);
              ui->spinBox_valve_manu->setValue(ev.manu);
              ui->spinBox_valve_size->setValue(ev.size);
+             ui->spinBox_Valve_Power->setValue(ev.power);
              ui->spinBox_valve_fuel->setValue(ev.fuel);
              ui->spinBox_valve_reliability->setValue(ev.reliability);
              ui->spinBox_valve_weight->setValue(ev.weight);
@@ -2391,16 +2398,16 @@ void ComponentsEditor::on_button_saveComponentsFiles_clicked()
 
 
 
-void ComponentsEditor::on_checkBox_accessory_decal_stateChanged(int arg1)
+void ComponentsEditor::on_checkBox_accessory_decal_clicked()
 {
-    if(arg1 == 0)
+    if(!ui->checkBox_accessory_decal->isChecked())
     {
         ui->label_accessory_height->hide();
         ui->label_accessory_width->hide();
         ui->spinBox_accessories_width->hide();
         ui->spinBox_accessory_height->hide();
     }
-    else if(arg1 == 1)
+    else if(ui->checkBox_accessory_decal->isChecked())
     {
         ui->label_accessory_height->show();
         ui->label_accessory_width->show();
@@ -2409,7 +2416,7 @@ void ComponentsEditor::on_checkBox_accessory_decal_stateChanged(int arg1)
     }
 }
 
-void ComponentsEditor::on_pushButton_4_clicked()
+void ComponentsEditor::on_button_returnToMain_clicked()
 {
     cp_wsc.ComponentsCW->lower();
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>734</height>
+    <height>763</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,7 +60,7 @@
    <item row="0" column="1">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="button_returnToMain">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -68,7 +68,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Return to Menu</string>
+        <string>Previous Editor</string>
        </property>
       </widget>
      </item>
@@ -77,7 +77,7 @@
    <item row="3" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>12</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -1990,7 +1990,7 @@
          <item row="9" column="1">
           <widget class="QTabWidget" name="tabWidget_2">
            <property name="currentIndex">
-            <number>0</number>
+            <number>2</number>
            </property>
            <widget class="QWidget" name="tab_16">
             <attribute name="title">
@@ -2037,14 +2037,14 @@
              <item row="1" column="1">
               <widget class="QPushButton" name="button_englayout_fuelrestrict_add">
                <property name="text">
-                <string>Add Cylinder</string>
+                <string>Add Fuel</string>
                </property>
               </widget>
              </item>
              <item row="2" column="1">
               <widget class="QPushButton" name="button_englayout_fuelrestrict_remove">
                <property name="text">
-                <string>Remove Cylinder</string>
+                <string>Remove Fuel</string>
                </property>
               </widget>
              </item>
@@ -2074,14 +2074,14 @@
              <item row="3" column="1">
               <widget class="QPushButton" name="button_englayout_inductrestrict_remove">
                <property name="text">
-                <string>Remove Cylinder</string>
+                <string>Remove Induction</string>
                </property>
               </widget>
              </item>
              <item row="2" column="1">
               <widget class="QPushButton" name="button_englayout_inductrestrict_add">
                <property name="text">
-                <string>Add Cylinder</string>
+                <string>Add Induction</string>
                </property>
               </widget>
              </item>
@@ -3304,6 +3304,9 @@
              <property name="decimals">
               <number>3</number>
              </property>
+             <property name="minimum">
+              <double>-5.000000000000000</double>
+             </property>
              <property name="singleStep">
               <double>0.010000000000000</double>
              </property>
@@ -3323,6 +3326,9 @@
             <widget class="QDoubleSpinBox" name="spinBox_valve_weight">
              <property name="decimals">
               <number>3</number>
+             </property>
+             <property name="minimum">
+              <double>-5.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.010000000000000</double>
@@ -3388,6 +3394,9 @@
              <property name="decimals">
               <number>3</number>
              </property>
+             <property name="minimum">
+              <double>-5.000000000000000</double>
+             </property>
              <property name="singleStep">
               <double>0.010000000000000</double>
              </property>
@@ -3415,6 +3424,16 @@
               <double>0.050000000000000</double>
              </property>
             </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_132">
+             <property name="text">
+              <string>Power:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="spinBox_Valve_Power"/>
            </item>
            <item>
             <spacer name="horizontalSpacer_40">

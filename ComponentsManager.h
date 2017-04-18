@@ -119,7 +119,7 @@ public:
         QString name, typeName, about, picture;
         int year, death, group;
         double cost, designCost, design, manu, fuel, reliability, weight, finish, rpm, smooth, size;
-        double popIndex;
+        double popIndex, power;
         int skill, selectionIndex;
         int localName, localDescription, localPara;
 

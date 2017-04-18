@@ -286,7 +286,10 @@ void MainWindow::on_button_ddsConverter_clicked()
 #elif defined(Q_WS_WIN)
     QProcess *process = new QProcess(this);
     QString file = QDir::currentPath() + "/Aorta.exe";
-    QMessageBox::critical(this,"Sorry!",file);
+    process->startDetached(file);
+#else
+    QProcess *process = new QProcess(this);
+    QString file = QDir::currentPath() +"/Aorta.app";
     process->startDetached(file);
 #endif
 }
