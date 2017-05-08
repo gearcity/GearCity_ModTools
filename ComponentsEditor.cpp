@@ -17,6 +17,9 @@ ComponentsEditor::ComponentsEditor(widgetContainerStorage wsc, QWidget *parent) 
     ui->label_accessory_width->hide();
     ui->spinBox_accessories_width->hide();
     ui->spinBox_accessory_height->hide();
+
+    connect(ui->table_aipop->horizontalHeader(),SIGNAL(sectionClicked(int)),
+            this,SLOT(sectionDoubleClickedSlot(int)));
 }
 
 ComponentsEditor::~ComponentsEditor()
@@ -42,7 +45,7 @@ void ComponentsEditor::on_button_frame_add_clicked()
         cf.safety = ui->spinner_frame_safety->value();
         cf.durability = ui->spinner_frame_durability->value();
         cf.weight = ui->spinner_frame_weight->value();
-        cf.design = ui->spinner_frame_weight->value();
+        cf.design = ui->spinner_frame_design->value();
         cf.manu = ui->spinner_frame_manufacturer->value();
         cf.costs = ui->spinner_frame_costs->value();
         cf.popindex = ui->spinner_frames_AIPop->value();
@@ -173,6 +176,7 @@ void ComponentsEditor::on_button_suspension_add_clicked()
         cs.steering  = ui->spinner_suspension_steering->value();
         cs.performance = ui->spinner_suspension_performance->value();
         cs.braking = ui->spinner_suspension_braking->value();
+        cs.comfort = ui->spinner_suspension_comfort->value();
         cs.durability = ui->spinner_suspension_durability->value();
         cs.design = ui->spinner_suspension_design->value();
         cs.manu = ui->spinner_suspension_manufacturer->value();
@@ -276,6 +280,7 @@ void ComponentsEditor::on_table_suspension_cellClicked(int row, int column)
              ui->spinner_suspension_steering->setValue(cs.steering);
              ui->spinner_suspension_performance->setValue(cs.performance);
              ui->spinner_suspension_braking->setValue(cs.braking);
+             ui->spinner_suspension_comfort->setValue(cs.comfort);
              ui->spinner_suspension_durability->setValue(cs.durability);
              ui->spinner_suspension_design->setValue(cs.design);
              ui->spinner_suspension_manufacturer->setValue(cs.manu);
@@ -575,6 +580,8 @@ void ComponentsEditor::on_button_englayout_add_clicked()
         el.localDescription = ui->checkBox_englayout_about_localized->isChecked();
         el.localPara = ui->checkBox_enginelayout_restriction_Localization->isChecked();
 
+        el.turbine = ui->checkBox_enginelayout_turbine->isChecked();
+
         el.supportCyl = currentCylRestrictions;
         el.supportFuel = currentFuelRestrictions;
         el.supportInduct = currentInductionRestrictions;
@@ -715,6 +722,8 @@ void ComponentsEditor::on_table_englayout_cellClicked(int row, int column)
              ui->checkBox_englayout_name_localized->setChecked(el.localName);
              ui->checkBox_englayout_about_localized->setChecked(el.localDescription);
              ui->checkBox_enginelayout_restriction_Localization->setChecked(el.localPara);
+
+             ui->checkBox_enginelayout_turbine->setChecked(el.turbine);
 
              currentCylRestrictions = el.supportCyl;
              currentFuelRestrictions = el.supportFuel;
@@ -2108,12 +2117,13 @@ void ComponentsEditor::fillAIPopTable()
     int i = 0;
     for(QMap<QString, ComponentsManager::aiPopData>::Iterator it = aiPops.begin(); it != aiPops.end(); ++it)
     {
+        QTableWidgetItem *item = new QTableWidgetItem;
+        item->setData(Qt::EditRole, (*it).id);
 
             ui->table_aipop->setItem(i,0,new QTableWidgetItem(
                                          QString::number((*it).year)));
             ui->table_aipop->setItem(i,1,new QTableWidgetItem((*it).name));
-            ui->table_aipop->setItem(i,2,new QTableWidgetItem(
-                                         QString::number((*it).id)));
+            ui->table_aipop->setItem(i,2,item);
             ui->table_aipop->setItem(i,3,new QTableWidgetItem(
                                          QString::number((*it).fuel)));
             ui->table_aipop->setItem(i,4,new QTableWidgetItem(
@@ -2304,6 +2314,61 @@ void ComponentsEditor::on_button_openComponentsFiles_clicked()
        carModelVector = dataList.carModelsList.toVector();
        accessories = dataList.accessoriesList.toVector();
 
+       for(int i = 0; i < frames.size(); i++)
+       {
+         selectorIDMap.insert(frames[i].selectionIndex,"Frames-"+frames[i].name);
+       }
+
+       for(int i = 0; i < suspensions.size(); i++)
+       {
+         selectorIDMap.insert(suspensions[i].selectionIndex,"Suspension-"+suspensions[i].name);
+       }
+
+       for(int i = 0; i < drivetrains.size(); i++)
+       {
+         selectorIDMap.insert(drivetrains[i].selectionIndex,"Drivetrain-"+drivetrains[i].name);
+       }
+
+       for(int i = 0; i < layouts.size(); i++)
+       {
+         selectorIDMap.insert(layouts[i].selectionIndex,"EngineLayout-"+layouts[i].name);
+       }
+
+       for(int i = 0; i < cylinders.size(); i++)
+       {
+         selectorIDMap.insert(cylinders[i].selectionIndex,"EngineCylinder-"+cylinders[i].name);
+       }
+
+       for(int i = 0; i < fuels.size(); i++)
+       {
+         selectorIDMap.insert(fuels[i].selectionIndex,"EngineFuel-"+fuels[i].name);
+       }
+
+       for(int i = 0; i < valves.size(); i++)
+       {
+         selectorIDMap.insert(valves[i].selectionIndex,"EngineValve-"+valves[i].name);
+       }
+
+       for(int i = 0; i < inductions.size(); i++)
+       {
+         selectorIDMap.insert(inductions[i].selectionIndex,"EngineInduction-"+inductions[i].name);
+       }
+
+       for(int i = 0; i < gearboxes.size(); i++)
+       {
+         selectorIDMap.insert(gearboxes[i].selectionIndex,"Gearbox-"+gearboxes[i].name);
+       }
+
+       for(int i = 0; i < gearVector.size(); i++)
+       {
+         selectorIDMap.insert(gearVector[i].selectionIndex,"Gears-"+gearVector[i].name);
+       }
+
+       for(int i = 0; i < typeVector.size(); i++)
+       {
+         selectorIDMap.insert(typeVector[i].selectionIndex,"CarTypes-"+typeVector[i].type);
+       }
+
 
        fillFrameTable();
        fillSuspensionTable();
@@ -2419,4 +2484,10 @@ void ComponentsEditor::on_checkBox_accessory_decal_clicked()
 void ComponentsEditor::on_button_returnToMain_clicked()
 {
     cp_wsc.ComponentsCW->lower();
+}
+
+//Allows table to be sortable
+void ComponentsEditor::sectionDoubleClickedSlot(int index)
+{
+     ui->table_aipop->sortByColumn(index,Qt::AscendingOrder);
 }

@@ -294,6 +294,16 @@ void MapDataTool::on_Button_MapTools_AddMapArtworkToLoader_clicked()
         }*/
 
         mcd.factoryTexture = ui->LineEdit_MapTools_DotCityFactoryTexture->text();
+        mcd.blendTexture = ui->LineEdit_MapTools_DotCityBlendTexture->text();
+
+        if(ui->CheckBox_MapArtTools_BlendTextures->isChecked())
+        {
+            mcd.blendBFTextures = "True";
+        }
+        else
+        {
+            mcd.blendBFTextures = "False";
+        }
 
        /* if(!mcd.factoryTexture.contains(".material",Qt::CaseSensitive))
         {
@@ -350,6 +360,17 @@ void MapDataTool::on_Button_MapTools_AddMapArtworkToLoader_clicked()
         mcd.branchTexture = ui->LineEdit_MapTools_DotCityBranchTexture->text();
         mcd.factoryTexture = ui->LineEdit_MapTools_DotCityFactoryTexture->text();
         mcd.turnBasedChange = "False";
+
+        mcd.blendTexture = ui->LineEdit_MapTools_DotCityBlendTexture->text();
+
+        if(ui->CheckBox_MapArtTools_BlendTextures->isChecked())
+        {
+            mcd.blendBFTextures = "True";
+        }
+        else
+        {
+            mcd.blendBFTextures = "False";
+        }
 
         mcd.regionalMap = "False";
         mcd.tlLat = 0;
@@ -847,6 +868,26 @@ void MapDataTool::openMapFile(QString openFileName)
             mcd.individualTextures = "False";
         }
 
+        if(!subElement.attributeNode("blendBranchAndFactory").isNull())
+        {
+            mcd.blendBFTextures = subElement.attributeNode("blendBranchAndFactory").value();
+        }
+        else
+        {
+            mcd.blendBFTextures = "False";
+        }
+
+        if(!subElement.attributeNode("blendTexture").isNull())
+        {
+            mcd.blendTexture = subElement.attributeNode("blendTexture").value();
+        }
+        else
+        {
+            mcd.blendTexture = "";
+        }
+
+
+
         if(!subElement.attributeNode("regionalMap").isNull())
         {
             mcd.regionalMap = subElement.attributeNode("regionalMap").value();
@@ -1170,8 +1211,10 @@ void MapDataTool::saveMapInfoBaseFile(QString mapFolder)
                   xmlWriter.writeAttribute("cityTexture",(*it).cityTexture);
                   xmlWriter.writeAttribute("branchTexture",(*it).branchTexture);
                   xmlWriter.writeAttribute("factoryTexture",(*it).factoryTexture);
+                  xmlWriter.writeAttribute("blendTexture",(*it).blendTexture);
                   xmlWriter.writeAttribute("turnBasedChange",(*it).turnBasedChange);
                   xmlWriter.writeAttribute("individualTextures",(*it).individualTextures);
+                  xmlWriter.writeAttribute("blendBranchAndFactory",(*it).blendBFTextures);
                   xmlWriter.writeAttribute("regionalMap",(*it).regionalMap);
                       xmlWriter.writeAttribute("tlLat",QString::number((*it).tlLat));
                       xmlWriter.writeAttribute("tlLong",QString::number((*it).tlLong));
@@ -1283,8 +1326,10 @@ void MapDataTool::saveLoaderForModToolsExport(QString folder)
             xmlWriter.writeAttribute("cityTexture",(*it).cityTexture);
             xmlWriter.writeAttribute("branchTexture",(*it).branchTexture);
             xmlWriter.writeAttribute("factoryTexture",(*it).factoryTexture);
+            xmlWriter.writeAttribute("blendTexture",(*it).blendTexture);
             xmlWriter.writeAttribute("turnBasedChange",(*it).turnBasedChange);
             xmlWriter.writeAttribute("individualTextures",(*it).individualTextures);
+            xmlWriter.writeAttribute("blendBranchAndFactory",(*it).blendBFTextures);
             xmlWriter.writeAttribute("regionalMap",(*it).regionalMap);
                 xmlWriter.writeAttribute("tlLat",QString::number((*it).tlLat));
                 xmlWriter.writeAttribute("tlLong",QString::number((*it).tlLong));

@@ -394,6 +394,12 @@ void ComponentsManager::engineLayotRead(QDomElement element)
         data.useDisplacement = element.attributeNode("useDisplacement").value().toInt();
         data.cylinderLengthArrangment = element.attributeNode(
                     "layoutCylinderLengthArrangment").value().toInt();
+
+        if(!element.attributeNode("turbine").isNull())
+            data.turbine = element.attributeNode("turbine").value().toInt();
+        else
+            data.turbine = 0;
+
         data.about = element.attributeNode("about").value();
         data.localName = element.attributeNode("localName").value().toInt();
         data.localDescription = element.attributeNode("localDesc").value().toInt();
@@ -690,6 +696,7 @@ void ComponentsManager::carTypeRead(QDomElement element)
     CarTypes data;
         data.type = element.attributeNode("type").value();
         data.rPerformance = element.attributeNode("Rating_Performance").value().toDouble();
+        data.rDrivability = element.attributeNode("Rating_Drivability").value().toDouble();
         data.rLuxury = element.attributeNode("Rating_Luxury").value().toDouble();
         data.rSafety = element.attributeNode("Rating_Safety").value().toDouble();
         data.rFuel = element.attributeNode("Rating_Fuel").value().toDouble();
@@ -1299,6 +1306,8 @@ bool ComponentsManager::saveComponentsXMLFile(QString componentsFileName,
                xmlWriter.writeAttribute("layoutCylinderLengthArrangment",
                                         QString::number((*it).cylinderLengthArrangment));
 
+               xmlWriter.writeAttribute("turbine", QString::number((*it).turbine));
+
                xmlWriter.writeAttribute("localName",QString::number((*it).localName));
                xmlWriter.writeAttribute("localDesc",QString::number((*it).localDescription));
                xmlWriter.writeAttribute("localParam",QString::number((*it).localPara));
@@ -1829,6 +1838,8 @@ bool ComponentsManager::saveComponentsPopXMLFile(QString popFileName,
 
          xmlWriter.writeEndElement(); //year
     }
+
+    xmlWriter.writeEndDocument();
 
     saveFile.close();
 

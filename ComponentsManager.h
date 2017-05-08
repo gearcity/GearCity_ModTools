@@ -87,6 +87,7 @@ public:
         int skill, selectionIndex, useDisplacement, cylinderLengthArrangment;
         QString possibleCyl, possibleFuel, possibleInduction;
         int localName, localDescription, localPara;
+        int turbine;
 
         QStringList supportCyl;
         QStringList supportFuel;

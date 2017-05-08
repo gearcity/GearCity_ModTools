@@ -838,6 +838,20 @@
        </layout>
       </item>
       <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_22">
+        <item>
+         <widget class="QLabel" name="label_8">
+          <property name="text">
+           <string>Blend Texture:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="LineEdit_MapTools_DotCityBlendTexture"/>
+        </item>
+       </layout>
+      </item>
+      <item>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="label_7">
@@ -901,6 +915,13 @@
          <widget class="QCheckBox" name="CheckBox_MapArtTools_ChangeMapEveryTurn">
           <property name="text">
            <string>Map Changes Every Month</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="CheckBox_MapArtTools_BlendTextures">
+          <property name="text">
+           <string>Blend Texture</string>
           </property>
          </widget>
         </item>

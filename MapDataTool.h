@@ -61,12 +61,14 @@ class MapDataTool : public QWidget
             QString cityTexture;
             QString branchTexture;
             QString factoryTexture;
+            QString blendTexture;
             QString mapFileName;
             QString turnBasedChange;
             QString regionalMap;
             double  tlLat,tlLong,trLat,trLong;
             double  blLat,blLong,brLat,brLong;
             QString individualTextures;
+            QString blendBFTextures;
     };
 
     class mapAIData

@@ -148,6 +148,8 @@ private slots:
 
     void on_button_returnToMain_clicked();
 
+    void sectionDoubleClickedSlot(int index);
+
 private:
 
 

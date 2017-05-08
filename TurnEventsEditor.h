@@ -125,6 +125,7 @@ private slots:
     void on_Button_News_Edit_clicked();
     void on_Button_News_Remove_clicked();
     void on_Button_SaveList_clicked();
+    void sectionTableCitySlot(int index);
 
 private:
     Ui::TurnEventsEditor *ui;

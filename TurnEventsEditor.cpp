@@ -62,6 +62,10 @@ TurnEventsEditor::TurnEventsEditor(widgetContainerStorage wsc, QWidget *parent) 
 
     //Create new list
     on_Button_NewList_clicked();
+
+    connect(ui->Table_City->horizontalHeader(),SIGNAL(sectionClicked(int)),
+            this,SLOT(sectionTableCitySlot(int)));
+
 }
 
 TurnEventsEditor::~TurnEventsEditor()
@@ -3036,4 +3040,11 @@ void TurnEventsEditor::saveXML(QString saveFileName)
 void TurnEventsEditor::setTurnEventMap(QMap<int,TurnData::TE_Data> tmpMap)
 {
     turnMap = tmpMap;
+}
+
+
+//Allows table to be sortable
+void TurnEventsEditor::sectionTableCitySlot(int index)
+{
+     ui->Table_City->sortByColumn(index,Qt::AscendingOrder);
 }
