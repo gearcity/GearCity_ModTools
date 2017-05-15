@@ -34,7 +34,9 @@ private slots:
 
     void on_button_saveList_clicked();
 
-    void on_button_ReturnToMain_clicked();
+    void on_button_ReturnToMain_clicked();    
+
+    void sectionDoubleClickedSlot(int index);
 
 private:
     class MusicData

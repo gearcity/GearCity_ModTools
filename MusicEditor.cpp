@@ -12,6 +12,10 @@ MusicEditor::MusicEditor(widgetContainerStorage wsc, QWidget *parent) :
 {
     ui->setupUi(this);
     cp_wsc = wsc;
+
+    //Makes Table Headers sortable.
+    connect(ui->table_music->horizontalHeader(),SIGNAL(sectionClicked(int)),
+            this,SLOT(sectionDoubleClickedSlot(int)));
 }
 
 MusicEditor::~MusicEditor()
@@ -92,9 +96,11 @@ void MusicEditor::fillTable()
 
 void MusicEditor::on_table_music_cellClicked(int row, int column)
 {
-    QString keyFinder = ui->table_music->item(row,0)->text()+"-"+ui->table_music->item(row,2)->text();
+    QString keyFinder = ui->table_music->item(row,1)->text()+"-"+ui->table_music->item(row,3)->text();
     QMap<QString,MusicData>::Iterator mapIT;
     mapIT = musicMap.find(keyFinder);
+if(mapIT == musicMap.end())
+    return;
 
     ui->spinBox_endYear->setValue((*mapIT).endYear);
     ui->spinBox_startYear->setValue((*mapIT).startYear);
@@ -250,4 +256,9 @@ void MusicEditor::on_button_saveList_clicked()
 void MusicEditor::on_button_ReturnToMain_clicked()
 {
     cp_wsc.MusicEditorCW->lower();
+}
+
+void MusicEditor::sectionDoubleClickedSlot(int index)
+{
+     ui->table_music->sortByColumn(index,Qt::AscendingOrder);
 }

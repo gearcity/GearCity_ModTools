@@ -1169,7 +1169,14 @@ void CityEditor::on_button_CE_AA_SelectTurnEvents_clicked()
         turnEventMap = td->getTurnMap();
         delete td;
         turnEventFileName = openFileName;
+         ui->label_AutoAdjustTurnEvent->setText(openFileName);
     }
+    else
+    {
+         ui->label_AutoAdjustTurnEvent->setText("None Selected");
+    }
+
+
 
 
 }

@@ -964,7 +964,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_33">
+            <widget class="QLabel" name="label_AutoAdjustTurnEvent">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
                <horstretch>0</horstretch>

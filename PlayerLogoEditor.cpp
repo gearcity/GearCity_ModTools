@@ -56,6 +56,8 @@ void PlayerLogoEditor::on_button_removeLogo_clicked()
 {
     QString name = ui->lineEdit_logoEditor->text();
     logoMap.remove(name);
+
+    fillTable();
 }
 
 

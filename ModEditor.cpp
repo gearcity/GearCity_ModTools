@@ -111,6 +111,8 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
     ui->button_MusicFolderSelector->hide();
 
 
+
+
 }
 
 ModEditor::~ModEditor()
