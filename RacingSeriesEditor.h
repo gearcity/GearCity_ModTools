@@ -31,6 +31,8 @@ private slots:
 
     void on_button_return_clicked();
 
+    void sectionDoubleClickedSlot(int index);
+
 private:
     class seriesData
     {
@@ -46,6 +48,8 @@ private:
     QList<seriesData> seriesList;
 
     widgetContainerStorage cp_wsc;
+
+
 
     void fillTable();
 };

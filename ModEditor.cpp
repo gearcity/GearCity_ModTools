@@ -1188,7 +1188,7 @@ void ModEditor::exportMod(QString parentFolder)
 
     if(ui->checkBox_Artwork_ComponentImages->isChecked())
     {
-        QFile::copy(contractFile, modFolder+modPrefix+"ComponentImages.zip");
+        QFile::copy(componentImagesFile, modFolder+modPrefix+"ComponentImages.zip");
         componentImagesFile = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
                 modPrefix+"ComponentImages.zip";
     }

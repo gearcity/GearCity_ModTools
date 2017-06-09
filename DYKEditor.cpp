@@ -21,15 +21,32 @@ DYKEditor::~DYKEditor()
 
 void DYKEditor::on_button_add_clicked()
 {
-    if(!dykList.contains(ui->textEdit_dyk->toPlainText()))
+    QModelIndexList indexList = ui->listWidget_dyk->selectionModel()->selectedIndexes();
+
+    if(!indexList.isEmpty())
+    {
+        for( QModelIndexList::Iterator it = indexList.begin(); it!= indexList.end(); ++it)
+        {
+             dykList.replace((*it).row(), ui->textEdit_dyk->toPlainText());
+        }
+    }
+    else
     {
         dykList.push_back(ui->textEdit_dyk->toPlainText());
     }
+
+    fillListWidget();
 }
 
 void DYKEditor::on_button_remove_clicked()
 {
-    dykList.removeAll(ui->textEdit_dyk->toPlainText());
+    QModelIndexList indexList = ui->listWidget_dyk->selectionModel()->selectedIndexes();
+    for( QModelIndexList::Iterator it = indexList.begin(); it!= indexList.end(); ++it)
+    {
+        dykList.removeAt((*it).row());
+    }
+
+    fillListWidget();
 }
 
 void DYKEditor::fillListWidget()
@@ -43,6 +60,8 @@ void DYKEditor::fillListWidget()
 void DYKEditor::on_Button_new_clicked()
 {
     dykList.clear();
+    ui->listWidget_dyk->clear();
+    ui->textEdit_dyk->clear();
 }
 
 void DYKEditor::on_button_open_clicked()
@@ -94,7 +113,7 @@ void DYKEditor::on_button_open_clicked()
 
         do
         {
-          dykList.push_back(Element.text());
+          dykList.append(Element.text());
 
           Element = Element.nextSiblingElement("dyk");
         }
@@ -161,4 +180,10 @@ void DYKEditor::on_listWidget_dyk_itemClicked(QListWidgetItem *item)
 void DYKEditor::on_button_ReturnToMain_clicked()
 {
     cp_wsc.DYKEditorCW->lower();
+}
+
+void DYKEditor::on_Button_NewDYK_clicked()
+{
+    ui->textEdit_dyk->clear();
+    ui->listWidget_dyk->clearSelection();
 }

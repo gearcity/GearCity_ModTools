@@ -34,6 +34,8 @@ private slots:
 
     void on_button_ReturnToMain_clicked();
 
+    void on_Button_NewDYK_clicked();
+
 private:
     Ui::DYKEditor *ui;
 

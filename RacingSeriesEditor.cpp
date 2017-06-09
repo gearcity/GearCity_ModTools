@@ -12,11 +12,21 @@ RacingSeriesEditor::RacingSeriesEditor(widgetContainerStorage wsc, QWidget *pare
 {
     ui->setupUi(this);
     cp_wsc = wsc;
+
+    connect(ui->table_series->horizontalHeader(),SIGNAL(sectionClicked(int)),
+            this,SLOT(sectionDoubleClickedSlot(int)));
+    ui->table_series->verticalHeader()->setVisible(false);
 }
 
 RacingSeriesEditor::~RacingSeriesEditor()
 {
     delete ui;
+}
+
+//Allows table to be sortable
+void RacingSeriesEditor::sectionDoubleClickedSlot(int index)
+{
+     ui->table_series->sortByColumn(index,Qt::AscendingOrder);
 }
 
 void RacingSeriesEditor::on_button_add_clicked()
@@ -64,6 +74,7 @@ void RacingSeriesEditor::on_button_add_clicked()
         ui->comboBox_vehicleTypeLimit->addItem(sd.cartype);
 
 
+
    seriesList.push_back(sd);
 
    fillTable();
@@ -92,14 +103,21 @@ void RacingSeriesEditor::fillTable()
     int i = 0;
     for(QList<seriesData>::Iterator it = seriesList.begin(); it != seriesList.end(); ++it)
     {
-            ui->table_series->setItem(i,0,new QTableWidgetItem(
-                                         QString::number((*it).id)));
+        QTableWidgetItem *itemID = new QTableWidgetItem;
+        itemID->setData(Qt::EditRole,(*it).id);
+
+        QTableWidgetItem *itemfunding = new QTableWidgetItem;
+        itemfunding->setData(Qt::EditRole,(*it).funding);
+        QTableWidgetItem *itempopularity = new QTableWidgetItem;
+        itempopularity->setData(Qt::EditRole,(*it).popularity);
+
+
+            ui->table_series->setItem(i,0,itemID);
             ui->table_series->setItem(i,1,new QTableWidgetItem((*it).name));
             ui->table_series->setItem(i,2,new QTableWidgetItem(
                                              QString::number((*it).supply)));
-            ui->table_series->setItem(i,3,new QTableWidgetItem(QString::number((*it).funding)));
-            ui->table_series->setItem(i,4,new QTableWidgetItem(
-                                         QString::number((*it).popularity)));
+            ui->table_series->setItem(i,3,itemfunding);
+            ui->table_series->setItem(i,4,itempopularity);
 
             ui->table_series->setItem(i,5,new QTableWidgetItem(
                                          QString::number((*it).start)+"/"+
@@ -284,6 +302,7 @@ void RacingSeriesEditor::on_button_save_clicked()
                return;
             }
 
+            int i = 1;
 
             //Lets Start Writing!
             QXmlStreamWriter xmlWriter(&saveAIFile);
@@ -295,9 +314,10 @@ void RacingSeriesEditor::on_button_save_clicked()
             //Loop through and write the data to file xml.
             for(QList<seriesData>::Iterator it = seriesList.begin(); it != seriesList.end(); ++it)
             {
+
                 xmlWriter.writeStartElement("series");
                     xmlWriter.writeAttribute("name",(*it).name);
-                    xmlWriter.writeAttribute("id",QString::number((*it).id));
+                    xmlWriter.writeAttribute("id",QString::number(i));
                     xmlWriter.writeAttribute("type",(*it).type);
                     xmlWriter.writeAttribute("supply",QString::number((*it).supply));
 
@@ -332,6 +352,8 @@ void RacingSeriesEditor::on_button_save_clicked()
                     xmlWriter.writeAttribute("localParam",QString::number((*it).localParam));
 
                  xmlWriter.writeEndElement(); //series
+
+                 i++;
 
             }
 
