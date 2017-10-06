@@ -127,6 +127,9 @@ private:
     //save functions
     void saveForEditor(QString saveFileName);
 
+    //Copy Files in Folder
+    void copyFolderFiles(QString sourcePath, QString targetPath);
+
     //File Names
     QString nameListFile;
     QString newpaperArticlesFile;

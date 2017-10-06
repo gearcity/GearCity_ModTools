@@ -215,6 +215,48 @@ void MusicEditor::on_button_saveList_clicked()
             saveFileName += ".xml";
     }
 
+    bool hasLounge = false, hasIntro = false, hasOver = false;
+    for(QMap<QString,MusicData>::iterator it = musicMap.begin(); it != musicMap.end(); ++it)
+    {
+        if((*it).use == 1)
+        {
+            if(hasLounge)
+            {
+                QMessageBox::critical(this,"Error",
+                                      QString("Only one RnD song is allowed in the game. "
+                                "You can only have the duplicate play location for \"All.\" "));
+                return;
+            }
+
+            hasLounge = true;
+        }
+        else  if((*it).use == 2)
+        {
+            if(hasIntro)
+            {
+                QMessageBox::critical(this,"Error",
+                                      QString("Only one intro song is allowed in the game. "
+                                  "You can only have the duplicate play location for \"All.\" "));
+                return;
+            }
+
+            hasIntro = true;
+        }
+        else  if((*it).use == 3)
+        {
+            if(hasOver)
+            {
+                QMessageBox::critical(this,"Error",
+                                      QString("Only one gameover song is allowed in the game. "
+                                 "You can only have the duplicate play location for \"All.\" "));
+                return;
+            }
+
+            hasOver = true;
+        }
+
+    }
+
 
     //Open/create AI file
     QFile saveFile(saveFileName);

@@ -107,7 +107,7 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
     ui->button_SelectVehicleArtwork->hide();
 
     ui->label_MusicFolderHead->hide();
-    ui->label_selectedMusicFile->hide();
+    ui->label_selectedMusicFolder->hide();
     ui->button_MusicFolderSelector->hide();
 
 
@@ -1202,14 +1202,22 @@ void ModEditor::exportMod(QString parentFolder)
 
     if(ui->checkBox_Music->isChecked())
     {
+
+
         QFile::copy(musicFilePath, modFolder+modPrefix+"Music.xml");
         musicFilePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
                 modPrefix+"Music.xml";
 
         if(musicFolderPath != "")
         {
-            QFile::copy(musicFolderPath, modFolder+modPrefix+"Music/");
-            musicFilePath = modFolder+modPrefix+"Music/";
+            //QFile::copy(src_MusicFolder, modFolder+modPrefix+"Music/");
+            musicFolderPath = modFolder+"Music/";
+
+            if(!QDir(musicFolderPath).exists())
+            {
+                QDir().mkdir(musicFolderPath);
+            }
+            copyFolderFiles(src_MusicFolder, musicFolderPath);
         }
     }
 
@@ -1424,14 +1432,14 @@ void ModEditor::on_checkBox_Music_stateChanged(int arg1)
     if(arg1)
     {
         ui->label_MusicFolderHead->show();
-        ui->label_selectedMusicFile->show();
+        ui->label_selectedMusicFolder->show();
         ui->button_MusicFolderSelector->show();
 
     }
     else
     {
         ui->label_MusicFolderHead->hide();
-        ui->label_selectedMusicFile->hide();
+        ui->label_selectedMusicFolder->hide();
         ui->button_MusicFolderSelector->hide();
     }
 }
@@ -1471,5 +1479,28 @@ void ModEditor::on_button_PlayerLogoFileSelector_clicked()
    {
        ui->label_selectedPlayerLogos->setText(plPath);
    }
+}
+
+//Use this function to copy data in folder.
+void ModEditor::copyFolderFiles(QString sourcePath, QString targetPath)
+{
+    //Get our folder
+        QDir sourceFolder(sourcePath);
+
+    //Get list of files in folder
+        QStringList fileNames = sourceFolder.entryList(QDir::Files | QDir::Dirs |
+                                                    QDir::NoDotAndDotDot | QDir::Hidden |
+                                                    QDir::System);
+       //Go through the files in the folder
+        foreach(QString fileName, fileNames)
+        {
+            //Make the paths
+            QString sourceFile = sourcePath + "/" + fileName;
+            QString targetFile = targetPath + fileName;
+
+            //copy the files.
+            QFile::copy(sourceFile, targetFile);
+        }
+
 }
 
