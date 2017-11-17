@@ -41,6 +41,7 @@ private:
             int id, supply, ccrestrict, start, end, birth, death, tracks, teams, manuInvolve;
             int localName, localDesc,localParam;
             float funding, popularity;
+            QString cylLimit, fuelLimit, inductionLimit;
 
     };
 

@@ -51,6 +51,10 @@ void RacingSeriesEditor::on_button_add_clicked()
     sd.localParam = ui->checkBox_vehicleType_Localize->isChecked();
     sd.funding = ui->spin_funding->value();
     sd.popularity = ui->spin_pop->value();
+    sd.cylLimit = ui->comboBox_cylinderLimit->currentText();
+    sd.fuelLimit = ui->comboBox_fuelTypeLimit->currentText();
+    sd.inductionLimit = ui->comboBox_inductionTypeLimit->currentText();
+
 
     for(QList<seriesData>::Iterator it = seriesList.begin(); it != seriesList.end(); ++it)
     {
@@ -72,6 +76,12 @@ void RacingSeriesEditor::on_button_add_clicked()
         ui->comboBox_seriesType->addItem(sd.type);
     if(ui->comboBox_vehicleTypeLimit->findText(sd.cartype) == -1)
         ui->comboBox_vehicleTypeLimit->addItem(sd.cartype);
+    if(ui->comboBox_cylinderLimit->findText(sd.cylLimit) == -1)
+        ui->comboBox_cylinderLimit->addItem(sd.cylLimit);
+    if(ui->comboBox_fuelTypeLimit->findText(sd.fuelLimit) == -1)
+        ui->comboBox_fuelTypeLimit->addItem(sd.fuelLimit);
+    if(ui->comboBox_inductionTypeLimit->findText(sd.inductionLimit) == -1)
+        ui->comboBox_inductionTypeLimit->addItem(sd.inductionLimit);
 
 
 
@@ -142,7 +152,10 @@ void RacingSeriesEditor::on_table_series_cellClicked(int row, int column)
              seriesData sd = (*it);
                 ui->lineEdit_name->setText(sd.name);
                 ui->comboBox_seriesType->setEditText(sd.type);
-                ui->comboBox_vehicleTypeLimit->setEditText(sd.cartype);
+                if(sd.cartype == "-1" )
+                  ui->comboBox_vehicleTypeLimit->setEditText("-1");
+                else
+                  ui->comboBox_vehicleTypeLimit->setEditText(sd.cartype);
                 ui->comboBox_nation->setEditText(sd.country);
                 ui->spin_id->setValue(sd.id);
                 ui->comboBox_supply->setCurrentIndex(sd.supply-1);
@@ -158,6 +171,21 @@ void RacingSeriesEditor::on_table_series_cellClicked(int row, int column)
                 ui->checkBox_vehicleType_Localize->setChecked(sd.localParam);
                 ui->spin_funding->setValue(sd.funding);
                 ui->spin_pop->setValue(sd.popularity);
+
+                if(sd.cylLimit == "-1")
+                 ui->comboBox_cylinderLimit->setEditText("No Limit");
+                else
+                 ui->comboBox_cylinderLimit->setEditText(sd.cylLimit);
+
+                if(sd.fuelLimit == "-1")
+                 ui->comboBox_fuelTypeLimit->setEditText("No Limit");
+                else
+                 ui->comboBox_fuelTypeLimit->setEditText(sd.fuelLimit);
+
+                if(sd.inductionLimit == "-1")
+                 ui->comboBox_inductionTypeLimit->setEditText("No Limit");
+                else
+                 ui->comboBox_inductionTypeLimit->setEditText(sd.inductionLimit);
 
              break;
          }
@@ -267,6 +295,23 @@ void RacingSeriesEditor::on_button_open_clicked()
             data.localDesc = Element.attributeNode("localDesc").value().toInt();
             data.localParam = Element.attributeNode("localParam").value().toInt();
 
+            if(!Element.attributeNode("cylinderLimit").isNull())
+             data.cylLimit = Element.attributeNode("cylinderLimit").value();
+            else
+             data.cylLimit = "-1";
+
+
+            if(!Element.attributeNode("fuelLimit").isNull())
+             data.fuelLimit = Element.attributeNode("fuelLimit").value();
+            else
+             data.fuelLimit = "-1";
+
+
+            if(!Element.attributeNode("inductionLimit").isNull())
+             data.inductionLimit = Element.attributeNode("inductionLimit").value();
+            else
+             data.inductionLimit = "-1";
+
 
           seriesList.push_back(data);
 
@@ -351,6 +396,21 @@ void RacingSeriesEditor::on_button_save_clicked()
                     xmlWriter.writeAttribute("localDesc",QString::number((*it).localDesc));
                     xmlWriter.writeAttribute("localParam",QString::number((*it).localParam));
 
+                    if((*it).cylLimit == "No Limit")
+                        xmlWriter.writeAttribute("cylinderLimit","-1");
+                    else
+                        xmlWriter.writeAttribute("cylinderLimit",(*it).cylLimit);
+
+                    if((*it).fuelLimit == "No Limit")
+                        xmlWriter.writeAttribute("fuelLimit","-1");
+                    else
+                        xmlWriter.writeAttribute("fuelLimit",(*it).fuelLimit);
+
+                    if((*it).inductionLimit == "No Limit")
+                        xmlWriter.writeAttribute("inductionLimit","-1");
+                    else
+                        xmlWriter.writeAttribute("inductionLimit",(*it).inductionLimit);
+
                  xmlWriter.writeEndElement(); //series
 
                  i++;
@@ -364,7 +424,7 @@ void RacingSeriesEditor::on_button_save_clicked()
 
              //We Did it! Yay!
              QMessageBox::information(this,"Save Complete",
-                                      "The AI File has been saved!", QMessageBox::Ok);
+                                      "The Racing Series File has been saved!", QMessageBox::Ok);
     }
 
 }
