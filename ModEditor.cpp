@@ -94,9 +94,10 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
 
     musicFilePath = "";
     musicFolderPath = "";
+    premadeCarFolderPath = "";
 
     plPath = "";
-
+    premadePath = "";
 
 
     ui->checkBox_Artwork_ComponentImages->hide();
@@ -547,8 +548,11 @@ void ModEditor::on_button_NewMod_clicked()
     selectedTableTurnMapKey = "";
     musicFilePath = "";
     musicFolderPath = "";
+    premadeCarFolderPath = "";
+
 
     plPath = "";
+    premadePath = "";
     modMapList.clear();
 
     aiMapMap.clear();
@@ -689,6 +693,9 @@ void ModEditor::saveForEditor(QString saveFileName)
                 }
         xmlWriter.writeEndElement(); //MusicFile
 
+        xmlWriter.writeTextElement("MusicFolder",musicFolderPath);
+
+
         xmlWriter.writeStartElement("PlayerLogos");
            xmlWriter.writeAttribute("Override",QString::number(
                                       ui->checkBox_playerLogo->isChecked()));
@@ -701,9 +708,20 @@ void ModEditor::saveForEditor(QString saveFileName)
         xmlWriter.writeEndElement(); //PlayerLogos
 
 
-        xmlWriter.writeTextElement("MusicFolder",musicFolderPath);
 
 
+        xmlWriter.writeStartElement("Premades");
+           xmlWriter.writeAttribute("Override",QString::number(
+                                      ui->checkBox_premades->isChecked()));
+                if(ui->checkBox_premades->isChecked())
+                {
+                    QFileInfo fi(premadePath);
+                     xmlWriter.writeAttribute("FileName", fi.fileName());
+                    xmlWriter.writeCharacters(premadePath);
+                }
+        xmlWriter.writeEndElement(); //Premades
+
+        xmlWriter.writeTextElement("PremadesFolder",premadeCarFolderPath);
 
 
     xmlWriter.writeStartElement("ComponentsPop");
@@ -909,18 +927,34 @@ void ModEditor::openFile(QString openFileName)
     ui->label_selectedMusicFile->setText(baseElement.text());
     musicFilePath = baseElement.text();
 
+    baseElement = rootNode.firstChildElement("MusicFolder");
+    musicFolderPath = baseElement.text();
+    if(musicFolderPath == "")
+        ui->label_selectedMusicFolder->setText("No Folder Selected");
+    else
+        ui->label_selectedMusicFolder->setText(baseElement.text());
+
+
     baseElement = rootNode.firstChildElement("PlayerLogos");
     ui->checkBox_playerLogo->setChecked(
                 baseElement.attributeNode("Override").value().toInt());
     ui->label_selectedPlayerLogos->setText(baseElement.text());
     plPath = baseElement.text();
 
-    baseElement = rootNode.firstChildElement("MusicFolder");
-    musicFolderPath = baseElement.text();
-    if(musicFolderPath == "")
-        ui->label_selectedMusicFolder->setText("No File Selected");
+    baseElement = rootNode.firstChildElement("Premades");
+    ui->checkBox_premades->setChecked(
+                baseElement.attributeNode("Override").value().toInt());
+    ui->label_selectedPremadeFile->setText(baseElement.text());
+    premadePath = baseElement.text();
+
+    baseElement = rootNode.firstChildElement("PremadesFolder");
+    premadeCarFolderPath = baseElement.text();
+    if(premadeCarFolderPath == "")
+        ui->label_selectedPremadesFolder->setText("No Folder Selected");
     else
-        ui->label_selectedMusicFolder->setText(baseElement.text());
+        ui->label_selectedPremadesFolder->setText(baseElement.text());
+
+
 
 
     baseElement = rootNode.firstChildElement("ComponentsPop");
@@ -1124,7 +1158,7 @@ void ModEditor::exportMod(QString parentFolder)
     QString src_MiscArtwork = MiscArtworkFile;
     QString src_Music = musicFilePath;
     QString src_PlayerLogo = plPath;
-
+    QString src_PremadeFolder = premadeCarFolderPath;
     QString src_MusicFolder = musicFolderPath;
 
 
@@ -1221,6 +1255,27 @@ void ModEditor::exportMod(QString parentFolder)
         }
     }
 
+    if(ui->checkBox_premades->isChecked())
+    {
+
+
+        QFile::copy(premadePath, modFolder+modPrefix+"Premade.xml");
+        premadePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
+                modPrefix+"Premade.xml";
+
+        if(premadeCarFolderPath != "")
+        {
+            //QFile::copy(src_MusicFolder, modFolder+modPrefix+"Music/");
+            premadeCarFolderPath = modFolder+"PredesignedCars/";
+
+            if(!QDir(premadeCarFolderPath).exists())
+            {
+                QDir().mkdir(premadeCarFolderPath);
+            }
+            copyFolderFiles(src_PremadeFolder, premadeCarFolderPath);
+        }
+    }
+
     if(ui->checkBox_playerLogo->isChecked())
     {
         QFile::copy(plPath, modFolder+modPrefix+"PlayerLogos.xml");
@@ -1232,27 +1287,27 @@ void ModEditor::exportMod(QString parentFolder)
 
     for(QMap<QString,aiModMaps>::Iterator it = aiMapMap.begin(); it != aiMapMap.end(); ++it)
     {
-        QFile::copy((*it).filePath, modFolder+modPrefix+(*it).fileName);
+        QFile::copy((*it).filePath, modFolder+modPrefix+"_"+(*it).map+"_"+(*it).fileName);
         (*it).filePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
-                modPrefix+(*it).map+"_"+(*it).fileName;
-        (*it).fileName = modPrefix+"_"+(*it).map+"_"+(*it).fileName;
+                modPrefix+"_"+(*it).map+"_"+(*it).fileName;
+        (*it).fileName = modPrefix+(*it).map+"_"+(*it).fileName;
     }
 
     for(QMap<QString,citiesModMaps>::Iterator it = cityMapMap.begin();
         it != cityMapMap.end(); ++it)
     {
-        QFile::copy((*it).filePath, modFolder+modPrefix+(*it).fileName);
+        QFile::copy((*it).filePath, modFolder+modPrefix+"_"+(*it).map+"_"+(*it).fileName);
         (*it).filePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
-                modPrefix+(*it).map+"_"+ (*it).fileName;
+                modPrefix+"_"+(*it).map+"_"+ (*it).fileName;
         (*it).fileName = modPrefix+"_"+(*it).map+"_"+(*it).fileName;
     }
 
     for(QMap<QString,turnEventsModMaps>::Iterator it = turnMapMap.begin();
         it != turnMapMap.end(); ++it)
     {
-        QFile::copy((*it).filePath, modFolder+modPrefix+(*it).fileName);
+        QFile::copy((*it).filePath, modFolder+"_"+(*it).map+"_"+modPrefix+(*it).fileName);
         (*it).filePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
-                modPrefix+(*it).map+"_"+ (*it).fileName;
+                modPrefix+"_"+(*it).map+"_"+ (*it).fileName;
         (*it).fileName = modPrefix+"_"+(*it).map+"_"+(*it).fileName;
     }
 
@@ -1278,6 +1333,7 @@ void ModEditor::exportMod(QString parentFolder)
     musicFilePath = src_Music;
     plPath = src_PlayerLogo;
     musicFolderPath = src_MusicFolder;
+    premadeCarFolderPath = src_PremadeFolder;
 
 
     for(QMap<QString,aiModMaps>::Iterator it = aiMapMap.begin(); it != aiMapMap.end(); ++it)
@@ -1504,3 +1560,26 @@ void ModEditor::copyFolderFiles(QString sourcePath, QString targetPath)
 
 }
 
+
+void ModEditor::on_button_PremadeFolderSelector_clicked()
+{
+    premadeCarFolderPath = QFileDialog::getExistingDirectory(this, "Select Premade .Car Folder", "",
+                                     QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    //set label with folder path.
+    if (premadeCarFolderPath != "")
+    {
+        ui->label_selectedPremadesFolder->setText(premadeCarFolderPath);
+    }
+}
+
+void ModEditor::on_button_PremadeFileSelector_clicked()
+{
+    premadePath =  QFileDialog::getOpenFileName(this, "Select Premade List File", "",
+                                                        "xml File (*.xml)");
+   //set label with filename.
+   if (premadePath != "")
+   {
+       ui->label_selectedPremadeFile->setText(premadePath);
+   }
+}

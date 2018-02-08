@@ -83,6 +83,10 @@ private slots:
     void on_button_PlayerLogoFileSelector_clicked();
 
 
+    void on_button_PremadeFolderSelector_clicked();
+
+    void on_button_PremadeFileSelector_clicked();
+
 private:
     class aiModMaps
     {
@@ -148,6 +152,9 @@ private:
     QString musicFilePath;
     QString musicFolderPath;
     QString plPath;
+
+    QString premadeCarFolderPath;
+    QString premadePath;
 
 
     QString componentImagesFile;

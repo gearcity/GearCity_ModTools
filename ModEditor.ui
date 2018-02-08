@@ -1010,6 +1010,56 @@
        </item>
       </layout>
      </item>
+     <item row="17" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>Premade .Car Folder:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="17" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_15">
+       <item>
+        <widget class="QLabel" name="label_selectedPremadesFolder">
+         <property name="text">
+          <string>No Folder Selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="button_PremadeFolderSelector">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="18" column="0">
+      <widget class="QCheckBox" name="checkBox_premades">
+       <property name="text">
+        <string>Premade List</string>
+       </property>
+      </widget>
+     </item>
+     <item row="18" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout_17">
+       <item>
+        <widget class="QLabel" name="label_selectedPremadeFile">
+         <property name="text">
+          <string>No File Selected</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="button_PremadeFileSelector">
+         <property name="text">
+          <string>...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
     </layout>
    </item>
   </layout>
