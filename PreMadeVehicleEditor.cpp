@@ -317,7 +317,16 @@ void PreMadeVehicleEditor::on_Button_Premade_GetCarFile_clicked()
 
 
     QTextStream stream(&file);
-    QString line = stream.readLine(); //Car Info
+    QString line = stream.readLine(); //Revision
+        if(line != "REV 1")
+        {
+
+            QMessageBox::critical(this,"Out of Date File",
+                                  QString("The %1 car file is for an older"
+                                          " version of gearcity.").arg(openFileName));
+            file.close();
+            return;
+        }
         line = stream.readLine(); //mesh info
 
     ui->TextBox_Premade_MeshFile->setText(line);
@@ -354,7 +363,14 @@ void PreMadeVehicleEditor::on_Button_Premade_BulkAdd_clicked()
 
 
         QTextStream stream(&file);
-        QString line = stream.readLine(); //Car Info
+        QString line = stream.readLine(); //rev info
+        if(line != "REV 1")
+        {
+            file.close();
+            continue;
+        }
+
+        line = stream.readLine(); //car info
             line = stream.readLine(); //mesh info
 
          pd.meshFile = line;
