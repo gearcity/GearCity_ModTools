@@ -253,7 +253,7 @@ public:
     };
 
 
-
+    ComponentsManager();
     ComponentsManager(QString openFileName, QWidget *widget);
     void createComponentSelectorCombo(QComboBox *combo, QComboBox *carCombo,                                      
                                       LocalizationManager *lm = 0);

@@ -66,7 +66,9 @@ class widgetContainerStorage
         QWidget *PreMadeEditorCW;
         QWidget *ScenarioEditorCW;
 
+
         QMainWindow *MaterialEditorWindow;
+
 };
 
 

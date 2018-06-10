@@ -17,6 +17,103 @@
    <bool>true</bool>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <widget class="QGroupBox" name="GroupBox_MapTools_AIStartingOptions">
+     <property name="autoFillBackground">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>AI Starting Options</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QTableWidget" name="Table_MapTools_StartingAINumbersAndFiles">
+          <column>
+           <property name="text">
+            <string>Number Of AI</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>AI File</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Description</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QLabel" name="label_20">
+            <property name="text">
+             <string>Random Number of AI (-1 For All):</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="SpinBox_MapTools_StartingAINumberSetter">
+            <property name="minimum">
+             <number>-1</number>
+            </property>
+            <property name="maximum">
+             <number>9999</number>
+            </property>
+            <property name="value">
+             <number>-1</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>AI Starting File:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="LineEdit_MapTools_StartingAIFileAdder"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_MapTools_AddStartingAINumbersAndFile">
+            <property name="text">
+             <string>+</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="Button_MapTools_RemoveStartingAINumberAndFile">
+            <property name="text">
+             <string>–</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_18">
+          <item>
+           <widget class="QLabel" name="label_28">
+            <property name="text">
+             <string>Description: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="LineEdit_MapTools_StartingAIFileDescribe"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
    <item row="0" column="3" rowspan="2">
     <layout class="QVBoxLayout" name="verticalLayout_4">
      <item>
@@ -221,103 +318,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QGroupBox" name="GroupBox_MapTools_AIStartingOptions">
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="title">
-      <string>AI Starting Options</string>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QTableWidget" name="Table_MapTools_StartingAINumbersAndFiles">
-          <column>
-           <property name="text">
-            <string>Number Of AI</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>AI File</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Description</string>
-           </property>
-          </column>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_12">
-          <item>
-           <widget class="QLabel" name="label_20">
-            <property name="text">
-             <string>Random Number of AI (-1 For All):</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="SpinBox_MapTools_StartingAINumberSetter">
-            <property name="minimum">
-             <number>-1</number>
-            </property>
-            <property name="maximum">
-             <number>9999</number>
-            </property>
-            <property name="value">
-             <number>-1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_22">
-            <property name="text">
-             <string>AI Starting File:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="LineEdit_MapTools_StartingAIFileAdder"/>
-          </item>
-          <item>
-           <widget class="QToolButton" name="Button_MapTools_AddStartingAINumbersAndFile">
-            <property name="text">
-             <string>+</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="Button_MapTools_RemoveStartingAINumberAndFile">
-            <property name="text">
-             <string>–</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_18">
-          <item>
-           <widget class="QLabel" name="label_28">
-            <property name="text">
-             <string>Description: </string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="LineEdit_MapTools_StartingAIFileDescribe"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="1" column="0">
     <layout class="QFormLayout" name="formLayout">
      <property name="fieldGrowthPolicy">
@@ -460,14 +460,14 @@
        </item>
       </layout>
      </item>
-     <item row="7" column="1">
+     <item row="8" column="1">
       <widget class="QCheckBox" name="CheckBox_SupportsLowDefinitionTextures">
        <property name="text">
         <string>Supports</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
+     <item row="9" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
         <string>Map Art Zip Location:</string>
@@ -477,7 +477,7 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
+     <item row="9" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_MapArtZipLocation"/>
@@ -491,7 +491,7 @@
        </item>
       </layout>
      </item>
-     <item row="9" column="0">
+     <item row="10" column="0">
       <widget class="QLabel" name="label_9">
        <property name="text">
         <string>Map Art Loading:</string>
@@ -501,14 +501,14 @@
        </property>
       </widget>
      </item>
-     <item row="9" column="1">
+     <item row="10" column="1">
       <widget class="QPushButton" name="Button_MapTools_EditMapLoadingYears">
        <property name="text">
         <string>Edit Map Artwork Loading Years</string>
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
+     <item row="11" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
         <string>City Scipts Folder:</string>
@@ -518,7 +518,7 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1">
+     <item row="11" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_CityScriptFolder"/>
@@ -532,7 +532,7 @@
        </item>
       </layout>
      </item>
-     <item row="11" column="0">
+     <item row="12" column="0">
       <widget class="QLabel" name="label_16">
        <property name="text">
         <string>City Art Zip File:</string>
@@ -542,7 +542,7 @@
        </property>
       </widget>
      </item>
-     <item row="11" column="1">
+     <item row="12" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_8">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_CityArtZipLocation"/>
@@ -556,7 +556,7 @@
        </item>
       </layout>
      </item>
-     <item row="12" column="0">
+     <item row="13" column="0">
       <widget class="QLabel" name="label_11">
        <property name="text">
         <string>City Script Loading:</string>
@@ -566,21 +566,21 @@
        </property>
       </widget>
      </item>
-     <item row="12" column="1">
+     <item row="13" column="1">
       <widget class="QPushButton" name="Button_MapTools_EditCityLoadingYears">
        <property name="text">
         <string>Edit City Script Loading Years</string>
        </property>
       </widget>
      </item>
-     <item row="13" column="0">
+     <item row="14" column="0">
       <widget class="QLabel" name="label_26">
        <property name="text">
         <string>Flag Zip File:</string>
        </property>
       </widget>
      </item>
-     <item row="13" column="1">
+     <item row="14" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_16">
        <item>
         <widget class="QLineEdit" name="lineEdit_MapTools_FlagZipFile"/>
@@ -594,7 +594,7 @@
        </item>
       </layout>
      </item>
-     <item row="14" column="0">
+     <item row="15" column="0">
       <widget class="QLabel" name="label_17">
        <property name="text">
         <string>Turn Events XML File:</string>
@@ -604,7 +604,7 @@
        </property>
       </widget>
      </item>
-     <item row="14" column="1">
+     <item row="15" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_9">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_TurnEventsXMLFileLocation"/>
@@ -618,7 +618,7 @@
        </item>
       </layout>
      </item>
-     <item row="15" column="0">
+     <item row="16" column="0">
       <widget class="QLabel" name="label_18">
        <property name="text">
         <string>Newspaper Zip File:</string>
@@ -628,7 +628,7 @@
        </property>
       </widget>
      </item>
-     <item row="15" column="1">
+     <item row="16" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_10">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_NewspaperZipFileLocation"/>
@@ -642,7 +642,7 @@
        </item>
       </layout>
      </item>
-     <item row="16" column="0">
+     <item row="17" column="0">
       <widget class="QLabel" name="label_12">
        <property name="text">
         <string>AI Script Folder:</string>
@@ -652,7 +652,7 @@
        </property>
       </widget>
      </item>
-     <item row="16" column="1">
+     <item row="17" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_AIScriptFolder"/>
@@ -666,7 +666,7 @@
        </item>
       </layout>
      </item>
-     <item row="17" column="0">
+     <item row="18" column="0">
       <widget class="QLabel" name="label_13">
        <property name="text">
         <string>AI Logo Zip File:</string>
@@ -676,7 +676,7 @@
        </property>
       </widget>
      </item>
-     <item row="17" column="1">
+     <item row="18" column="1">
       <layout class="QHBoxLayout" name="horizontalLayout_11">
        <item>
         <widget class="QLineEdit" name="LineEdit_MapTools_AiLogoZipLocation"/>
@@ -690,7 +690,7 @@
        </item>
       </layout>
      </item>
-     <item row="18" column="0">
+     <item row="19" column="0">
       <widget class="QLabel" name="label_19">
        <property name="text">
         <string>AI Starting Options:</string>
@@ -700,21 +700,21 @@
        </property>
       </widget>
      </item>
-     <item row="18" column="1">
+     <item row="19" column="1">
       <widget class="QPushButton" name="Button_MapTools_EditStartingAIFiles">
        <property name="text">
         <string>Edit AI Starting Options</string>
        </property>
       </widget>
      </item>
-     <item row="19" column="0">
+     <item row="20" column="0">
       <widget class="QLabel" name="label_23">
        <property name="text">
         <string>Factory Size Adjust:</string>
        </property>
       </widget>
      </item>
-     <item row="19" column="1">
+     <item row="20" column="1">
       <widget class="QDoubleSpinBox" name="SpinBox_MapTools_FactorySizeAdjust">
        <property name="minimum">
         <double>0.010000000000000</double>
@@ -730,14 +730,14 @@
        </property>
       </widget>
      </item>
-     <item row="20" column="0">
+     <item row="21" column="0">
       <widget class="QLabel" name="label_24">
        <property name="text">
         <string>Branch Dealer Adjust</string>
        </property>
       </widget>
      </item>
-     <item row="20" column="1">
+     <item row="21" column="1">
       <widget class="QDoubleSpinBox" name="SpinBox_MapTools_BranchDealerAdjust">
        <property name="minimum">
         <double>0.010000000000000</double>
@@ -753,16 +753,177 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
+     <item row="8" column="0">
       <widget class="QLabel" name="label_29">
        <property name="text">
         <string> Low Definition Texture:</string>
        </property>
       </widget>
      </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_30">
+       <property name="text">
+        <string>Region Names:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QPushButton" name="button_edit_region_names">
+       <property name="text">
+        <string>Edit Region Names</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
+  <widget class="QGroupBox" name="Group_Regions_Rename_Change">
+   <property name="geometry">
+    <rect>
+     <x>577</x>
+     <y>67</y>
+     <width>561</width>
+     <height>691</height>
+    </rect>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="title">
+    <string>Rename Regions</string>
+   </property>
+   <layout class="QFormLayout" name="formLayout_RenameChange">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_31">
+      <property name="text">
+       <string>Region 1 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_23">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_1">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_1"/>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_32">
+      <property name="text">
+       <string>Region 2 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_24">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_2">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_2"/>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_33">
+      <property name="text">
+       <string>Region 3 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_25">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_3">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_3"/>
+      </item>
+     </layout>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_34">
+      <property name="text">
+       <string>Region 4 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_26">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_4">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_4"/>
+      </item>
+     </layout>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_35">
+      <property name="text">
+       <string>Region 5 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_27">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_5">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_5"/>
+      </item>
+     </layout>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_36">
+      <property name="text">
+       <string>Region 6 Name: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <layout class="QHBoxLayout" name="horizontalLayout_28">
+      <item>
+       <widget class="QCheckBox" name="checkbox_RegionLocaziation_6">
+        <property name="text">
+         <string>Localization</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="text_regionName_6"/>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
   <widget class="QGroupBox" name="Group_MapTools_MapArtwork_Change">
    <property name="geometry">
     <rect>
@@ -1172,11 +1333,11 @@
     </item>
    </layout>
   </widget>
+  <zorder>Group_MapTools_MapArtwork_Change</zorder>
   <zorder>line</zorder>
   <zorder>GroupBox_MapTools_CityScriptLoadingYear</zorder>
   <zorder>GroupBox_MapTools_AIStartingOptions</zorder>
-  <zorder>Group_MapTools_MapArtwork_Change</zorder>
-  <zorder></zorder>
+  <zorder>Group_Regions_Rename_Change</zorder>
  </widget>
  <resources/>
  <connections>
@@ -1187,8 +1348,8 @@
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>298</x>
-     <y>234</y>
+     <x>428</x>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
      <x>411</x>
@@ -1203,12 +1364,12 @@
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>240</x>
-     <y>461</y>
+     <x>370</x>
+     <y>710</y>
     </hint>
     <hint type="destinationlabel">
-     <x>544</x>
-     <y>492</y>
+     <x>1121</x>
+     <y>559</y>
     </hint>
    </hints>
   </connection>
@@ -1219,12 +1380,28 @@
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>338</x>
-     <y>328</y>
+     <x>468</x>
+     <y>541</y>
     </hint>
     <hint type="destinationlabel">
      <x>552</x>
      <y>323</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>button_edit_region_names</sender>
+   <signal>clicked()</signal>
+   <receiver>Group_Regions_Rename_Change</receiver>
+   <slot>raise()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>665</x>
+     <y>391</y>
     </hint>
    </hints>
   </connection>

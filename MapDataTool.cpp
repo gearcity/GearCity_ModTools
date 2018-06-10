@@ -738,6 +738,71 @@ void MapDataTool::saveMapLoaderData(QString fileName)
     }
     xmlWriter.writeEndElement(); //AIStartingOptions
 
+    xmlWriter.writeStartElement("RegionNames");
+    if(ui->text_regionName_1->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","1");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_1->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_1->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_2->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","2");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_2->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_2->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_3->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","3");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_3->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_3->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_4->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","4");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_4->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_4->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_5->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","5");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_5->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_5->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+
+    if(ui->text_regionName_6->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","6");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_6->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_6->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+
+    xmlWriter.writeEndElement(); //RegionNames
+
     xmlWriter.writeTextElement("FactorySizeAdjust",ui->SpinBox_MapTools_FactorySizeAdjust->text());
     xmlWriter.writeTextElement("BranchDealerAdjust",
                                ui->SpinBox_MapTools_BranchDealerAdjust->text());
@@ -976,6 +1041,90 @@ void MapDataTool::openMapFile(QString openFileName)
 
         subElement = subElement.nextSiblingElement("AIStart");
     }
+
+    baseElement = rootNode.firstChildElement("RegionNames");
+    subElement = baseElement.firstChildElement("region");
+
+    ui->checkbox_RegionLocaziation_1->setChecked(false);
+    ui->checkbox_RegionLocaziation_2->setChecked(false);
+    ui->checkbox_RegionLocaziation_3->setChecked(false);
+    ui->checkbox_RegionLocaziation_4->setChecked(false);
+    ui->checkbox_RegionLocaziation_5->setChecked(false);
+    ui->checkbox_RegionLocaziation_6->setChecked(false);
+    ui->text_regionName_1->clear();
+    ui->text_regionName_2->clear();
+    ui->text_regionName_3->clear();
+    ui->text_regionName_4->clear();
+    ui->text_regionName_5->clear();
+    ui->text_regionName_6->clear();
+
+    while(!subElement.isNull())
+    {
+       if(subElement.attributeNode("id").value().toInt() == 1)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_1->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_1->setChecked(false);
+
+        ui->text_regionName_1->setText(subElement.text());
+       }
+       else if(subElement.attributeNode("id").value().toInt() == 2)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_2->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_2->setChecked(false);
+
+        ui->text_regionName_2->setText(subElement.text());
+       }
+       else if(subElement.attributeNode("id").value().toInt() == 3)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_3->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_3->setChecked(false);
+
+        ui->text_regionName_3->setText(subElement.text());
+       }
+       else if(subElement.attributeNode("id").value().toInt() == 4)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_4->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_4->setChecked(false);
+
+        ui->text_regionName_4->setText(subElement.text());
+       }
+       else if(subElement.attributeNode("id").value().toInt() == 5)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_5->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_5->setChecked(false);
+
+        ui->text_regionName_5->setText(subElement.text());
+       }
+       else if(subElement.attributeNode("id").value().toInt() == 6)
+       {
+        if(subElement.attributeNode("localized").value().toInt() == 1)
+           ui->checkbox_RegionLocaziation_6->setChecked(true);
+        else
+           ui->checkbox_RegionLocaziation_6->setChecked(false);
+
+        ui->text_regionName_6->setText(subElement.text());
+       }
+
+       subElement = subElement.nextSiblingElement("region");
+    }
+
+
+        QString aiFile = subElement.attributeNode("file").value();
+        QString descriptionName = subElement.text();
+
+        mapAIData mad;
+
+
 
     baseElement = rootNode.firstChildElement("FactorySizeAdjust");
     ui->SpinBox_MapTools_FactorySizeAdjust->setValue(baseElement.text().toDouble());
@@ -1250,6 +1399,71 @@ void MapDataTool::saveMapInfoBaseFile(QString mapFolder)
       }
       xmlWriter.writeEndElement(); //AIStartingOptions
 
+      xmlWriter.writeStartElement("RegionNames");
+      if(ui->text_regionName_1->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","1");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_1->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_1->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+      if(ui->text_regionName_2->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","2");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_2->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_2->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+      if(ui->text_regionName_3->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","3");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_3->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_3->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+      if(ui->text_regionName_4->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","4");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_4->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_4->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+      if(ui->text_regionName_5->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","5");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_5->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_5->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+
+      if(ui->text_regionName_6->text() != "")
+      {
+          xmlWriter.writeStartElement("region");
+              xmlWriter.writeAttribute("id","6");
+              xmlWriter.writeAttribute("localized",
+                                       QString::number(ui->checkbox_RegionLocaziation_6->isChecked()));
+              xmlWriter.writeCharacters(ui->text_regionName_6->text());
+          xmlWriter.writeEndElement(); //region
+      }
+
+
+      xmlWriter.writeEndElement(); //RegionNames
+
       xmlWriter.writeTextElement("EnableEdgeWarp","False");
 
       xmlWriter.writeTextElement("FactorySizeAdjust",ui->SpinBox_MapTools_FactorySizeAdjust->text());
@@ -1379,6 +1593,71 @@ void MapDataTool::saveLoaderForModToolsExport(QString folder)
         xmlWriter.writeEndElement(); //AIStart
     }
     xmlWriter.writeEndElement(); //AIStartingOptions
+
+    xmlWriter.writeStartElement("RegionNames");
+    if(ui->text_regionName_1->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","1");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_1->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_1->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_2->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","2");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_2->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_2->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_3->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","3");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_3->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_3->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_4->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","4");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_4->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_4->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+    if(ui->text_regionName_5->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","5");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_5->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_5->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+
+    if(ui->text_regionName_6->text() != "")
+    {
+        xmlWriter.writeStartElement("region");
+            xmlWriter.writeAttribute("id","6");
+            xmlWriter.writeAttribute("localized",
+                                     QString::number(ui->checkbox_RegionLocaziation_6->isChecked()));
+            xmlWriter.writeCharacters(ui->text_regionName_6->text());
+        xmlWriter.writeEndElement(); //region
+    }
+
+
+    xmlWriter.writeEndElement(); //RegionNames
 
     xmlWriter.writeTextElement("FactorySizeAdjust",ui->SpinBox_MapTools_FactorySizeAdjust->text());
     xmlWriter.writeTextElement("BranchDealerAdjust",

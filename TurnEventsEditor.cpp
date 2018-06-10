@@ -40,10 +40,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "TurnEventsEditor.h"
 #include "ui_TurnEventsEditor.h"
 #include <QFileDialog>
-#include "TurnEventTreeGrower.h"
 #include <QMessageBox>
 #include <QXmlStreamWriter>
-
+#include <qmath.h>
 
 //Create TurnEvents Editor Tool
 TurnEventsEditor::TurnEventsEditor(widgetContainerStorage wsc, QWidget *parent) :
@@ -59,12 +58,17 @@ TurnEventsEditor::TurnEventsEditor(widgetContainerStorage wsc, QWidget *parent) 
     aiMan = 0;
     componentsFileName = "";
     turnEventsSaveName = "";
+    notImporting = true;
 
     //Create new list
     on_Button_NewList_clicked();
 
     connect(ui->Table_City->horizontalHeader(),SIGNAL(sectionClicked(int)),
             this,SLOT(sectionTableCitySlot(int)));
+
+    connect(ui->Table_Car->horizontalHeader(),SIGNAL(sectionClicked(int)),
+            this,SLOT(sectionTableCarSlot(int)));
+
 
 }
 
@@ -277,7 +281,7 @@ void TurnEventsEditor::on_Button_SetComponentsScript_clicked(bool checked)
     if (componentsFileName != "")
     {
         //if we have a file, create a components object, then send the combos over to be filled.
-        ComponentsManager cm = ComponentsManager(componentsFileName,cp_wsc.TurnEventEditorCW);
+        ComponentsManager cm(componentsFileName,cp_wsc.TurnEventEditorCW);
         ui->Combo_Components_PredefinedSelector->clear();
         ui->Combo_Car_SelectionID->clear();
 
@@ -287,6 +291,8 @@ void TurnEventsEditor::on_Button_SetComponentsScript_clicked(bool checked)
             ui->Label_ComponentsFile->setText(componentsFileName);
             cm.createComponentSelectorCombo(ui->Combo_Components_PredefinedSelector,
                                             ui->Combo_Car_SelectionID,localeManager);
+
+            currentComponents = cm;
         }
 
         //If we're not checking, refresh tables and trees
@@ -2123,14 +2129,17 @@ void TurnEventsEditor::on_Button_Car_AddEdit_clicked()
     }
 
     //Refresh vehicle pop Table and Tree
-    int startYearLimit = ui->Spin_StartingYear->value()*12;
-    int finishYearLimit = ui->Spin_FinishYear->value()*12;
+    if(notImporting)
+    {
+        int startYearLimit = ui->Spin_StartingYear->value()*12;
+        int finishYearLimit = ui->Spin_FinishYear->value()*12;
 
-    ui->Tree_All_Everything->clear();
-    TurnEventTreeGrower(ui->Tree_All_Everything,turnMap, cityMap, startYearLimit, finishYearLimit,
-                        ui->Combo_Components_PredefinedSelector, ui->Combo_Car_SelectionID,
-                        localeManager);
-    refreshVehiclePopTable();
+        ui->Tree_All_Everything->clear();
+        TurnEventTreeGrower(ui->Tree_All_Everything,turnMap, cityMap, startYearLimit, finishYearLimit,
+                            ui->Combo_Components_PredefinedSelector, ui->Combo_Car_SelectionID,
+                            localeManager);
+        refreshVehiclePopTable();
+    }
 }
 
 //Vehicle Remove Clicked
@@ -3047,4 +3056,208 @@ void TurnEventsEditor::setTurnEventMap(QMap<int,TurnData::TE_Data> tmpMap)
 void TurnEventsEditor::sectionTableCitySlot(int index)
 {
      ui->Table_City->sortByColumn(index,Qt::AscendingOrder);
+}
+
+//Allows table to be sortable
+void TurnEventsEditor::sectionTableCarSlot(int index)
+{
+     ui->Table_Car->sortByColumn(index,Qt::AscendingOrder);
+}
+
+
+void TurnEventsEditor::on_Button_ImportVehiclePopChanges_clicked()
+{
+    QString importFileName =  QFileDialog::getOpenFileName(this, "Open Turn Event File For Import",
+                                                           "", "XML Files (*.xml)");
+    if (importFileName != "")
+    {
+
+        //Create TurnData with save file
+        TurnData td = TurnData(importFileName,cp_wsc.TurnEventEditorCW,localeManager);
+
+        //Get turn map, and make a blank TE_Data for new entries
+        QMap<int,TurnData::TE_Data> tm = td.getTurnMap();
+
+        if(ui->checkBox_InterpolateVehiclePopChanges->isChecked())
+        {
+            for(int i = 0; i < ui->Combo_Car_SelectionID->count(); i++)
+            {
+                ui->Combo_Car_SelectionID->setCurrentIndex(i);
+                int sID = ui->Combo_Car_SelectionID->itemData(i).toInt();
+                ui->Spin_Car_SelectionID->setValue(sID);
+                QMap<int,TurnData::TE_VehiclePop> carData;
+
+                for(QMap<int,TurnData::TE_Data>::iterator it = tm.begin(); it != tm.end(); ++it)
+                {
+                    if(!(*it).vehiclePopList.empty())
+                    {
+                        for(QList<TurnData::TE_VehiclePop>::iterator itVP =
+                            (*it).vehiclePopList.begin();
+                            itVP != (*it).vehiclePopList.end(); ++itVP)
+                        {
+                            if(sID == (*itVP).selectorID)
+                            {
+                                int month = it.key() % 12;
+                                int year = it.key()/12;
+
+                                if(month == 0)
+                                {
+                                    year--;
+                                    month = 12;
+                                }
+
+                                carData.insert(year,(*itVP));
+                            }
+                        }
+                    }
+                }
+
+                QMap<int, TurnData::TE_VehiclePop>::iterator nextCarIT;
+                for(QMap<int, TurnData::TE_VehiclePop>::iterator carIT = carData.begin();
+                    carIT != carData.end(); ++carIT)
+                {
+                    nextCarIT = carIT;
+                    ++nextCarIT;
+                    if(nextCarIT != carData.end())
+                    {
+
+                        double diftime = nextCarIT.key()-carIT.key();
+
+
+
+
+                        for(int time = 0; time < diftime; time++)
+                        {
+
+                            ui->Spin_Car_Month->setValue(1);
+                             ui->Spin_Car_Year->setValue(carIT.key() + time);
+
+                             ui->Spin_Car_Pop->setValue(
+                              (*carIT).pop + (((*nextCarIT).pop - (*carIT).pop)/diftime));
+                             ui->Spin_Car_PopR1->setValue(
+                              (*carIT).popR1 + (((*nextCarIT).popR1 - (*carIT).popR1)/diftime));
+                             ui->Spin_Car_PopR2->setValue(
+                              (*carIT).popR2 + (((*nextCarIT).popR2 - (*carIT).popR2)/diftime));
+                             ui->Spin_Car_PopR3->setValue(
+                              (*carIT).popR3 + (((*nextCarIT).popR3 - (*carIT).popR3)/diftime));
+                             ui->Spin_Car_PopR4->setValue(
+                              (*carIT).popR4 + (((*nextCarIT).popR4 - (*carIT).popR4)/diftime));
+                             ui->Spin_Car_PopR5->setValue(
+                              (*carIT).popR5 + (((*nextCarIT).popR5 - (*carIT).popR5)/diftime));
+                             ui->Spin_Car_PopR6->setValue(
+                              (*carIT).popR6 + (((*nextCarIT).popR6 - (*carIT).popR6)/diftime));
+
+
+                    notImporting = false;
+                    on_Button_Car_AddEdit_clicked();
+                    notImporting = true;
+
+                    /*      int month = 1;
+                          int year = (carIT.key() + time);
+
+                          double pop = ((*carIT).pop * (1 - rate) + (*nextCarIT).pop * rate);
+                          double popR1 = ((*carIT).popR1 * (1 - rate) + (*nextCarIT).popR1 * rate);
+                          double popR2 = ((*carIT).popR2 * (1 - rate) + (*nextCarIT).popR2 * rate);
+                          double popR3 = ((*carIT).popR3 * (1 - rate) + (*nextCarIT).popR3 * rate);
+                          double popR4 = ((*carIT).popR4 * (1 - rate) + (*nextCarIT).popR4 * rate);
+                          double popR5 = ((*carIT).popR5 * (1 - rate) + (*nextCarIT).popR5 * rate);
+                          double popR6 = ((*carIT).popR6 * (1 - rate) + (*nextCarIT).popR6 * rate);
+
+                          notImporting = false;
+                          on_Button_Car_AddEdit_clicked();
+                          notImporting = true;
+*/
+                        }
+
+
+
+
+                        (*nextCarIT).pop = 1;
+                        (*nextCarIT).popR1 = 1;
+                        (*nextCarIT).popR2 = 1;
+                        (*nextCarIT).popR3 = 1;
+                        (*nextCarIT).popR4 = 1;
+                        (*nextCarIT).popR5 = 1;
+                        (*nextCarIT).popR6 = 1;
+
+                       ui->Spin_Car_Month->setValue(1);
+                       ui->Spin_Car_Year->setValue(nextCarIT.key());
+
+                       ui->Spin_Car_Pop->setValue(1);
+                       ui->Spin_Car_PopR1->setValue(1);
+                       ui->Spin_Car_PopR2->setValue(1);
+                       ui->Spin_Car_PopR4->setValue(1);
+                       ui->Spin_Car_PopR3->setValue(1);
+                       ui->Spin_Car_PopR5->setValue(1);
+                       ui->Spin_Car_PopR6->setValue(1);
+
+
+                        notImporting = false;
+                        on_Button_Car_AddEdit_clicked();
+                        notImporting = true;
+
+
+                    }
+
+
+                }
+
+            }
+
+            int startYearLimit = ui->Spin_StartingYear->value()*12;
+            int finishYearLimit = ui->Spin_FinishYear->value()*12;
+
+            ui->Tree_All_Everything->clear();
+            TurnEventTreeGrower(ui->Tree_All_Everything,turnMap, cityMap, startYearLimit, finishYearLimit,
+                                ui->Combo_Components_PredefinedSelector, ui->Combo_Car_SelectionID,
+                                localeManager);
+            refreshVehiclePopTable();
+        }
+        else
+        {
+            for(QMap<int,TurnData::TE_Data>::iterator it = tm.begin(); it != tm.end(); ++it)
+            {
+
+                //if the vehicle popularity list is not empty, we have data!
+                if(!(*it).vehiclePopList.empty())
+                {
+                    //Loop through vehicle pop List and stick it in the table
+                    for(QList<TurnData::TE_VehiclePop>::iterator itVP = (*it).vehiclePopList.begin();
+                        itVP != (*it).vehiclePopList.end(); ++itVP)
+                    {
+
+                        int month = it.key() % 12;
+                        int year = it.key()/12;
+
+                        if(month == 0)
+                        {
+                            year--;
+                            month = 12;
+                        }
+
+                        ui->Spin_Car_Month->setValue(month);
+                        ui->Spin_CarPrice_Year->setValue(year);
+
+                        int comboIndex = ui->Combo_Car_SelectionID->findData(
+                                    QVariant((*itVP).selectorID));
+
+                        ui->Combo_Car_SelectionID->setCurrentIndex(comboIndex);
+
+                        ui->Spin_Car_Pop->setValue((*itVP).pop);
+                        ui->Spin_Car_PopR1->setValue((*itVP).popR1);
+                        ui->Spin_Car_PopR2->setValue((*itVP).popR2);
+                        ui->Spin_Car_PopR3->setValue((*itVP).popR3);
+                        ui->Spin_Car_PopR4->setValue((*itVP).popR4);
+                        ui->Spin_Car_PopR5->setValue((*itVP).popR5);
+                        ui->Spin_Car_PopR6->setValue((*itVP).popR6);
+
+                        ui->Button_Car_AddEdit->click();
+
+                    }
+                }
+            }
+        }
+
+    }
+
 }

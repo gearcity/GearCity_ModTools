@@ -25,7 +25,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>11</number>
+        <number>10</number>
        </property>
        <widget class="QWidget" name="Tab_Settings">
         <attribute name="title">
@@ -1852,6 +1852,9 @@
         <layout class="QGridLayout" name="gridLayout_21">
          <item row="0" column="1" rowspan="4">
           <widget class="QTableWidget" name="Table_Components">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Date</string>
@@ -2254,6 +2257,20 @@
               </property>
              </widget>
             </item>
+            <item row="10" column="1">
+             <widget class="QPushButton" name="Button_ImportVehiclePopChanges">
+              <property name="text">
+               <string>Import</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0">
+             <widget class="QCheckBox" name="checkBox_InterpolateVehiclePopChanges">
+              <property name="text">
+               <string>Interpolate</string>
+              </property>
+             </widget>
+            </item>
            </layout>
           </widget>
          </item>
@@ -2285,6 +2302,9 @@
          </item>
          <item row="0" column="1" rowspan="3">
           <widget class="QTableWidget" name="Table_Car">
+           <property name="sortingEnabled">
+            <bool>false</bool>
+           </property>
            <column>
             <property name="text">
              <string>Date</string>
@@ -2583,6 +2603,9 @@
          </item>
          <item row="0" column="1" rowspan="4">
           <widget class="QTableWidget" name="Table_City">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Date</string>
@@ -2812,6 +2835,9 @@
          </item>
          <item row="0" column="1" rowspan="5">
           <widget class="QTableWidget" name="Table_News">
+           <property name="sortingEnabled">
+            <bool>true</bool>
+           </property>
            <column>
             <property name="text">
              <string>Date</string>

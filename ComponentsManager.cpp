@@ -43,6 +43,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QXmlStreamWriter>
 
 //Open Components XML file.
+ComponentsManager::ComponentsManager()
+{
+
+}
+
 ComponentsManager::ComponentsManager(QString openFileName, QWidget *widget)
 {
     processedFile = true;

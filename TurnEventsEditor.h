@@ -50,6 +50,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "ComponentsManager.h"
 #include "AIManager.h"
 #include <QTreeWidgetItem>
+#include "VehiclePopInterPolators.h"
+#include "TurnEventTreeGrower.h"
+
 
 
 namespace Ui {
@@ -126,6 +129,10 @@ private slots:
     void on_Button_News_Remove_clicked();
     void on_Button_SaveList_clicked();
     void sectionTableCitySlot(int index);
+    void sectionTableCarSlot(int index);
+
+
+    void on_Button_ImportVehiclePopChanges_clicked();
 
 private:
     Ui::TurnEventsEditor *ui;
@@ -135,9 +142,12 @@ private:
     QString componentsFileName; //needs to be a member because Localization file changes.
     QString turnEventsSaveName;
     TurnData::TE_Data blankTE_Data;
+    ComponentsManager currentComponents;
 
     LocalizationManager *localeManager;
     AIManager           *aiMan;
+
+    bool notImporting;
 
     void refreshAllTablesAndTrees();
     void refreshOfficeTable();
