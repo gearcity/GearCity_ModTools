@@ -2701,7 +2701,8 @@ void TurnEventsEditor::on_Button_News_Add_clicked()
     TurnEventTreeGrower(ui->Tree_All_Everything,turnMap, cityMap, startYearLimit, finishYearLimit,
                         ui->Combo_Components_PredefinedSelector, ui->Combo_Car_SelectionID,
                         localeManager);
-    refreshNewsPaperTable();
+    if(notImporting)
+      refreshNewsPaperTable();
 }
 
 //Edit selected news entry
@@ -3236,7 +3237,7 @@ void TurnEventsEditor::on_Button_ImportVehiclePopChanges_clicked()
                         }
 
                         ui->Spin_Car_Month->setValue(month);
-                        ui->Spin_CarPrice_Year->setValue(year);
+                        ui->Spin_Car_Year->setValue(year);
 
                         int comboIndex = ui->Combo_Car_SelectionID->findData(
                                     QVariant((*itVP).selectorID));
@@ -3251,12 +3252,109 @@ void TurnEventsEditor::on_Button_ImportVehiclePopChanges_clicked()
                         ui->Spin_Car_PopR5->setValue((*itVP).popR5);
                         ui->Spin_Car_PopR6->setValue((*itVP).popR6);
 
-                        ui->Button_Car_AddEdit->click();
+                        notImporting = false;
+                        on_Button_Car_AddEdit_clicked();
+                        notImporting = true;
 
                     }
                 }
             }
+
+            int startYearLimit = ui->Spin_StartingYear->value()*12;
+            int finishYearLimit = ui->Spin_FinishYear->value()*12;
+
+            ui->Tree_All_Everything->clear();
+            TurnEventTreeGrower(ui->Tree_All_Everything,turnMap, cityMap, startYearLimit, finishYearLimit,
+                                ui->Combo_Components_PredefinedSelector, ui->Combo_Car_SelectionID,
+                                localeManager);
+            refreshVehiclePopTable();
         }
+
+    }
+
+}
+
+void TurnEventsEditor::on_Button_News_Import_clicked()
+{
+    QString importFileName =  QFileDialog::getOpenFileName(this, "Open Turn Event File For Import",
+                                                           "", "XML Files (*.xml)");
+    if (importFileName != "")
+    {
+
+        //Clear old news
+        for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
+        {
+          (*it).NewsEvtList.clear();
+        }
+
+        //Create TurnData with save file
+        TurnData td = TurnData(importFileName,cp_wsc.TurnEventEditorCW,localeManager);
+
+        int startYearLimit = ui->Spin_StartingYear->value()*12;
+        int finishYearLimit = ui->Spin_FinishYear->value()*12;
+
+        QList<TurnData::TE_NewsEvts> newsList;
+        QMap<int,TurnData::TE_Data> tm = td.getTurnMap();
+
+
+        for(QMap<int,TurnData::TE_Data>::iterator it = tm.begin(); it != tm.end(); ++it)
+        {
+            int turn = it.key();
+            int month = turn % 12;
+            int year = turn / 12;
+
+
+
+            if(month == 0)
+            {
+                month = 12;
+                year--;
+            }
+
+            //if the turn is not in the current game years, go to the next entry in the map
+            if(it.key()<startYearLimit || it.key()>finishYearLimit)
+                continue;
+
+            newsList = (*it).NewsEvtList;
+
+
+            //if the News Event List is not empty, we have data!
+            if(!(*it).NewsEvtList.empty())
+            {
+                for(QList<TurnData::TE_NewsEvts>::iterator itNE = newsList.begin();
+                    itNE != newsList.end(); ++itNE)
+                {
+                    ui->Spin_News_Month->setValue(month);
+                    ui->Spin_News_Year->setValue(year);
+
+                    if((*itNE).localization)
+                    {
+                        ui->Check_News_Locale->setChecked(true);
+                        ui->Spin_News_HeadlineWord->setValue((*itNE).headline.toInt());
+                        ui->Spin_News_BodyWord->setValue((*itNE).body.toInt());
+                    }
+                    else
+                    {
+                        ui->Check_News_Locale->setChecked(false);
+                        ui->Line_News_Headline->setText((*itNE).headline);
+                        ui->TextEdit_News_Body->setText((*itNE).body);
+                    }
+
+                    ui->Line_News_Image->setText((*itNE).image);
+
+                    ui->Check_News_Glow->setChecked((*itNE).glow);
+
+                    notImporting = false;
+                    on_Button_News_Add_clicked();
+                    notImporting = true;
+
+                }
+            }
+        }
+
+        refreshNewsPaperTable();
+
+
 
     }
 

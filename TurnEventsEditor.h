@@ -50,7 +50,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "ComponentsManager.h"
 #include "AIManager.h"
 #include <QTreeWidgetItem>
-#include "VehiclePopInterPolators.h"
 #include "TurnEventTreeGrower.h"
 
 
@@ -133,6 +132,8 @@ private slots:
 
 
     void on_Button_ImportVehiclePopChanges_clicked();
+
+    void on_Button_News_Import_clicked();
 
 private:
     Ui::TurnEventsEditor *ui;

@@ -25,7 +25,7 @@
      <item>
       <widget class="QTabWidget" name="tabWidget">
        <property name="currentIndex">
-        <number>10</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="Tab_Settings">
         <attribute name="title">
@@ -2700,6 +2700,44 @@
             <string>News</string>
            </property>
            <layout class="QGridLayout" name="gridLayout_24">
+            <item row="9" column="0">
+             <widget class="QLabel" name="label_45">
+              <property name="text">
+               <string>Body Localized:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="11" column="0">
+             <widget class="QLabel" name="label_47">
+              <property name="text">
+               <string>Headline:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="12" column="0" colspan="2">
+             <widget class="QLabel" name="label_48">
+              <property name="text">
+               <string>Body</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="0" colspan="2">
+             <widget class="Line" name="line_9">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item row="15" column="0" colspan="2">
+             <widget class="Line" name="line_10">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
             <item row="2" column="0" colspan="2">
              <widget class="Line" name="line_8">
               <property name="orientation">
@@ -2707,8 +2745,42 @@
               </property>
              </widget>
             </item>
-            <item row="9" column="1">
+            <item row="11" column="1">
              <widget class="QLineEdit" name="Line_News_Headline"/>
+            </item>
+            <item row="16" column="0">
+             <widget class="QLabel" name="label_49">
+              <property name="text">
+               <string>Image:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="16" column="1">
+             <widget class="QLineEdit" name="Line_News_Image"/>
+            </item>
+            <item row="9" column="1">
+             <widget class="QSpinBox" name="Spin_News_BodyWord">
+              <property name="maximum">
+               <number>99999</number>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QSpinBox" name="Spin_News_HeadlineWord">
+              <property name="maximum">
+               <number>99999</number>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="0">
+             <widget class="QLabel" name="label_46">
+              <property name="text">
+               <string>Headline Localized</string>
+              </property>
+             </widget>
+            </item>
+            <item row="13" column="0" colspan="2">
+             <widget class="QTextEdit" name="TextEdit_News_Body"/>
             </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_38">
@@ -2744,96 +2816,41 @@
               </property>
              </widget>
             </item>
-            <item row="11" column="0" colspan="2">
-             <widget class="QTextEdit" name="TextEdit_News_Body"/>
-            </item>
-            <item row="6" column="0">
-             <widget class="QLabel" name="label_46">
-              <property name="text">
-               <string>Headline Localized</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="0">
-             <widget class="QLabel" name="label_45">
-              <property name="text">
-               <string>Body Localized:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="0">
-             <widget class="QLabel" name="label_47">
-              <property name="text">
-               <string>Headline:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="0" colspan="2">
-             <widget class="Line" name="line_9">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="10" column="0" colspan="2">
-             <widget class="QLabel" name="label_48">
-              <property name="text">
-               <string>Body</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="13" column="0" colspan="2">
-             <widget class="Line" name="line_10">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="0">
-             <widget class="QLabel" name="label_49">
-              <property name="text">
-               <string>Image:</string>
-              </property>
-             </widget>
-            </item>
-            <item row="14" column="1">
-             <widget class="QLineEdit" name="Line_News_Image"/>
-            </item>
-            <item row="3" column="0" colspan="2">
-             <widget class="QCheckBox" name="Check_News_Locale">
-              <property name="text">
-               <string>Enabled Locatization</string>
-              </property>
-             </widget>
-            </item>
-            <item row="7" column="1">
-             <widget class="QSpinBox" name="Spin_News_BodyWord">
-              <property name="maximum">
-               <number>99999</number>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="QSpinBox" name="Spin_News_HeadlineWord">
-              <property name="maximum">
-               <number>99999</number>
-              </property>
-             </widget>
-            </item>
-            <item row="15" column="0" colspan="2">
-             <widget class="QCheckBox" name="Check_News_Glow">
-              <property name="text">
-               <string>Glow Newspaper</string>
-              </property>
-             </widget>
+            <item row="5" column="0" rowspan="2" colspan="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_6">
+              <item>
+               <widget class="QCheckBox" name="Check_News_Locale">
+                <property name="text">
+                 <string>Enabled Locatization</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="Check_News_Glow">
+                <property name="text">
+                 <string>Glow Newspaper</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
          </item>
-         <item row="0" column="1" rowspan="5">
+         <item row="1" column="0">
+          <widget class="QPushButton" name="Button_News_Add">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Add As New Event</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" rowspan="6">
           <widget class="QTableWidget" name="Table_News">
            <property name="sortingEnabled">
             <bool>true</bool>
@@ -2870,19 +2887,6 @@
            </column>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="Button_News_Add">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>Add As New Event</string>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="0">
           <widget class="QPushButton" name="Button_News_Remove">
            <property name="minimumSize">
@@ -2906,6 +2910,13 @@
            </property>
            <property name="text">
             <string>Edit Selected</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="Button_News_Import">
+           <property name="text">
+            <string>Import</string>
            </property>
           </widget>
          </item>
