@@ -99,6 +99,8 @@ private slots:
     void on_button_CE_AA_AddCity_clicked();
     void on_button_CE_AA_RemoveCity_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::CityEditor *ui;
     widgetContainerStorage cp_wsc;

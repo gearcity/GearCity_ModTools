@@ -554,8 +554,8 @@ void ComponentsManager::gearboxTypeRead(QDomElement element)
         data.year = element.attributeNode("year").value().toInt();
         data.death = element.attributeNode("death").value().toInt();
         data.shift = element.attributeNode("shift").value();
-        data.costs  = element.attributeNode("cost").value().toDouble();
-        data.designCosts = element.attributeNode("designcost").value().toDouble();
+        data.costs  = element.attributeNode("costs").value().toDouble();
+        data.designCosts = element.attributeNode("designcosts").value().toDouble();
         data.weight = element.attributeNode("weight").value().toDouble();
         data.complex = element.attributeNode("complex").value().toDouble();
         data.smooth = element.attributeNode("smooth").value().toDouble();
@@ -737,6 +737,16 @@ void ComponentsManager::carTypeRead(QDomElement element)
         data.civFleet = element.attributeNode("civFleet").value().toInt();
         data.civ = element.attributeNode("civ").value().toInt();
         data.selectionIndex = element.attributeNode("selectionIndex").value().toInt();
+
+        if(!element.attributeNode("weight").isNull())
+            data.weight = element.attributeNode("weight").value().toDouble();
+        else
+            data.weight = 1;
+
+        if(!element.attributeNode("size").isNull())
+            data.size = element.attributeNode("size").value().toDouble();
+        else
+            data.size = 1;
 
     dataList.cartypesList.push_back(data);
 }
@@ -1742,6 +1752,9 @@ bool ComponentsManager::saveComponentsXMLFile(QString componentsFileName,
             xmlWriter.writeAttribute("Rating_Power",QString::number((*it).rPower));
             xmlWriter.writeAttribute("Rating_Cargo",QString::number((*it).rCargo));
             xmlWriter.writeAttribute("Rating_Dependability",QString::number((*it).rDependability));
+            xmlWriter.writeAttribute("weight",QString::number((*it).weight));
+            xmlWriter.writeAttribute("size",QString::number((*it).size));
+
             xmlWriter.writeAttribute("popNA",QString::number((*it).popNA));
             xmlWriter.writeAttribute("popEU",QString::number((*it).popEU));
 

@@ -150,6 +150,8 @@ private slots:
 
     void sectionDoubleClickedSlot(int index);
 
+    void on_button_select_localizationFile_clicked();
+
 private:
 
 
@@ -182,6 +184,7 @@ private:
     QVector<ComponentsManager::AccessoriesModels> accessories;
 
     QMap<QString, ComponentsManager::aiPopData> aiPops;
+    LocalizationManager *localeManager;
 
 
 

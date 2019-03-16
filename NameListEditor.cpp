@@ -111,6 +111,9 @@ void NameListEditor::on_button_SaveNameList_clicked()
 
     if (saveFileName != "")
     {
+        if (!saveFileName.endsWith(".txt"))
+            saveFileName += ".txt";
+
         QFile fOut(saveFileName);
           if (fOut.open(QFile::WriteOnly | QFile::Text))
           {

@@ -20,6 +20,8 @@ ComponentsEditor::ComponentsEditor(widgetContainerStorage wsc, QWidget *parent) 
 
     connect(ui->table_aipop->horizontalHeader(),SIGNAL(sectionClicked(int)),
             this,SLOT(sectionDoubleClickedSlot(int)));
+
+    localeManager = 0;
 }
 
 ComponentsEditor::~ComponentsEditor()
@@ -92,6 +94,9 @@ void ComponentsEditor::fillFrameTable()
     ui->table_frame->clearContents();
     ui->table_frame->setRowCount(frames.size());
 
+    ui->table_frame->setSortingEnabled(false);
+
+
     for(int i = 0; i < frames.size(); i++)
     {
             ui->table_frame->setItem(i,0,new QTableWidgetItem(
@@ -100,10 +105,18 @@ void ComponentsEditor::fillFrameTable()
                                              QString::number(frames[i].year)));
             ui->table_frame->setItem(i,2,new QTableWidgetItem(
                                              QString::number(frames[i].death)));
-            ui->table_frame->setItem(i,3,new QTableWidgetItem(frames[i].name));
+            if(frames[i].localName && localeManager != 0)
+                 ui->table_frame->setItem(i,3,new QTableWidgetItem(localeManager->getWord(frames[i].name.toInt())));
+            else
+                ui->table_frame->setItem(i,3,new QTableWidgetItem(frames[i].name));
+
             ui->table_frame->setItem(i,4,new QTableWidgetItem(
                                          QString::number(frames[i].skill)));
     }
+
+    ui->table_frame->setSortingEnabled(true);
+
+
 
     fillAIPopComboData();
 
@@ -117,7 +130,12 @@ void ComponentsEditor::on_table_frame_cellClicked(int row, int column)
     for(int i = 0; i < frames.size(); i++)
     {
 
-         if(frames[i].name == componenetName && frames[i].selectionIndex == selectID)
+        QString frameName =frames[i].name;
+
+        if(frames[i].localName && localeManager != 0)
+            frameName = localeManager->getWord(frames[i].name.toInt());
+
+         if(frameName == componenetName && frames[i].selectionIndex == selectID)
          {
              ComponentsManager::ChassisFrameComps cf = frames[i];
              ui->spinner_frame_ID->setValue(cf.selectionIndex);
@@ -224,6 +242,8 @@ void ComponentsEditor::fillSuspensionTable()
 {
     ui->table_suspension->clearContents();
     ui->table_suspension->setRowCount(suspensions.size());
+    ui->table_suspension->setSortingEnabled(false);
+
 
     for(int i = 0; i < suspensions.size(); i++)
     {
@@ -233,10 +253,17 @@ void ComponentsEditor::fillSuspensionTable()
                                              QString::number(suspensions[i].year)));
             ui->table_suspension->setItem(i,2,new QTableWidgetItem(
                                              QString::number(suspensions[i].death)));
-            ui->table_suspension->setItem(i,3,new QTableWidgetItem(suspensions[i].name));
+            if(suspensions[i].localName && localeManager != 0)
+                ui->table_suspension->setItem(i,3,new QTableWidgetItem(localeManager->getWord(suspensions[i].name.toInt())));
+            else
+                ui->table_suspension->setItem(i,3,new QTableWidgetItem(suspensions[i].name));
+
             ui->table_suspension->setItem(i,4,new QTableWidgetItem(
                                          QString::number(suspensions[i].skill)));
     }
+
+    ui->table_suspension->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -266,8 +293,12 @@ void ComponentsEditor::on_table_suspension_cellClicked(int row, int column)
 
     for(int i = 0; i < suspensions.size(); i++)
     {
+         QString suspensionsName =suspensions[i].name;
+         if(suspensions[i].localName && localeManager != 0)
+             suspensionsName = localeManager->getWord(suspensions[i].name.toInt());
 
-         if(suspensions[i].name == componenetName && suspensions[i].selectionIndex == selectID)
+
+         if(suspensionsName == componenetName && suspensions[i].selectionIndex == selectID)
          {
              ComponentsManager::SuspensionComps  cs = suspensions[i];
              ui->spinner_suspension_ID->setValue(cs.selectionIndex);
@@ -359,6 +390,9 @@ void ComponentsEditor::fillDrivetrainTable()
     ui->table_drivetrain->clearContents();
     ui->table_drivetrain->setRowCount(drivetrains.size());
 
+    ui->table_drivetrain->setSortingEnabled(false);
+
+
     for(int i = 0; i < drivetrains.size(); i++)
     {
             ui->table_drivetrain->setItem(i,0,new QTableWidgetItem(
@@ -367,10 +401,18 @@ void ComponentsEditor::fillDrivetrainTable()
                                              QString::number(drivetrains[i].year)));
             ui->table_drivetrain->setItem(i,2,new QTableWidgetItem(
                                              QString::number(drivetrains[i].death)));
-            ui->table_drivetrain->setItem(i,3,new QTableWidgetItem(drivetrains[i].name));
+
+            if(drivetrains[i].localName && localeManager != 0)
+                ui->table_drivetrain->setItem(i,3,new QTableWidgetItem(localeManager->getWord(drivetrains[i].name.toInt())));
+            else
+                ui->table_drivetrain->setItem(i,3,new QTableWidgetItem(drivetrains[i].name));
+
             ui->table_drivetrain->setItem(i,4,new QTableWidgetItem(
                                          QString::number(drivetrains[i].skill)));
     }
+
+    ui->table_drivetrain->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -402,8 +444,12 @@ void ComponentsEditor::on_table_drivetrain_cellClicked(int row, int column)
 
     for(int i = 0; i < drivetrains.size(); i++)
     {
+        QString drivetrainsName =drivetrains[i].name;
 
-         if(drivetrains[i].name == componenetName && drivetrains[i].selectionIndex == selectID)
+        if(drivetrains[i].localName && localeManager != 0)
+            drivetrainsName = localeManager->getWord(drivetrains[i].name.toInt());
+
+         if(drivetrainsName == componenetName && drivetrains[i].selectionIndex == selectID)
          {
              ComponentsManager::DriveTrainComps   cd = drivetrains[i];
              ui->spinBox_drivetrain_id->setValue(cd.selectionIndex);
@@ -647,6 +693,9 @@ void ComponentsEditor::fillEngineLayoutTable()
     ui->table_englayout->clearContents();
     ui->table_englayout->setRowCount(layouts.size());
 
+    ui->table_englayout->setSortingEnabled(false);
+
+
     for(int i = 0; i < layouts.size(); i++)
     {
             ui->table_englayout->setItem(i,0,new QTableWidgetItem(
@@ -655,12 +704,19 @@ void ComponentsEditor::fillEngineLayoutTable()
                                              QString::number(layouts[i].year)));
             ui->table_englayout->setItem(i,2,new QTableWidgetItem(
                                              QString::number(layouts[i].death)));
-            ui->table_englayout->setItem(i,3,new QTableWidgetItem(layouts[i].name));
+            if(layouts[i].localName && localeManager != 0)
+                ui->table_englayout->setItem(i,3,new QTableWidgetItem(localeManager->getWord(layouts[i].name.toInt())));
+            else
+                ui->table_englayout->setItem(i,3,new QTableWidgetItem(layouts[i].name));
+
             ui->table_englayout->setItem(i,4,new QTableWidgetItem(
                                          QString::number(layouts[i].skill)));
             ui->table_englayout->setItem(i,5,new QTableWidgetItem(
                                          QString::number(layouts[i].valve)));
     }
+
+    ui->table_englayout->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -689,8 +745,14 @@ void ComponentsEditor::on_table_englayout_cellClicked(int row, int column)
 
     for(int i = 0; i < layouts.size(); i++)
     {
+        QString layoutName =layouts[i].name;
 
-         if(layouts[i].name == componenetName && layouts[i].selectionIndex == selectID)
+        if(layouts[i].localName && localeManager != 0)
+            layoutName = localeManager->getWord(layouts[i].name.toInt());
+
+
+
+         if(layoutName == componenetName && layouts[i].selectionIndex == selectID)
          {
              ComponentsManager::EngineLayoutComps el = layouts[i];
              ui->spinner_englayout_ID->setValue(el.selectionIndex);
@@ -814,6 +876,9 @@ void ComponentsEditor::fillCylinderTable()
     ui->table_cyl->clearContents();
     ui->table_cyl->setRowCount(cylinders.size());
 
+    ui->table_cyl->setSortingEnabled(false);
+
+
     for(int i = 0; i < cylinders.size(); i++)
     {
             ui->table_cyl->setItem(i,0,new QTableWidgetItem(
@@ -822,11 +887,19 @@ void ComponentsEditor::fillCylinderTable()
                                              QString::number(cylinders[i].year)));
             ui->table_cyl->setItem(i,2,new QTableWidgetItem(
                                              QString::number(cylinders[i].death)));
-            ui->table_cyl->setItem(i,3,new QTableWidgetItem(cylinders[i].name));
+
+            if(cylinders[i].localName && localeManager != 0)
+                ui->table_cyl->setItem(i,3,new QTableWidgetItem(localeManager->getWord(cylinders[i].name.toInt())));
+            else
+                ui->table_cyl->setItem(i,3,new QTableWidgetItem(cylinders[i].name));
+
             ui->table_cyl->setItem(i,4,new QTableWidgetItem(
                                          QString::number(cylinders[i].skill)));
 
     }
+
+    ui->table_cyl->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -859,8 +932,13 @@ void ComponentsEditor::on_table_cyl_cellClicked(int row, int column)
 
     for(int i = 0; i < cylinders.size(); i++)
     {
+        QString cylindersName =cylinders[i].name;
 
-         if(cylinders[i].name == componenetName && cylinders[i].selectionIndex == selectID)
+        if(cylinders[i].localName && localeManager != 0)
+            cylindersName = localeManager->getWord(cylinders[i].name.toInt());
+
+
+         if(cylindersName == componenetName && cylinders[i].selectionIndex == selectID)
          {
              ComponentsManager::EngineCylinderComps  ec = cylinders[i];
              ui->spinBox_cyl_id->setValue(ec.selectionIndex);
@@ -983,6 +1061,8 @@ void ComponentsEditor::fillFuelTable()
 {
     ui->table_fuel->clearContents();
     ui->table_fuel->setRowCount(fuels.size());
+    ui->table_fuel->setSortingEnabled(false);
+
 
     for(int i = 0; i < fuels.size(); i++)
     {
@@ -992,11 +1072,18 @@ void ComponentsEditor::fillFuelTable()
                                              QString::number(fuels[i].year)));
             ui->table_fuel->setItem(i,2,new QTableWidgetItem(
                                              QString::number(fuels[i].death)));
-            ui->table_fuel->setItem(i,3,new QTableWidgetItem(fuels[i].name));
+            if(fuels[i].localName && localeManager != 0)
+              ui->table_fuel->setItem(i,3,new QTableWidgetItem(localeManager->getWord(fuels[i].name.toInt())));
+            else
+              ui->table_fuel->setItem(i,3,new QTableWidgetItem(fuels[i].name));
+
             ui->table_fuel->setItem(i,4,new QTableWidgetItem(
                                          QString::number(fuels[i].skill)));
 
     }
+
+    ui->table_fuel->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -1009,8 +1096,12 @@ void ComponentsEditor::on_table_fuel_cellClicked(int row, int column)
 
     for(int i = 0; i < fuels.size(); i++)
     {
+        QString fuelsName =fuels[i].name;
 
-         if(fuels[i].name == componenetName && fuels[i].selectionIndex == selectID)
+        if(fuels[i].localName && localeManager != 0)
+            fuelsName = localeManager->getWord(fuels[i].name.toInt());
+
+         if(fuelsName == componenetName && fuels[i].selectionIndex == selectID)
          {
              ComponentsManager::EngineFuelComps   ef = fuels[i];
              ui->spinner_fuel_ID->setValue(ef.selectionIndex);
@@ -1126,6 +1217,7 @@ void ComponentsEditor::fillValveTable()
 {
     ui->table_valve->clearContents();
     ui->table_valve->setRowCount(valves.size());
+    ui->table_valve->setSortingEnabled(false);
 
     for(int i = 0; i < valves.size(); i++)
     {
@@ -1135,11 +1227,19 @@ void ComponentsEditor::fillValveTable()
                                              QString::number(valves[i].year)));
             ui->table_valve->setItem(i,2,new QTableWidgetItem(
                                              QString::number(valves[i].death)));
-            ui->table_valve->setItem(i,3,new QTableWidgetItem(valves[i].name));
+
+            if(valves[i].localName && localeManager != 0)
+                ui->table_valve->setItem(i,3,new QTableWidgetItem(localeManager->getWord(valves[i].name.toInt())));
+            else
+                ui->table_valve->setItem(i,3,new QTableWidgetItem(valves[i].name));
+
             ui->table_valve->setItem(i,4,new QTableWidgetItem(
                                          QString::number(valves[i].skill)));
 
     }
+
+    ui->table_valve->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -1152,8 +1252,11 @@ void ComponentsEditor::on_table_valve_cellClicked(int row, int column)
 
     for(int i = 0; i < valves.size(); i++)
     {
+        QString valvesName = valves[i].name;
+        if(valves[i].localName && localeManager != 0)
+            valvesName = localeManager->getWord(valves[i].name.toInt());
 
-         if(valves[i].name == componenetName && valves[i].selectionIndex == selectID)
+         if(valvesName == componenetName && valves[i].selectionIndex == selectID)
          {
              ComponentsManager::EngineValveComps    ev = valves[i];
              ui->spinBox_valve_group->setValue(ev.group);
@@ -1272,6 +1375,8 @@ void ComponentsEditor::fillInductionTable()
 {
     ui->table_induction->clearContents();
     ui->table_induction->setRowCount(inductions.size());
+    ui->table_induction->setSortingEnabled(false);
+
 
     for(int i = 0; i < inductions.size(); i++)
     {
@@ -1281,11 +1386,18 @@ void ComponentsEditor::fillInductionTable()
                                              QString::number(inductions[i].year)));
             ui->table_induction->setItem(i,2,new QTableWidgetItem(
                                              QString::number(inductions[i].death)));
-            ui->table_induction->setItem(i,3,new QTableWidgetItem(inductions[i].name));
+
+            if(inductions[i].localName && localeManager != 0)
+                ui->table_induction->setItem(i,3,new QTableWidgetItem(localeManager->getWord(inductions[i].name.toInt())));
+            else
+                ui->table_induction->setItem(i,3,new QTableWidgetItem(inductions[i].name));
+
             ui->table_induction->setItem(i,4,new QTableWidgetItem(
                                          QString::number(inductions[i].skill)));
 
     }
+    ui->table_induction->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -1297,8 +1409,12 @@ void ComponentsEditor::on_table_induction_cellClicked(int row, int column)
 
     for(int i = 0; i < inductions.size(); i++)
     {
+        QString inductionsName =inductions[i].name;
 
-         if(inductions[i].name == componenetName && inductions[i].selectionIndex == selectID)
+        if(inductions[i].localName && localeManager != 0)
+            inductionsName = localeManager->getWord(inductions[i].name.toInt());
+
+         if(inductionsName == componenetName && inductions[i].selectionIndex == selectID)
          {
              ComponentsManager::EngineInductionComps ei = inductions[i];
              ui->spinBox_induct_id->setValue(ei.selectionIndex);
@@ -1381,7 +1497,6 @@ void ComponentsEditor::on_button_gearbox_add_clicked()
 
         gb.designCosts = ui->spin_gearbox_designcost->value();
         gb.costs = ui->spin_gearbox_costs->value();
-        gb.skill = ui->spin_gearbox_design->value();
         gb.smooth = ui->spin_gearbox_smooth->value();
         gb.comfort = ui->spin_gearbox_comfort->value();
         gb.fuel = ui->spin_gearbox_fuel->value();
@@ -1456,7 +1571,11 @@ void ComponentsEditor::fillGearboxTable()
                                              QString::number(gearboxes[i].year)));
             ui->table_gearbox->setItem(i,2,new QTableWidgetItem(
                                              QString::number(gearboxes[i].death)));
-            ui->table_gearbox->setItem(i,3,new QTableWidgetItem(gearboxes[i].name));
+            if(gearboxes[i].localName && localeManager != 0)
+             ui->table_gearbox->setItem(i,3,new QTableWidgetItem(localeManager->getWord(gearboxes[i].name.toInt())));
+            else
+             ui->table_gearbox->setItem(i,3,new QTableWidgetItem(gearboxes[i].name));
+
             ui->table_gearbox->setItem(i,4,new QTableWidgetItem(
                                          QString::number(gearboxes[i].skill)));
 
@@ -1491,8 +1610,12 @@ void ComponentsEditor::on_table_gearbox_cellClicked(int row, int column)
 
     for(int i = 0; i < gearboxes.size(); i++)
     {
+        QString gearboxName =gearboxes[i].name;
 
-         if(gearboxes[i].name == componenetName && gearboxes[i].selectionIndex == selectID)
+        if(gearboxes[i].localName && localeManager != 0)
+            gearboxName = localeManager->getWord(gearboxes[i].name.toInt());
+
+         if(gearboxName == componenetName && gearboxes[i].selectionIndex == selectID)
          {
              ComponentsManager::GearBoxComps gb = gearboxes[i];
              ui->spin_gearbox_id->setValue(gb.selectionIndex);
@@ -1508,7 +1631,6 @@ void ComponentsEditor::on_table_gearbox_cellClicked(int row, int column)
 
              ui->spin_gearbox_designcost->setValue(gb.designCosts);
              ui->spin_gearbox_costs->setValue(gb.costs);
-             ui->spin_gearbox_design->setValue(gb.skill);
              ui->spin_gearbox_smooth->setValue(gb.smooth);
              ui->spin_gearbox_comfort->setValue(gb.comfort);
              ui->spin_gearbox_fuel->setValue(gb.fuel);
@@ -1604,7 +1726,7 @@ void ComponentsEditor::on_button_gears_remove_clicked()
     for(int i = 0; i < gearVector.size(); i++)
     {
 
-         if(gearVector[i].name == ui->lineEdit_gearbox_name->text() &&
+         if(gearVector[i].name == ui->lineEdit_gears_name->text() &&
                  gearVector[i].selectionIndex == ui->spinBox_gears_ID->value())
          {
              selectorIDMap.remove(gearVector[i].selectionIndex);
@@ -1621,6 +1743,8 @@ void ComponentsEditor::fillGearsTable()
 {
     ui->table_gears->clearContents();
     ui->table_gears->setRowCount(gearVector.size());
+    ui->table_gears->setSortingEnabled(false);
+
 
     for(int i = 0; i < gearVector.size(); i++)
     {
@@ -1630,13 +1754,20 @@ void ComponentsEditor::fillGearsTable()
                                              QString::number(gearVector[i].year)));
             ui->table_gears->setItem(i,2,new QTableWidgetItem(
                                              QString::number(gearVector[i].death)));
-            ui->table_gears->setItem(i,3,new QTableWidgetItem(gearVector[i].name));
+
+            if(gearVector[i].localName && localeManager != 0)
+                ui->table_gears->setItem(i,3,new QTableWidgetItem(localeManager->getWord(gearVector[i].name.toInt())));
+            else
+                ui->table_gears->setItem(i,3,new QTableWidgetItem(gearVector[i].name));
+
             ui->table_gears->setItem(i,4,new QTableWidgetItem(
                                          QString::number(gearVector[i].gears)));
             ui->table_gears->setItem(i,5,new QTableWidgetItem(
                                          QString::number(gearVector[i].skill)));
 
     }
+    ui->table_gears->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -1651,7 +1782,12 @@ void ComponentsEditor::on_table_gears_cellClicked(int row, int column)
     for(int i = 0; i < gearVector.size(); i++)
     {
 
-         if(gearVector[i].name == componenetName && gearVector[i].selectionIndex == selectID)
+        QString gearsName =gearVector[i].name;
+
+        if(gearVector[i].localName && localeManager != 0)
+            gearsName = localeManager->getWord(gearVector[i].name.toInt());
+
+         if(gearsName == componenetName && gearVector[i].selectionIndex == selectID)
          {
              ComponentsManager::GearGearsComps g = gearVector[i];
               ui->spinBox_gears_ID->setValue(g.selectionIndex);
@@ -1711,6 +1847,8 @@ void ComponentsEditor::on_button_cartype_add_clicked()
         ct.localDescription = ui->checkBox_carType_about_localized->isChecked();
         ct.localPara = 0;
 
+        ct.weight = ui->CarType_Weight_SpinBox->value();
+        ct.size = ui->CarType_Size_Spinner->value();
 
         if(!ct.picture.endsWith(".dds"))
         {
@@ -1745,10 +1883,6 @@ void ComponentsEditor::on_button_cartype_add_clicked()
 
         fillCarTypeTable();
 
-        if(ui->comboBox_carmodels_type->findText(ct.type) == -1)
-        {
-            ui->comboBox_carmodels_type->addItem(ct.type);
-        }
 
 }
 
@@ -1774,6 +1908,8 @@ void ComponentsEditor::fillCarTypeTable()
 {
     ui->table_cartype->clearContents();
     ui->table_cartype->setRowCount(typeVector.size());
+    ui->table_cartype->setSortingEnabled(false);
+
 
     for(int i = 0; i < typeVector.size(); i++)
     {
@@ -1783,9 +1919,21 @@ void ComponentsEditor::fillCarTypeTable()
                                              QString::number(typeVector[i].year)));
             ui->table_cartype->setItem(i,2,new QTableWidgetItem(
                                              QString::number(typeVector[i].death)));
-            ui->table_cartype->setItem(i,3,new QTableWidgetItem(typeVector[i].type));
+
+
+            if(typeVector[i].localName && localeManager != 0)
+                 ui->table_cartype->setItem(i,3,new QTableWidgetItem(localeManager->getWord(typeVector[i].type.toInt())));
+            else
+                ui->table_cartype->setItem(i,3,new QTableWidgetItem(typeVector[i].type));
+
+            if(ui->comboBox_carmodels_type->findText(typeVector[i].type) == -1)
+            {
+                ui->comboBox_carmodels_type->addItem(typeVector[i].type);
+            }
 
     }
+    ui->table_cartype->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -1799,7 +1947,13 @@ void ComponentsEditor::on_table_cartype_cellClicked(int row, int column)
     for(int i = 0; i < typeVector.size(); i++)
     {
 
-         if(typeVector[i].type == componenetName && typeVector[i].selectionIndex == selectID)
+        QString typeName =typeVector[i].type;
+
+        if(typeVector[i].localName && localeManager != 0)
+            typeName = localeManager->getWord(typeVector[i].type.toInt());
+
+
+         if(typeName == componenetName && typeVector[i].selectionIndex == selectID)
          {
              ComponentsManager::CarTypes ct = typeVector[i];
               ui->spinBox_carType_ID->setValue(ct.selectionIndex);
@@ -1838,6 +1992,9 @@ void ComponentsEditor::on_table_cartype_cellClicked(int row, int column)
 
               ui->checkBox_carType_Name_Localized->setChecked(ct.localName);
               ui->checkBox_carType_about_localized->setChecked(ct.localDescription);
+
+              ui->CarType_Weight_SpinBox->setValue(ct.weight);
+              ui->CarType_Size_Spinner->setValue(ct.size);
 
              break;
          }
@@ -1898,6 +2055,7 @@ void ComponentsEditor::fillCarModelTable()
 {
     ui->Table_CarModels->clearContents();
     ui->Table_CarModels->setRowCount(carModelVector.size());
+    ui->Table_CarModels->setSortingEnabled(false);
 
     for(int i = 0; i < carModelVector.size(); i++)
     {
@@ -1906,10 +2064,15 @@ void ComponentsEditor::fillCarModelTable()
             ui->Table_CarModels->setItem(i,1,new QTableWidgetItem(
                                              QString::number(carModelVector[i].death)));
             ui->Table_CarModels->setItem(i,2,new QTableWidgetItem(carModelVector[i].name));
-            ui->Table_CarModels->setItem(i,3,new QTableWidgetItem(carModelVector[i].typeName));
+
+            if(carModelVector[i].localDescription && localeManager != 0)
+                 ui->Table_CarModels->setItem(i,3,new QTableWidgetItem(localeManager->getWord(carModelVector[i].typeName.toInt())));
+            else
+                 ui->Table_CarModels->setItem(i,3,new QTableWidgetItem(carModelVector[i].typeName));
+
             ui->Table_CarModels->setItem(i,4,new QTableWidgetItem(carModelVector[i].model));
     }
-
+    ui->Table_CarModels->setSortingEnabled(true);
     fillAIPopComboData();
 }
 
@@ -1922,8 +2085,12 @@ void ComponentsEditor::on_Table_CarModels_cellClicked(int row, int column)
 
     for(int i = 0; i < carModelVector.size(); i++)
     {
+        QString typeName =carModelVector[i].typeName;
 
-         if(carModelVector[i].name == Name && carModelVector[i].typeName == carType)
+        if(carModelVector[i].localDescription && localeManager != 0)
+            typeName = localeManager->getWord(carModelVector[i].typeName.toInt());
+
+         if(carModelVector[i].name == Name && typeName == carType)
          {
               ComponentsManager::CarModels cm = carModelVector[i];
                ui->lineEdit_carmodels_Name->setText(cm.name);
@@ -2019,6 +2186,8 @@ void ComponentsEditor::fillAccessoriesTable()
 {
     ui->table_Accessory->clearContents();
     ui->table_Accessory->setRowCount(accessories.size());
+    ui->table_Accessory->setSortingEnabled(false);
+
 
     for(int i = 0; i < accessories.size(); i++)
     {
@@ -2027,9 +2196,16 @@ void ComponentsEditor::fillAccessoriesTable()
             ui->table_Accessory->setItem(i,1,new QTableWidgetItem(
                                              QString::number(accessories[i].death)));
             ui->table_Accessory->setItem(i,2,new QTableWidgetItem(accessories[i].name));
-            ui->table_Accessory->setItem(i,3,new QTableWidgetItem(accessories[i].typeName));
+
+            if(accessories[i].localDescription && localeManager != 0)
+               ui->table_Accessory->setItem(i,3,new QTableWidgetItem(localeManager->getWord(accessories[i].typeName.toInt())));
+            else
+               ui->table_Accessory->setItem(i,3,new QTableWidgetItem(accessories[i].typeName));
+
             ui->table_Accessory->setItem(i,4,new QTableWidgetItem(accessories[i].model));
     }
+
+    ui->table_Accessory->setSortingEnabled(true);
 
     fillAIPopComboData();
 }
@@ -2042,8 +2218,12 @@ void ComponentsEditor::on_table_Accessory_cellClicked(int row, int column)
 
     for(int i = 0; i < accessories.size(); i++)
     {
+        QString typeName =accessories[i].typeName;
 
-         if(accessories[i].name == Name && accessories[i].typeName == carType)
+        if(accessories[i].localDescription && localeManager != 0)
+            typeName = localeManager->getWord(accessories[i].typeName.toInt());
+
+         if(accessories[i].name == Name && typeName == carType)
          {
               ComponentsManager::AccessoriesModels am = accessories[i];
                ui->lineEdit_Accessory_Name->setText(am.name);
@@ -2104,6 +2284,24 @@ void ComponentsEditor::on_button_aipop_remove_clicked()
     {
         aiPops.remove(keyName);
     }
+    else
+    {
+            QModelIndexList selection = ui->table_aipop->selectionModel()->selectedIndexes();
+
+            foreach(QModelIndex index, selection)
+            {
+                QString keyNameAttemptTwo = ui->table_aipop->item(index.row(),0)->text()+"-"+
+                        ui->table_aipop->item(index.row(),2)->text();
+
+                if(aiPops.contains(keyNameAttemptTwo))
+                {
+                    aiPops.remove(keyNameAttemptTwo);
+                }
+            }
+
+
+    }
+
 
     fillAIPopTable();
 }
@@ -2114,6 +2312,8 @@ void ComponentsEditor::fillAIPopTable()
     ui->table_aipop->clearContents();
     ui->table_aipop->setRowCount(aiPops.size());
 
+    ui->table_aipop->setSortingEnabled(false);
+
     int i = 0;
     for(QMap<QString, ComponentsManager::aiPopData>::Iterator it = aiPops.begin(); it != aiPops.end(); ++it)
     {
@@ -2122,7 +2322,31 @@ void ComponentsEditor::fillAIPopTable()
 
             ui->table_aipop->setItem(i,0,new QTableWidgetItem(
                                          QString::number((*it).year)));
-            ui->table_aipop->setItem(i,1,new QTableWidgetItem((*it).name));
+
+            QStringList sl = (*it).name.split("-");
+            bool ok = false;
+            QString partOne = "";
+            foreach(QString compName, sl)
+            {
+
+                int local = compName.toInt(&ok, 10);
+
+                if(ok && local > 10000 && localeManager != 0 )
+                {
+                     ui->table_aipop->setItem(i,1,new QTableWidgetItem(partOne + "-"+localeManager->getWord(local)));
+                     break;
+                }
+                else
+                {
+                    partOne = compName;
+                    ok = false;
+                }
+            }
+
+            if(!ok)
+              ui->table_aipop->setItem(i,1,new QTableWidgetItem((*it).name));
+
+
             ui->table_aipop->setItem(i,2,item);
             ui->table_aipop->setItem(i,3,new QTableWidgetItem(
                                          QString::number((*it).fuel)));
@@ -2137,6 +2361,9 @@ void ComponentsEditor::fillAIPopTable()
 
             i++;
     }
+
+    ui->table_aipop->setSortingEnabled(true);
+
 
     fillAIPopComboData();
 }
@@ -2158,7 +2385,33 @@ void ComponentsEditor::on_table_aipop_cellClicked(int row, int column)
                ui->spinBox_aipop_costs->setValue(ap.costs);
                ui->spinBox_aipop_ovrpop->setValue(ap.ovrpop);
 
-               ui->comboBox_aipop_id->findText(ap.name);
+               QStringList sl = ap.name.split("-");
+               bool ok = false;
+               QString partOne = "";
+               QString textName = "";
+               foreach(QString compName, sl)
+               {
+
+                   int local = compName.toInt(&ok, 10);
+
+                   if(ok && local > 10000 && localeManager != 0 )
+                   {
+                        textName = partOne + "-"+localeManager->getWord(local);
+                        break;
+                   }
+                   else
+                   {
+                       partOne = compName;
+                       ok = false;
+                   }
+               }
+
+               if(!ok)
+                textName = ap.name;
+
+
+
+               ui->comboBox_aipop_id->setCurrentIndex(ui->comboBox_aipop_id->findText(textName));
 
          }
 
@@ -2170,7 +2423,32 @@ void ComponentsEditor::on_table_aipop_cellClicked(int row, int column)
      ui->comboBox_aipop_id->clear();
      for(QMap<int, QString>::Iterator it = selectorIDMap.begin(); it != selectorIDMap.end(); ++it)
      {
-         ui->comboBox_aipop_id->addItem((*it), QVariant(it.key()));
+         QString textName = "";
+         QStringList sl = (*it).split("-");
+         bool ok = false;
+         QString partOne = "";
+         foreach(QString compName, sl)
+         {
+
+             int local = compName.toInt(&ok, 10);
+
+             if(ok && local > 10000 && localeManager != 0 )
+             {
+                  textName = partOne + "-"+localeManager->getWord(local);
+                  break;
+             }
+             else
+             {
+                 partOne = compName;
+                 ok = false;
+             }
+         }
+
+         if(!ok)
+           textName = (*it);
+
+
+         ui->comboBox_aipop_id->addItem(textName, QVariant(it.key()));
      }
  }
 
@@ -2203,7 +2481,7 @@ void ComponentsEditor::on_button_select_folder_picture_clicked()
     ui->comboBox_drivertrain_picture->addItems(fileList);
     ui->comboBox_englayout_picture->addItems(fileList);
     ui->comboBox_fuel_picture->addItems(fileList);
-    ui->comboBox_gearbox_gears->addItems(fileList);
+   // ui->comboBox_gearbox_gears->addItems(fileList);
     ui->comboBox_gears_picture->addItems(fileList);
     ui->comboBox_induct_picture->addItems(fileList);
     ui->comboBox_suspension_picture->addItems(fileList);
@@ -2337,21 +2615,24 @@ void ComponentsEditor::on_button_openComponentsFiles_clicked()
        for(int i = 0; i < cylinders.size(); i++)
        {
          selectorIDMap.insert(cylinders[i].selectionIndex,"EngineCylinder-"+cylinders[i].name);
+         ui->comboBox_englayout_cylrestrict->addItem(cylinders[i].name);
        }
 
        for(int i = 0; i < fuels.size(); i++)
        {
          selectorIDMap.insert(fuels[i].selectionIndex,"EngineFuel-"+fuels[i].name);
+          ui->comboBox_englayout_fuelrestrict->addItem(fuels[i].name);
        }
 
        for(int i = 0; i < valves.size(); i++)
        {
-         selectorIDMap.insert(valves[i].selectionIndex,"EngineValve-"+valves[i].name);
+         selectorIDMap.insert(valves[i].selectionIndex,"EngineValve-"+valves[i].name);         
        }
 
        for(int i = 0; i < inductions.size(); i++)
        {
          selectorIDMap.insert(inductions[i].selectionIndex,"EngineInduction-"+inductions[i].name);
+          ui->combo_englayout_inductrestrict->addItem(inductions[i].name);
        }
 
        for(int i = 0; i < gearboxes.size(); i++)
@@ -2362,6 +2643,7 @@ void ComponentsEditor::on_button_openComponentsFiles_clicked()
        for(int i = 0; i < gearVector.size(); i++)
        {
          selectorIDMap.insert(gearVector[i].selectionIndex,"Gears-"+gearVector[i].name);
+         ui->comboBox_gearbox_gears->addItem(gearVector[i].name);
        }
 
        for(int i = 0; i < typeVector.size(); i++)
@@ -2398,6 +2680,8 @@ void ComponentsEditor::on_button_openComponentsFiles_clicked()
            }
 
        }
+
+
 
        delete cm;
     }
@@ -2490,4 +2774,27 @@ void ComponentsEditor::on_button_returnToMain_clicked()
 void ComponentsEditor::sectionDoubleClickedSlot(int index)
 {
      ui->table_aipop->sortByColumn(index,Qt::AscendingOrder);
+}
+
+void ComponentsEditor::on_button_select_localizationFile_clicked()
+{
+    QString openFileName =  QFileDialog::getOpenFileName(this, "Open Localization File", "",
+                                                         "XML Files (*.xml)");
+
+    if (openFileName != "")
+    {
+        //Create localization mananger
+        localeManager = new LocalizationManager(openFileName, cp_wsc.ComponentsCW);
+
+        //If localization has words
+        if(localeManager->size()!=0)
+        {
+            ui->label_localization_filename->setText(openFileName);
+
+        }
+    }
+    else
+    {
+        return;
+    }
 }

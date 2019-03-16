@@ -81,50 +81,6 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="4">
-       <widget class="Line" name="line_13">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="3">
-       <widget class="Line" name="line_10">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="Line" name="line_7">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="Button_CityEditor">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>City Editor</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/Block of flats_#222222_64px.png</normaloff>:/.png/Block of flats_#222222_64px.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-       </widget>
-      </item>
       <item row="3" column="0">
        <widget class="QPushButton" name="Button_TurnEventsEditor">
         <property name="minimumSize">
@@ -171,33 +127,10 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="3">
-       <widget class="Line" name="line_15">
+      <item row="6" column="3">
+       <widget class="Line" name="line_10">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="4">
-       <widget class="QPushButton" name="Button_LogoEditor">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Player Logo Editor</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/Paint_#222222_64px.png</normaloff>:/.png/Paint_#222222_64px.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
+         <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -224,38 +157,15 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="Button_ComponentEditor">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Components Editor</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/tire-icon.png</normaloff>:/.png/tire-icon.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="Line" name="line_14">
+      <item row="1" column="2">
+       <widget class="Line" name="line_12">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="5" column="2">
-       <widget class="QPushButton" name="Button_MagazineEditor">
+      <item row="7" column="4">
+       <widget class="QPushButton" name="button_ddsConverter">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -263,94 +173,12 @@
          </size>
         </property>
         <property name="text">
-         <string>Magazine Review Editor</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/Book with writing_#222222_64px.png</normaloff>:/.png/Book with writing_#222222_64px.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
+         <string>Aorta DDS Texture Maker</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="Button_ModDataTools">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Mod Data Tools</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/make-icon.png</normaloff>:/.png/make-icon.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="Button_MapDataTools">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>100</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Map Data Tools</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/.png/globe-icon.png</normaloff>:/.png/globe-icon.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>64</width>
-          <height>64</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="Line" name="line_11">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="Line" name="line_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QPushButton" name="Button_NewsPaperEditor">
+      <item row="6" column="4">
+       <widget class="QPushButton" name="Button_LocalizationEditor">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -358,11 +186,11 @@
          </size>
         </property>
         <property name="text">
-         <string>Newspaper Article Editor</string>
+         <string>Localization Editor</string>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/.png/newspaper-icon.png</normaloff>:/.png/newspaper-icon.png</iconset>
+          <normaloff>:/.png/Edit text_#222222_64px.png</normaloff>:/.png/Edit text_#222222_64px.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -395,10 +223,135 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
-       <widget class="Line" name="line">
+      <item row="6" column="1">
+       <widget class="Line" name="line_5">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="Button_ModDataTools">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Mod Data Tools</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/make-icon.png</normaloff>:/.png/make-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="Button_Racing">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Racing Series Editor</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/X_#222222_64px.png</normaloff>:/.png/X_#222222_64px.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QPushButton" name="Button_MagazineEditor">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Magazine Review Editor</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/Book with writing_#222222_64px.png</normaloff>:/.png/Book with writing_#222222_64px.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="Line" name="line_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="Button_MapDataTools">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Map Data Tools</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/globe-icon.png</normaloff>:/.png/globe-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>64</width>
+          <height>64</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="Line" name="line_13">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -413,7 +366,7 @@
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>100</height>
+          <height>75</height>
          </size>
         </property>
         <property name="text">
@@ -431,6 +384,19 @@
         </property>
        </widget>
       </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="button_ContractEditor">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Contract Information Editor</string>
+        </property>
+       </widget>
+      </item>
       <item row="5" column="3">
        <widget class="Line" name="line_9">
         <property name="orientation">
@@ -438,8 +404,52 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="Line" name="line_3">
+      <item row="5" column="1">
+       <widget class="Line" name="line_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2">
+       <widget class="QPushButton" name="Button_NewsPaperEditor">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Newspaper Article Editor</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/newspaper-icon.png</normaloff>:/.png/newspaper-icon.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="Line" name="line_6">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="Line" name="line_8">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -468,43 +478,29 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
-       <widget class="Line" name="line_6">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="Line" name="line_8">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="Line" name="line_12">
+      <item row="1" column="3">
+       <widget class="Line" name="line_15">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="6" column="1">
-       <widget class="Line" name="line_5">
+      <item row="2" column="3">
+       <widget class="Line" name="line_7">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="Line" name="line_4">
+      <item row="1" column="1">
+       <widget class="Line" name="line_14">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="6" column="0">
-       <widget class="QPushButton" name="Button_Racing">
+      <item row="2" column="0">
+       <widget class="QPushButton" name="Button_CityEditor">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -512,11 +508,34 @@
          </size>
         </property>
         <property name="text">
-         <string>Racing Series Editor</string>
+         <string>City Editor</string>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/.png/X_#222222_64px.png</normaloff>:/.png/X_#222222_64px.png</iconset>
+          <normaloff>:/.png/Block of flats_#222222_64px.png</normaloff>:/.png/Block of flats_#222222_64px.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QPushButton" name="Button_ComponentEditor">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Components Editor</string>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>:/.png/tire-icon.png</normaloff>:/.png/tire-icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -539,8 +558,15 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="4">
-       <widget class="QPushButton" name="Button_LocalizationEditor">
+      <item row="1" column="0">
+       <widget class="Line" name="line_11">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QPushButton" name="Button_LogoEditor">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -548,11 +574,11 @@
          </size>
         </property>
         <property name="text">
-         <string>Localization Editor</string>
+         <string>Player Logo Editor</string>
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>:/.png/Edit text_#222222_64px.png</normaloff>:/.png/Edit text_#222222_64px.png</iconset>
+          <normaloff>:/.png/Paint_#222222_64px.png</normaloff>:/.png/Paint_#222222_64px.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -562,8 +588,8 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0">
-       <widget class="QPushButton" name="button_ContractEditor">
+      <item row="8" column="0">
+       <widget class="QPushButton" name="pushButton">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -571,20 +597,7 @@
          </size>
         </property>
         <property name="text">
-         <string>Contract Information Editor</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="4">
-       <widget class="QPushButton" name="button_ddsConverter">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>50</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>Aorta DDS Texture Maker</string>
+         <string>Steam Workshop</string>
         </property>
        </widget>
       </item>
@@ -876,6 +889,26 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QWidget" name="SteamworksWidgetContainer" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+   </widget>   
+   <zorder>SteamworksWidgetContainer</zorder>
    <zorder>PreMadeVehicleWidgetContainer</zorder>
    <zorder>ScenarioWidgetContainer</zorder>
    <zorder>DidYouKnowWidgetContainer</zorder>

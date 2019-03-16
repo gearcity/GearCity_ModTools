@@ -115,6 +115,7 @@ private slots:
 
     void on_Button_MapTool_MaterialEditor_clicked();
 
+
 private:
     Ui::MapDataTool *ui;
     widgetContainerStorage cp_wsc;

@@ -224,7 +224,7 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
                             it != turnEventMap.end(); ++it)
                         {
                             for(QList<TurnData::TE_CityEvts>::Iterator celIT =
-                                (*it).CityEvtList.begin(); celIT != (*it).CityEvtList.end();)
+                                (*it).CityEvtList.begin(); celIT != (*it).CityEvtList.end(); ++celIT)
                             {
                                 if((*celIT).id >= saveDS.id)
                                 {
@@ -274,7 +274,7 @@ void CityEditor::on_Button_CE_SaveCityChange_clicked()
                                 {
                                     rekeyedMap.insert(cdIT.key(),cdIT.value());
                                 }
-                                else if((*cdIT).id > saveDS.id)
+                                else if((*cdIT).id >= saveDS.id)
                                 {
                                     (*cdIT).id++;
                                     rekeyedMap.insert((*cdIT).id,cdIT.value());
@@ -607,7 +607,7 @@ void CityEditor::on_Button_CE_RemoveSelectedCity_clicked()
                 it != turnEventMap.end(); ++it)
             {
                 for(QList<TurnData::TE_CityEvts>::Iterator celIT = (*it).CityEvtList.begin();
-                    celIT != (*it).CityEvtList.end();)
+                    celIT != (*it).CityEvtList.end(); ++celIT)
                 {
                     if((*celIT).id == selectedID)
                     {
@@ -1269,4 +1269,27 @@ void CityEditor::setSaveFileNameExternally(QString fileName)
 void CityEditor::setCityMapExternally(QMap<int,CityData::dataStore> newMap)
 {
     cityMap = newMap;
+}
+
+void CityEditor::on_pushButton_clicked()
+{
+    for(QMap<int,CityData::dataStore>::Iterator itcm = cityMap.begin();
+        itcm != cityMap.end(); ++itcm)
+    {
+        double changeAmount = ui->doubleSpinBox->value();
+        if((*itcm).population < ui->spinBox->value())
+        {
+            changeAmount += (1-((*itcm).population/static_cast<double>(ui->spinBox->value()))) * ui->doubleSpinBox_3->value();
+        }
+
+        if((*itcm).perCapita < ui->spinBox_2->value())
+        {
+           changeAmount += (1-((*itcm).perCapita/static_cast<double>(ui->spinBox_2->value()))) * ui->doubleSpinBox_2->value();
+        }
+
+        (*itcm).buyerRate *= changeAmount;
+
+
+    }
+
 }

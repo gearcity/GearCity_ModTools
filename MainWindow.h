@@ -59,6 +59,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "RacingSeriesEditor.h"
 #include "ReviewsEditor.h"
 #include "ScenarioEditor.h"
+#include "SteamWorksUploader.h"
+#include "ContractInformationEditor.h"
 
 
 
@@ -101,6 +103,8 @@ private slots:
 
     void on_button_ddsConverter_clicked();
 
+    void on_pushButton_clicked();
+
 private:
      Ui::MainWindow *ui;
 
@@ -111,6 +115,7 @@ private:
      TurnEventsEditor *turnEventEditorTool;
      ModEditor *modEditorTool;
 
+     ContractInformationEditor *contractEditorTool;
      ComponentsEditor *componentsEditorTool;
      DYKEditor *dykTool;
      MusicEditor *musicTool;
@@ -121,6 +126,7 @@ private:
      RacingSeriesEditor *racingTool;
      ReviewsEditor *reviewTool;
      ScenarioEditor *scenarioTool;
+     SteamWorksUploader *steamworksTool;
 
      //Widget Storage Container for all Editor containers
      //This is to be used to raise and lower various editors in the program.

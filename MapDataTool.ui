@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>773</height>
+    <height>806</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -777,160 +777,13 @@
     </layout>
    </item>
   </layout>
-  <widget class="QGroupBox" name="Group_Regions_Rename_Change">
-   <property name="geometry">
-    <rect>
-     <x>577</x>
-     <y>67</y>
-     <width>561</width>
-     <height>691</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>true</bool>
-   </property>
-   <property name="title">
-    <string>Rename Regions</string>
-   </property>
-   <layout class="QFormLayout" name="formLayout_RenameChange">
-    <property name="fieldGrowthPolicy">
-     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_31">
-      <property name="text">
-       <string>Region 1 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_23">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_1">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_1"/>
-      </item>
-     </layout>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_32">
-      <property name="text">
-       <string>Region 2 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_24">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_2">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_2"/>
-      </item>
-     </layout>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_33">
-      <property name="text">
-       <string>Region 3 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_25">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_3">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_3"/>
-      </item>
-     </layout>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_34">
-      <property name="text">
-       <string>Region 4 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_26">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_4">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_4"/>
-      </item>
-     </layout>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_35">
-      <property name="text">
-       <string>Region 5 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_27">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_5">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_5"/>
-      </item>
-     </layout>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_36">
-      <property name="text">
-       <string>Region 6 Name: </string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <layout class="QHBoxLayout" name="horizontalLayout_28">
-      <item>
-       <widget class="QCheckBox" name="checkbox_RegionLocaziation_6">
-        <property name="text">
-         <string>Localization</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="text_regionName_6"/>
-      </item>
-     </layout>
-    </item>
-   </layout>
-  </widget>
   <widget class="QGroupBox" name="Group_MapTools_MapArtwork_Change">
    <property name="geometry">
     <rect>
      <x>577</x>
      <y>67</y>
-     <width>561</width>
-     <height>644</height>
+     <width>541</width>
+     <height>641</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -1254,8 +1107,8 @@
     <rect>
      <x>577</x>
      <y>67</y>
-     <width>561</width>
-     <height>644</height>
+     <width>541</width>
+     <height>641</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -1265,6 +1118,147 @@
     <string>City Script Loading Years</string>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_6">
+    <item>
+     <widget class="QGroupBox" name="Group_Regions_Rename_Change">
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+      <property name="title">
+       <string>Rename Regions</string>
+      </property>
+      <layout class="QFormLayout" name="formLayout_RenameChange">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_31">
+         <property name="text">
+          <string>Region 1 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_23">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_1">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_1"/>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_32">
+         <property name="text">
+          <string>Region 2 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_24">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_2">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_2"/>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>Region 3 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_25">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_3">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_3"/>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Region 4 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_26">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_4">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_4"/>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>Region 5 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_27">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_5">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_5"/>
+         </item>
+        </layout>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_36">
+         <property name="text">
+          <string>Region 6 Name: </string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_28">
+         <item>
+          <widget class="QCheckBox" name="checkbox_RegionLocaziation_6">
+           <property name="text">
+            <string>Localization</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="text_regionName_6"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
@@ -1333,11 +1327,6 @@
     </item>
    </layout>
   </widget>
-  <zorder>Group_MapTools_MapArtwork_Change</zorder>
-  <zorder>line</zorder>
-  <zorder>GroupBox_MapTools_CityScriptLoadingYear</zorder>
-  <zorder>GroupBox_MapTools_AIStartingOptions</zorder>
-  <zorder>Group_Regions_Rename_Change</zorder>
  </widget>
  <resources/>
  <connections>
@@ -1348,11 +1337,11 @@
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>428</x>
-     <y>456</y>
+     <x>503</x>
+     <y>454</y>
     </hint>
     <hint type="destinationlabel">
-     <x>411</x>
+     <x>577</x>
      <y>130</y>
     </hint>
    </hints>
@@ -1364,12 +1353,12 @@
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>370</x>
-     <y>710</y>
+     <x>503</x>
+     <y>737</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1121</x>
-     <y>559</y>
+     <x>1103</x>
+     <y>626</y>
     </hint>
    </hints>
   </connection>
@@ -1384,7 +1373,7 @@
      <y>541</y>
     </hint>
     <hint type="destinationlabel">
-     <x>552</x>
+     <x>577</x>
      <y>323</y>
     </hint>
    </hints>
@@ -1392,16 +1381,16 @@
   <connection>
    <sender>button_edit_region_names</sender>
    <signal>clicked()</signal>
-   <receiver>Group_Regions_Rename_Change</receiver>
+   <receiver>GroupBox_MapTools_CityScriptLoadingYear</receiver>
    <slot>raise()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>371</x>
-     <y>368</y>
+     <x>440</x>
+     <y>353</y>
     </hint>
     <hint type="destinationlabel">
-     <x>665</x>
-     <y>391</y>
+     <x>1108</x>
+     <y>694</y>
     </hint>
    </hints>
   </connection>

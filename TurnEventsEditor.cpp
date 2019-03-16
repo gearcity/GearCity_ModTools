@@ -422,6 +422,9 @@ void TurnEventsEditor::refreshOfficeTable()
     ui->Table_Office->clearContents();
     ui->Combo_Office_File_Editable->clear();
     ui->Combo_Office_File_Editable->clearEditText();
+    ui->Table_Office->setSortingEnabled(false);
+
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -443,8 +446,14 @@ void TurnEventsEditor::refreshOfficeTable()
                 month = 12;
             }
 
-            ui->Table_Office->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Office->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Office->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
+
             ui->Table_Office->setItem(rowNumber,1,new QTableWidgetItem((*it).officeFile));
 
             if(ui->Combo_Office_File_Editable->findText((*it).officeFile) == -1)
@@ -455,6 +464,8 @@ void TurnEventsEditor::refreshOfficeTable()
             rowNumber++;
         }
     }
+
+    ui->Table_Office->setSortingEnabled(true);
 
 }
 
@@ -471,6 +482,8 @@ void TurnEventsEditor::refreshGlobalInterestTable()
 
     //Clear Table
     ui->Table_Interest->clearContents();
+    ui->Table_Interest->setSortingEnabled(false);
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -493,14 +506,22 @@ void TurnEventsEditor::refreshGlobalInterestTable()
                 month = 12;
             }
 
-            ui->Table_Interest->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Interest->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Interest->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
             ui->Table_Interest->setItem(rowNumber,1,new QTableWidgetItem(QString::number(
                                         (*it).globalInterest)));
 
             rowNumber++;
         }
     }
+    ui->Table_Interest->setSortingEnabled(true);
+    ui->Table_Interest->sortByColumn(0);
+
 }
 
 //Refresh Car Price Rate Table
@@ -516,6 +537,7 @@ void TurnEventsEditor::refreshCarPriceInterestTable()
 
     //Clear Table
     ui->Table_CarPrice->clearContents();
+    ui->Table_CarPrice->setSortingEnabled(false);
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -538,14 +560,24 @@ void TurnEventsEditor::refreshCarPriceInterestTable()
                 month = 12;
             }
 
-            ui->Table_CarPrice->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+
+            if(month < 10)
+                ui->Table_CarPrice->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_CarPrice->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
             ui->Table_CarPrice->setItem(rowNumber,1,new QTableWidgetItem(
                                             QString::number((*it).carInflation)));
 
             rowNumber++;
         }
     }
+
+    ui->Table_CarPrice->setSortingEnabled(true);
+    ui->Table_CarPrice->sortByColumn(0);
+
 }
 
 //Refresh Fuel Rate Table
@@ -561,6 +593,8 @@ void TurnEventsEditor::refreshFuelTable()
 
     //Clear Table
    ui->Table_Gas->clearContents();
+   ui->Table_Gas->setSortingEnabled(false);
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -583,14 +617,23 @@ void TurnEventsEditor::refreshFuelTable()
                 month = 12;
             }
 
-            ui->Table_Gas->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Gas->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Gas->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
             ui->Table_Gas->setItem(rowNumber,1,new QTableWidgetItem(
                                        QString::number((*it).globalFuelRate)));
 
             rowNumber++;
         }
     }
+
+    ui->Table_Gas->setSortingEnabled(true);
+    ui->Table_Gas->sortByColumn(0);
+
 }
 
 //Refresh Buyer Rate Table
@@ -606,6 +649,8 @@ void TurnEventsEditor::refreshBuyerTable()
 
     //Clear Table
     ui->Table_Buy->clearContents();
+    ui->Table_Buy->setSortingEnabled(false);
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -628,14 +673,24 @@ void TurnEventsEditor::refreshBuyerTable()
                 month = 12;
             }
 
-            ui->Table_Buy->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Buy->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Buy->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
+
             ui->Table_Buy->setItem(rowNumber,1,new QTableWidgetItem(
                                        QString::number((*it).buyerRate)));
 
             rowNumber++;
         }
     }
+
+    ui->Table_Buy->setSortingEnabled(true);
+    ui->Table_Buy->sortByColumn(0);
+
 }
 
 //Refresh Pension Rate Table
@@ -651,6 +706,8 @@ void TurnEventsEditor::refreshPensionTable()
 
     //Clear Table
     ui->Table_Pension->clearContents();
+    ui->Table_Pension->setSortingEnabled(false);
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -673,14 +730,24 @@ void TurnEventsEditor::refreshPensionTable()
                 month = 12;
             }
 
-            ui->Table_Pension->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Pension->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Pension->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
+
             ui->Table_Pension->setItem(rowNumber,1,new QTableWidgetItem(
                                            QString::number((*it).pensionRate)));
 
             rowNumber++;
         }
     }
+
+    ui->Table_Pension->setSortingEnabled(true);
+    ui->Table_Pension->sortByColumn(0);
+
 }
 
 //Refresh Stock Rate Table
@@ -696,6 +763,8 @@ void TurnEventsEditor::refreshStockTable()
 
     //Clear Table
     ui->Table_Stock->clearContents();
+    ui->Table_Stock->setSortingEnabled(false);
+
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -718,14 +787,24 @@ void TurnEventsEditor::refreshStockTable()
                 month = 12;
             }
 
-            ui->Table_Stock->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                      "/"+QString::number(year) ) );
+            if(month < 10)
+                ui->Table_Stock->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                      "/0"+QString::number(month) ) );
+            else
+                ui->Table_Stock->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/"+QString::number(month) ) );
+
+
             ui->Table_Stock->setItem(rowNumber,1,new QTableWidgetItem(
                                          QString::number((*it).stockRate)));
 
             rowNumber++;
         }
     }
+
+    ui->Table_Stock->setSortingEnabled(true);
+    ui->Table_Stock->sortByColumn(0);
+
 }
 
 //Refresh Component Tables
@@ -743,6 +822,7 @@ void TurnEventsEditor::refreshComponentsTable()
 
     //Clear Table
     ui->Table_Components->clearContents();
+    ui->Table_Components->setSortingEnabled(false);
 
 
     //Loop through turn map
@@ -779,8 +859,12 @@ void TurnEventsEditor::refreshComponentsTable()
                                 comboIndex)+")";
                 }
 
-                ui->Table_Components->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                          "/"+QString::number(year) ) );
+                if(month < 10)
+                    ui->Table_Components->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/0"+QString::number(month) ) );
+                else
+                    ui->Table_Components->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                              "/"+QString::number(month) ) );
 
 
                 ui->Table_Components->setItem(rowNumber,1,new QTableWidgetItem(
@@ -794,6 +878,9 @@ void TurnEventsEditor::refreshComponentsTable()
             }
         }
     }
+
+     ui->Table_Components->setSortingEnabled(true);
+     ui->Table_Components->sortByColumn(0);
 }
 
 
@@ -811,6 +898,7 @@ void TurnEventsEditor::refreshVehiclePopTable()
 
     //Clear Table
     ui->Table_Car->clearContents();
+     ui->Table_Car->setSortingEnabled(false);
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -848,8 +936,13 @@ void TurnEventsEditor::refreshVehiclePopTable()
                                 comboIndex)+")";
                 }
 
-                ui->Table_Car->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                          "/"+QString::number(year) ) );
+
+                if(month < 10)
+                    ui->Table_Car->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/0"+QString::number(month) ) );
+                else
+                    ui->Table_Car->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                              "/"+QString::number(month) ) );
 
 
                 ui->Table_Car->setItem(rowNumber,1,new QTableWidgetItem(
@@ -875,6 +968,11 @@ void TurnEventsEditor::refreshVehiclePopTable()
             }
         }
     }
+
+    ui->Table_Car->setSortingEnabled(true);
+    ui->Table_Car->sortByColumn(0);
+
+
 }
 
 //Refresh City Events Tables
@@ -889,8 +987,8 @@ void TurnEventsEditor::refreshCityEventsTable()
     int finishYearLimit = ui->Spin_FinishYear->value()*12;
 
     //Clear Table
-    ui->Table_City->clearContents();
-
+    ui->Table_City->setSortingEnabled(false);
+    ui->Table_City->clearContents();   
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -917,8 +1015,12 @@ void TurnEventsEditor::refreshCityEventsTable()
                     month = 12;
                 }
 
-                ui->Table_City->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                          "/"+QString::number(year) ) );
+                if(month < 10)
+                    ui->Table_City->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/0"+QString::number(month) ) );
+                else
+                    ui->Table_City->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                              "/"+QString::number(month) ) );
 
                 ui->Table_City->setItem(rowNumber,1,new QTableWidgetItem(
                                              QString::number((*itCE).id)));
@@ -951,6 +1053,12 @@ void TurnEventsEditor::refreshCityEventsTable()
             }
         }
     }
+
+    ui->Table_City->setSortingEnabled(true);
+    ui->Table_City->sortByColumn(0);
+
+
+
 }
 
 
@@ -967,6 +1075,7 @@ void TurnEventsEditor::refreshNewsPaperTable()
 
     //Clear Table
     ui->Table_News->clearContents();
+    ui->Table_News->setSortingEnabled(false);
 
     //Loop through turn map
     for(QMap<int,TurnData::TE_Data>::iterator it = turnMap.begin(); it != turnMap.end(); ++it)
@@ -993,8 +1102,12 @@ void TurnEventsEditor::refreshNewsPaperTable()
                     month = 12;
                 }
 
-                ui->Table_News->setItem(rowNumber,0,new QTableWidgetItem(QString::number(month)+
-                                                          "/"+QString::number(year) ) );
+                if(month < 10)
+                    ui->Table_News->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                          "/0"+QString::number(month) ) );
+                else
+                    ui->Table_News->setItem(rowNumber,0,new QTableWidgetItem(QString::number(year)+
+                                                              "/"+QString::number(month) ) );
 
                 if((*itNE).localization)
                 {
@@ -1020,6 +1133,9 @@ void TurnEventsEditor::refreshNewsPaperTable()
             }
         }
     }
+
+    ui->Table_News->setSortingEnabled(true);
+    ui->Table_News->sortByColumn(0);
 }
 
 //Office Table clicked
@@ -1035,11 +1151,11 @@ void TurnEventsEditor::on_Table_Office_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1130,11 +1246,11 @@ void TurnEventsEditor::on_Table_Interest_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1253,11 +1369,11 @@ void TurnEventsEditor::on_Table_CarPrice_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1377,11 +1493,11 @@ void TurnEventsEditor::on_Table_Gas_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1499,11 +1615,11 @@ void TurnEventsEditor::on_Table_Buy_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1621,11 +1737,11 @@ void TurnEventsEditor::on_Table_Pension_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1745,11 +1861,11 @@ void TurnEventsEditor::on_Table_Stock_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -1866,11 +1982,11 @@ void TurnEventsEditor::on_Table_Components_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -2032,11 +2148,11 @@ void TurnEventsEditor::on_Table_Car_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -2292,11 +2408,11 @@ void TurnEventsEditor::on_Table_City_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 
@@ -2526,11 +2642,11 @@ void TurnEventsEditor::on_Table_News_cellClicked(int row, int column)
     {
         if(it == dateStrSplitList.begin())
         {
-            month = (*it).toInt();
+            year = (*it).toInt();
         }
         else
         {
-            year = (*it).toInt();
+            month = (*it).toInt();
         }
     }
 

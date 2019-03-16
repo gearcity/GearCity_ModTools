@@ -77,7 +77,7 @@
    <item row="3" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>13</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -154,7 +154,7 @@
               <number>1850</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -174,7 +174,7 @@
               <number>1850</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -589,7 +589,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -609,7 +609,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -1021,7 +1021,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -1041,7 +1041,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -1517,7 +1517,7 @@
               <number>1850</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
             </widget>
            </item>
@@ -1531,10 +1531,10 @@
            <item>
             <widget class="QSpinBox" name="spinBox_englayout_EndYear">
              <property name="minimum">
-              <number>3000</number>
+              <number>1851</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
             </widget>
            </item>
@@ -1986,6 +1986,12 @@
          </item>
          <item row="9" column="1">
           <widget class="QTabWidget" name="tabWidget_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="currentIndex">
             <number>2</number>
            </property>
@@ -2181,7 +2187,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -2201,7 +2207,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -2690,7 +2696,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -2710,7 +2716,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -3622,7 +3628,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -3642,7 +3648,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -3743,7 +3749,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -3763,7 +3769,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -4204,7 +4210,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -4224,7 +4230,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -4365,35 +4371,8 @@
            </item>
           </layout>
          </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_130">
-           <property name="text">
-            <string>Design:</string>
-           </property>
-          </widget>
-         </item>
          <item row="6" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout_45">
-           <item>
-            <widget class="QDoubleSpinBox" name="spin_gearbox_design">
-             <property name="decimals">
-              <number>3</number>
-             </property>
-             <property name="singleStep">
-              <double>0.010000000000000</double>
-             </property>
-             <property name="value">
-              <double>0.050000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_131">
-             <property name="text">
-              <string>DesignCosts:</string>
-             </property>
-            </widget>
-           </item>
            <item>
             <widget class="QDoubleSpinBox" name="spin_gearbox_designcost">
              <property name="decimals">
@@ -4543,10 +4522,16 @@
          </item>
          <item row="9" column="0" colspan="2">
           <widget class="QPushButton" name="button_gearbox_add">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>50</height>
+             <height>40</height>
             </size>
            </property>
            <property name="text">
@@ -4556,10 +4541,16 @@
          </item>
          <item row="10" column="0" colspan="2">
           <widget class="QPushButton" name="button_gearbox_remove">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>0</width>
-             <height>50</height>
+             <height>40</height>
             </size>
            </property>
            <property name="text">
@@ -4569,6 +4560,12 @@
          </item>
          <item row="8" column="1">
           <widget class="QTabWidget" name="tabWidget_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="currentIndex">
             <number>0</number>
            </property>
@@ -4645,6 +4642,13 @@
              </item>
             </layout>
            </widget>
+          </widget>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_131">
+           <property name="text">
+            <string>DesignCosts:</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -4762,7 +4766,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -4782,7 +4786,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -5038,7 +5042,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -5058,7 +5062,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -5576,7 +5580,7 @@
            </item>
           </layout>
          </item>
-         <item row="11" column="0" colspan="2">
+         <item row="12" column="0" colspan="2">
           <widget class="QPushButton" name="button_cartype_add">
            <property name="minimumSize">
             <size>
@@ -5589,7 +5593,7 @@
            </property>
           </widget>
          </item>
-         <item row="12" column="0" colspan="2">
+         <item row="13" column="0" colspan="2">
           <widget class="QPushButton" name="button_cartype_remove">
            <property name="minimumSize">
             <size>
@@ -5601,6 +5605,56 @@
             <string>Remove Vehicle Type</string>
            </property>
           </widget>
+         </item>
+         <item row="11" column="0">
+          <widget class="QLabel" name="label_130">
+           <property name="text">
+            <string>Type Weight:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="11" column="1">
+          <layout class="QHBoxLayout" name="horizontalLayout_78">
+           <item>
+            <widget class="QDoubleSpinBox" name="CarType_Weight_SpinBox">
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="maximum">
+              <double>99.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.050000000000000</double>
+             </property>
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_201">
+             <property name="text">
+              <string>Type Size:</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="CarType_Size_Spinner">
+             <property name="decimals">
+              <number>3</number>
+             </property>
+             <property name="singleStep">
+              <double>0.050000000000000</double>
+             </property>
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -5708,7 +5762,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -5728,7 +5782,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -5991,7 +6045,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>1900</number>
@@ -6011,7 +6065,7 @@
               <number>1800</number>
              </property>
              <property name="maximum">
-              <number>3000</number>
+              <number>9999</number>
              </property>
              <property name="value">
               <number>3000</number>
@@ -6204,7 +6258,7 @@
             <number>1800</number>
            </property>
            <property name="maximum">
-            <number>3000</number>
+            <number>9999</number>
            </property>
            <property name="value">
             <number>1900</number>

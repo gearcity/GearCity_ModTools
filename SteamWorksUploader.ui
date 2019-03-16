@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SteamWorksUploader</class>
+ <widget class="QWidget" name="SteamWorksUploader">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="button_CreateANewWorkShopItem">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>New Workshop Item</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_UpdateWorkShopItem">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Update Existing Workshop Item</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="button_SteamWorkshop_ReturnToMain">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Return To Main Menu</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0">
+    <widget class="QFrame" name="frame_UpdateWorkshopItems">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Item Title:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="line_WorkshopItemTitle">
+        <property name="maxLength">
+         <number>128</number>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Item Description:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPlainTextEdit" name="textbox_WorkshopItemDescription"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Language:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="combo_WorkshopItem_Language">
+        <item>
+         <property name="text">
+          <string>arabic</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>bulgarian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>schinese</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>tchinese</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>czech</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>danish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>dutch</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>english</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>finnish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>french</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>german</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>greek</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>hungarian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>italian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>japanese</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>korean</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>norwegian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>polish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>portuguese</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>brazilian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>romanian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>russian</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>spanish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>swedish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>thai</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>turkish</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ukrainian</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>Visibility:</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Visibility_Everyone">
+           <property name="text">
+            <string>Everyone</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Visibility_Friends">
+           <property name="text">
+            <string>Friends Only</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Visibility_You">
+           <property name="text">
+            <string>Just You</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Steam Tags:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="line_WorkshopItemTags">
+        <property name="maxLength">
+         <number>255</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Item Content:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QToolButton" name="button_WorkshopItem_ContentFolder">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_WorkshopItem_SelectedFolder">
+          <property name="text">
+           <string>No Folder Selected.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Item Image:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QToolButton" name="button_WorkshopItem_PreviewImage">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_WorkshopItem_SelectedImage">
+          <property name="text">
+           <string>No Images Selected.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>Item Type:</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Type_Map">
+           <property name="text">
+            <string>Map</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Type_Mod">
+           <property name="text">
+            <string>Mod</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="radio_WorkshopItem_Type_Both">
+           <property name="text">
+            <string>Both</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="9" column="0" colspan="2">
+       <widget class="QPushButton" name="button_SubmitWorkshopItem">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Submit Workshop Item</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="0" colspan="2">
+       <widget class="QProgressBar" name="progressBar_WorkshopUpload">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Change Log:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="1">
+       <widget class="QPlainTextEdit" name="textbox_SteamWorkshop_ChangeLog"/>
+      </item>
+      <item row="11" column="0" colspan="2">
+       <widget class="QLabel" name="label_Steamworkshop_UploadStatus">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

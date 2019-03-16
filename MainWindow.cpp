@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     wsc.DYKEditorCW = ui->DidYouKnowWidgetContainer;
     wsc.PreMadeEditorCW = ui->PreMadeVehicleWidgetContainer;
     wsc.ScenarioEditorCW = ui->ScenarioWidgetContainer;
-
+    wsc.SteamWorkshopCW = ui->SteamworksWidgetContainer;
 
     //Create child windows/edits before creating editors
     wsc.MaterialEditorWindow = new MaterialMakerWindow(this);
@@ -81,6 +81,7 @@ MainWindow::MainWindow(QWidget *parent) :
     turnEventEditorTool = new TurnEventsEditor(wsc, ui->TurnEventEditorWidgetContainer);
     modEditorTool = new ModEditor(wsc,ui->ModDataToolWidgetContainer);
 
+    contractEditorTool = new ContractInformationEditor(wsc, ui->ContractsInfoWidgetContainer);
     componentsEditorTool = new ComponentsEditor(wsc, ui->ComponentsEditorWidgetContainer);
     dykTool = new DYKEditor(wsc, ui->DidYouKnowWidgetContainer);
     musicTool = new MusicEditor(wsc, ui->MusicEditorWidgetContainer);
@@ -91,6 +92,9 @@ MainWindow::MainWindow(QWidget *parent) :
     racingTool = new RacingSeriesEditor(wsc, ui->RacingSeriesEditorWidgetContainer);
     reviewTool = new ReviewsEditor(wsc, ui->ReviewsWidgetContainer);
     scenarioTool = new ScenarioEditor(wsc, ui->ScenarioWidgetContainer);
+    steamworksTool = new SteamWorksUploader(wsc,ui->SteamworksWidgetContainer);
+
+
 
 
     //Raise up the main menu container widget.
@@ -171,6 +175,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     wsc.DYKEditorCW->resize(this->width(), this->height());
     wsc.PreMadeEditorCW->resize(this->width(), this->height());
     wsc.ScenarioEditorCW->resize(this->width(), this->height());
+    wsc.SteamWorkshopCW->resize(this->width(), this->height());
 
     //Resize the object forms based on the Main Window size.
     mapTool->resize(this->width(), this->height());
@@ -188,6 +193,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     racingTool->resize(this->width(), this->height());
     reviewTool->resize(this->width(), this->height());
     scenarioTool->resize(this->width(), this->height());
+    steamworksTool->resize(this->width(), this->height());
 
 
 }
@@ -266,9 +272,9 @@ void MainWindow::on_Button_Racing_clicked()
 
 void MainWindow::on_button_ContractEditor_clicked()
 {
-    QMessageBox::critical(this,"Sorry!","Sorry! This will be implemented after the contract"
-                          "redesign coming in v1.23.");
-   // wsc.ContractsCW->raise();
+    /*QMessageBox::critical(this,"Sorry!","Sorry! This will be implemented after the contract"
+                          "redesign coming in v1.23.");*/
+    wsc.ContractsCW->raise();
 }
 
 void MainWindow::on_button_NameListEditor_clicked()
@@ -292,4 +298,17 @@ void MainWindow::on_button_ddsConverter_clicked()
     QString file = QDir::currentPath() +"/Aorta.app";
     process->startDetached(file);
 #endif
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+#if !STEAMSUPPORT
+    QMessageBox::critical(this,"You're Not Using Steam!","This is a tool to upload to Steam's"
+                          "modding system. You're not using Steam, so it doesn't apply to you."
+                          " You can still make and distrbute mods though. You'll just have to use "
+                          "a different service. Like zipping up the mod folders and uploading it to "
+                          "the forums! www.ventdev.com/forums/");
+#endif
+    wsc.SteamWorkshopCW->raise();
+    return;
 }

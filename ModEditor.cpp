@@ -1216,7 +1216,7 @@ void ModEditor::exportMod(QString parentFolder)
     if(ui->checkBox_Artwork_Misc->isChecked())
     {
         QFile::copy(MiscArtworkFile, modFolder+modPrefix+"MiscArtwork.zip");
-        contractFile = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
+        MiscArtworkFile = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
                 modPrefix+"MiscArtwork.zip";
     }
 
@@ -1290,7 +1290,7 @@ void ModEditor::exportMod(QString parentFolder)
         QFile::copy((*it).filePath, modFolder+modPrefix+"_"+(*it).map+"_"+(*it).fileName);
         (*it).filePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
                 modPrefix+"_"+(*it).map+"_"+(*it).fileName;
-        (*it).fileName = modPrefix+(*it).map+"_"+(*it).fileName;
+        (*it).fileName = modPrefix+"_"+(*it).map+"_"+(*it).fileName;
     }
 
     for(QMap<QString,citiesModMaps>::Iterator it = cityMapMap.begin();
@@ -1305,7 +1305,7 @@ void ModEditor::exportMod(QString parentFolder)
     for(QMap<QString,turnEventsModMaps>::Iterator it = turnMapMap.begin();
         it != turnMapMap.end(); ++it)
     {
-        QFile::copy((*it).filePath, modFolder+"_"+(*it).map+"_"+modPrefix+(*it).fileName);
+        QFile::copy((*it).filePath, modFolder+modPrefix+"_"+(*it).map+"_"+(*it).fileName);
         (*it).filePath = "../media/Mods/"+ ui->lineEdit_ModName->text()+"/"+
                 modPrefix+"_"+(*it).map+"_"+ (*it).fileName;
         (*it).fileName = modPrefix+"_"+(*it).map+"_"+(*it).fileName;

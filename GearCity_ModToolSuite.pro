@@ -12,6 +12,10 @@ QT += xml
 TARGET = GearCity_ModToolSuite
 TEMPLATE = app
 
+DEFINES += STEAMSUPPORT
+
+
+
 
 SOURCES += main.cpp\
         MainWindow.cpp \
@@ -38,14 +42,9 @@ SOURCES += main.cpp\
     MusicEditor.cpp \
     DYKEditor.cpp \
     PreMadeVehicleEditor.cpp \
-    ScenarioEditor.cpp
-
- macx{
-    SOURCES +=  OSXHelper.cpp
-    QMAKE_LFLAGS += -F/System/Library/Frameworks/
-    LIBS += -framework CoreFoundation
-}
-
+    ScenarioEditor.cpp \
+    SteamWorksUploader.cpp \
+    ContractManager.cpp
 
 
 HEADERS  += MainWindow.h \
@@ -74,7 +73,9 @@ HEADERS  += MainWindow.h \
     MusicEditor.h \
     DYKEditor.h \
     PreMadeVehicleEditor.h \
-    ScenarioEditor.h
+    ScenarioEditor.h \
+    SteamWorksUploader.h \
+    ContractManager.h
 
 FORMS    += MainWindow.ui \
     MapDataTool.ui \
@@ -93,4 +94,32 @@ FORMS    += MainWindow.ui \
     MusicEditor.ui \
     DYKEditor.ui \
     PreMadeVehicleEditor.ui \
-    ScenarioEditor.ui
+    ScenarioEditor.ui \
+    SteamWorksUploader.ui
+
+
+
+macx{
+    SOURCES +=  OSXHelper.cpp
+    QMAKE_LFLAGS += -F/System/Library/Frameworks/
+    LIBS += -framework CoreFoundation
+
+} else {
+
+    unix{ #doesn't like Linux for some reason...
+
+        LIBS += $$PWD/Steamworks_142/sdk/redistributable_bin/linux32/libsteam_api.so
+        INCLUDEPATH += $$PWD/Steamworks_142/sdk/public/
+    }
+
+    win32{
+        LIBS += $$PWD/Steamworks_142/sdk/redistributable_bin/steam_api.lib
+        INCLUDEPATH += $$PWD/Steamworks_142/sdk/public/
+    }
+
+}
+
+
+
+
+

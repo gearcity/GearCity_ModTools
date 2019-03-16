@@ -201,7 +201,7 @@ void PreMadeVehicleEditor::on_Button_Premade_OpenList_clicked()
         QDomElement rootNode = doc.firstChildElement("Predesigns");
         if(rootNode.isNull())
         {
-            QMessageBox::critical(this,"Error","Racing Script is malformed.");
+            QMessageBox::critical(this,"Error","Premades file is malformed.");
             return;
         }
 
@@ -243,6 +243,9 @@ void PreMadeVehicleEditor::on_Button_Premade_SaveList_clicked()
 {
     QString saveFileName = QFileDialog::getSaveFileName(this, "Save Premade File List",
                                                 "","XML Files (*.xml)");
+
+    if (!saveFileName.endsWith(".xml"))
+        saveFileName += ".xml";
 
     if (saveFileName != "")
     {

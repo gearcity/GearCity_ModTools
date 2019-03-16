@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1292</width>
-    <height>790</height>
+    <height>830</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -64,6 +64,16 @@
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>City ID:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QSpinBox" name="SpinBox_CE_CityID">
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999</number>
          </property>
         </widget>
        </item>
@@ -328,6 +338,23 @@
          </property>
         </widget>
        </item>
+       <item row="18" column="0">
+        <widget class="QLabel" name="label_29">
+         <property name="text">
+          <string>Buyer Rate:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="1">
+        <widget class="QDoubleSpinBox" name="SpinBox_CE_BuyerRating">
+         <property name="singleStep">
+          <double>0.100000000000000</double>
+         </property>
+         <property name="value">
+          <double>1.000000000000000</double>
+         </property>
+        </widget>
+       </item>
        <item row="19" column="0">
         <widget class="QLabel" name="label_20">
          <property name="text">
@@ -335,12 +362,46 @@
          </property>
         </widget>
        </item>
+       <item row="19" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLineEdit" name="LineEdit_CE_Flag">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Combobox_CE_FlagSelector"/>
+         </item>
+        </layout>
+       </item>
        <item row="20" column="0">
         <widget class="QLabel" name="label_21">
          <property name="text">
           <string>Heading Pictures:</string>
          </property>
         </widget>
+       </item>
+       <item row="20" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLineEdit" name="LineEdit_CE_Heading">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Combobox_CE_HeaderSelector"/>
+         </item>
+        </layout>
        </item>
        <item row="21" column="0">
         <widget class="QLabel" name="label_22">
@@ -440,66 +501,71 @@
          </item>
         </widget>
        </item>
-       <item row="19" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QLineEdit" name="LineEdit_CE_Flag">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="Combobox_CE_FlagSelector"/>
-         </item>
-        </layout>
-       </item>
-       <item row="20" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <widget class="QLineEdit" name="LineEdit_CE_Heading">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="Combobox_CE_HeaderSelector"/>
-         </item>
-        </layout>
-       </item>
-       <item row="18" column="0">
-        <widget class="QLabel" name="label_29">
+       <item row="23" column="1">
+        <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string>Buyer Rate:</string>
+          <string>PushButton</string>
          </property>
         </widget>
        </item>
-       <item row="18" column="1">
-        <widget class="QDoubleSpinBox" name="SpinBox_CE_BuyerRating">
-         <property name="singleStep">
-          <double>0.100000000000000</double>
+       <item row="25" column="1">
+        <widget class="QDoubleSpinBox" name="doubleSpinBox">
+         <property name="decimals">
+          <number>10</number>
          </property>
-         <property name="value">
-          <double>1.000000000000000</double>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QSpinBox" name="SpinBox_CE_CityID">
          <property name="minimum">
-          <number>1</number>
-         </property>
-         <property name="maximum">
-          <number>99999</number>
+          <double>-99.989999999999995</double>
          </property>
         </widget>
+       </item>
+       <item row="25" column="0">
+        <widget class="QLabel" name="label_33">
+         <property name="text">
+          <string>Percent</string>
+         </property>
+        </widget>
+       </item>
+       <item row="28" column="0">
+        <widget class="QLabel" name="label_34">
+         <property name="text">
+          <string>Pop</string>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="0">
+        <widget class="QLabel" name="label_35">
+         <property name="text">
+          <string>Cap</string>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_10">
+         <item>
+          <widget class="QSpinBox" name="spinBox_2">
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_2"/>
+         </item>
+        </layout>
+       </item>
+       <item row="28" column="1">
+        <layout class="QHBoxLayout" name="horizontalLayout_11">
+         <item>
+          <widget class="QSpinBox" name="spinBox">
+           <property name="maximum">
+            <number>999999999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="doubleSpinBox_3"/>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

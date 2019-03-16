@@ -268,6 +268,8 @@ void RacingSeriesEditor::on_button_open_clicked()
         if(Element.isNull())
             return;
 
+        seriesList.clear();
+
         do
         {
           //Company Attributes
@@ -337,6 +339,9 @@ void RacingSeriesEditor::on_button_save_clicked()
 
     if (saveFileName != "")
     {
+        if (!saveFileName.endsWith(".xml"))
+            saveFileName += ".xml";
+
             //Open/create AI file
             QFile saveAIFile(saveFileName);
             if(!saveAIFile.open(QFile::WriteOnly | QFile::Text))

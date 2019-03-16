@@ -195,6 +195,7 @@ public:
         bool aval;
         int localName, localDescription, localPara;
         int selectionIndex;
+        double weight, size;
 
     };
 
