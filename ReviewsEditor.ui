@@ -74,7 +74,7 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="5" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
       <number>0</number>
@@ -154,6 +154,36 @@
           <widget class="QCheckBox" name="checkBox_Intro_localized">
            <property name="text">
             <string>Localized</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_15">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_28">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_intro">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -500,6 +530,36 @@
           </widget>
          </item>
          <item>
+          <widget class="Line" name="line_14">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_29">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_performance">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -620,19 +680,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="button_drive_3Rating">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>{3} Rating</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <spacer name="verticalSpacer_6">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -674,12 +721,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_drive_maxval"/>
+          <widget class="QSpinBox" name="spinBox_drive_maxval">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_drive_localized">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_13">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_27">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_driveability">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -791,19 +872,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="button_lux_2Lux">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>{2} Luxury Adjective</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <spacer name="verticalSpacer_8">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -845,12 +913,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_lux_maxVal"/>
+          <widget class="QSpinBox" name="spinBox_lux_maxVal">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_lux_Localized">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_16">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_30">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_luxury">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1003,12 +1105,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_safe_maxval"/>
+          <widget class="QSpinBox" name="spinBox_safe_maxval">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_safe_localized">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_17">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_31">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_safety">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1133,19 +1269,6 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="button_fuel_3FuelHwy">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="text">
-            <string>{3}Fuel Consumption Hwy</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <spacer name="verticalSpacer_12">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -1187,12 +1310,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_fuel_MaxVal"/>
+          <widget class="QSpinBox" name="spinBox_fuel_MaxVal">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_fuel_localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_18">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_32">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_fuel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1345,12 +1502,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_power_MaxVal"/>
+          <widget class="QSpinBox" name="spinBox_power_MaxVal">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_power_localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_19">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_33">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_power">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1516,12 +1707,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_cargo_maxval"/>
+          <widget class="QSpinBox" name="spinBox_cargo_maxval">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_cargo_localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_20">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_34">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_cargo">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1674,12 +1899,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_qual_MaxVal"/>
+          <widget class="QSpinBox" name="spinBox_qual_MaxVal">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_Qual_Localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_21">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_35">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_quality">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -1832,12 +2091,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_depend_maxVal"/>
+          <widget class="QSpinBox" name="spinBox_depend_maxVal">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_depend_localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_22">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_36">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_dependability">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -2003,12 +2296,46 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_overall_maxval"/>
+          <widget class="QSpinBox" name="spinBox_overall_maxval">
+           <property name="maximum">
+            <number>999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox_overall_localize">
            <property name="text">
             <string>Localize</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="Line" name="line_23">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_37">
+           <property name="text">
+            <string>Vehicle Type:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_VehicleType_overall">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
            </property>
           </widget>
          </item>
@@ -2047,6 +2374,75 @@
       </layout>
      </widget>
     </widget>
+   </item>
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_13">
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Select Localization File:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_select_LocalizationFile">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_selectedLocalizationFile">
+       <property name="text">
+        <string>No file Selected</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_12">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_25">
+       <property name="text">
+        <string>Components File:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_selectComponentsFile">
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_selectedComponentsFile">
+       <property name="text">
+        <string>No File Selected</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_12">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

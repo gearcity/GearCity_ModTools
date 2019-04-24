@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include "BaseContainerStorage.h"
+#include "LocalizationManager.h"
+#include "ComponentsManager.h"
 
 namespace Ui {
 class ReviewsEditor;
@@ -173,6 +175,12 @@ private slots:
 
 
 
+    void on_toolButton_select_LocalizationFile_clicked();
+
+    void on_toolButton_selectComponentsFile_clicked();
+
+    void fillCarTypeCombos();
+
 private:
     class reviewData
     {
@@ -181,6 +189,8 @@ private:
            int max;
            int localized;
            QString review;
+           QString carType;
+           int carLocalize;
     };
 
     QVector<reviewData> reviewsIntro;
@@ -197,6 +207,8 @@ private:
 
     Ui::ReviewsEditor *ui;
     widgetContainerStorage cp_wsc;
+    LocalizationManager *lm;
+    ComponentsManager *cm;
 
     void fillIntroTable();
     void fillPerformanceTable();
