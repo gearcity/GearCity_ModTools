@@ -996,6 +996,7 @@ void ComponentsEditor::on_button_fuel_add_clicked()
         ef.popIndex = ui->spinner_fuel_aipop->value();
         ef.localName = ui->checkBox_fuel_name_localized->isChecked();
         ef.localDescription = ui->checkBox_fuel_about_localized->isChecked();
+        ef.popLink = ui->lineEdit_fuel_popLink->text();
         ef.localPara = 0;
 
 
@@ -1125,6 +1126,7 @@ void ComponentsEditor::on_table_fuel_cellClicked(int row, int column)
              ui->spinner_fuel_aipop->setValue(ef.popIndex);
              ui->checkBox_fuel_name_localized->setChecked(ef.localName);
              ui->checkBox_fuel_about_localized->setChecked(ef.localDescription);
+             ui->lineEdit_fuel_popLink->setText(ef.popLink);
 
              break;
          }

@@ -113,6 +113,7 @@ public:
         double popIndex;
         int skill, selectionIndex;
         int localName, localDescription, localPara;
+        QString popLink;
     };
     class EngineValveComps
     {

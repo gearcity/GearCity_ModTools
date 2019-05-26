@@ -2981,6 +2981,16 @@
             </widget>
            </item>
            <item>
+            <widget class="QLabel" name="label_203">
+             <property name="text">
+              <string>Popularity Link:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_fuel_popLink"/>
+           </item>
+           <item>
             <spacer name="horizontalSpacer_12">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>

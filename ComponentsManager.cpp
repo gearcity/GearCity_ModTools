@@ -471,6 +471,11 @@ void ComponentsManager::engineFuelRead(QDomElement element)
         data.skill = element.attributeNode("skill").value().toInt();
         data.popIndex = element.attributeNode("popindex").value().toDouble();
         data.selectionIndex = element.attributeNode("selectionIndex").value().toInt();
+        if(element.attributeNode("popLink").isNull())
+            data.popLink = "-1";
+        else
+            data.popLink = element.attributeNode("popLink").value();
+
         data.picture = element.attributeNode("picture").value();
         data.about = element.attributeNode("about").value();
         data.localName = element.attributeNode("localName").value().toInt();
@@ -1402,6 +1407,9 @@ bool ComponentsManager::saveComponentsXMLFile(QString componentsFileName,
 
                xmlWriter.writeAttribute("popindex",QString::number((*it).popIndex));
                xmlWriter.writeAttribute("selectionIndex",QString::number((*it).selectionIndex));
+
+               xmlWriter.writeAttribute("popLink",(*it).popLink);
+
 
                xmlWriter.writeAttribute("picture",(*it).picture);
                xmlWriter.writeAttribute("about",(*it).about);
