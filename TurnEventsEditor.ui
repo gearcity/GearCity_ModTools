@@ -161,7 +161,7 @@
                    <number>1800</number>
                   </property>
                   <property name="maximum">
-                   <number>2019</number>
+                   <number>9999</number>
                   </property>
                   <property name="value">
                    <number>1900</number>
@@ -178,7 +178,7 @@
                 <item>
                  <widget class="QSpinBox" name="Spin_FinishYear">
                   <property name="minimum">
-                   <number>1901</number>
+                   <number>1801</number>
                   </property>
                   <property name="maximum">
                    <number>9999</number>
@@ -555,7 +555,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Office_Year">
               <property name="minimum">
-               <number>1899</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -598,7 +598,7 @@
             <item row="3" column="1">
              <widget class="QSpinBox" name="Spin_Office_YearAutoStop">
               <property name="minimum">
-               <number>1899</number>
+               <number>1801</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -708,7 +708,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Interest_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -782,7 +782,7 @@
             <item row="5" column="1">
              <widget class="QSpinBox" name="Spin_Interest_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -944,7 +944,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_CarPrice_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -984,7 +984,7 @@
             <item row="9" column="1">
              <widget class="QSpinBox" name="Spin_CarPrice_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1095,7 +1095,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Gas_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1169,7 +1169,7 @@
             <item row="10" column="1">
              <widget class="QSpinBox" name="Spin_Gas_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1292,7 +1292,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Buy_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1349,7 +1349,7 @@
             <item row="9" column="1">
              <widget class="QSpinBox" name="Spin_Buy_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1522,7 +1522,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Pension_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1559,7 +1559,7 @@
             <item row="6" column="1">
              <widget class="QSpinBox" name="Spin_Pension_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1669,7 +1669,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Stock_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1749,7 +1749,7 @@
             <item row="5" column="1">
              <widget class="QSpinBox" name="Spin_Stock_Interpolate_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -1899,7 +1899,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Components_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -2076,7 +2076,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_Car_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -2448,7 +2448,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_City_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>
@@ -2761,14 +2761,14 @@
             <item row="9" column="1">
              <widget class="QSpinBox" name="Spin_News_BodyWord">
               <property name="maximum">
-               <number>99999</number>
+               <number>9999999</number>
               </property>
              </widget>
             </item>
             <item row="8" column="1">
              <widget class="QSpinBox" name="Spin_News_HeadlineWord">
               <property name="maximum">
-               <number>99999</number>
+               <number>9999999</number>
               </property>
              </widget>
             </item>
@@ -2792,7 +2792,7 @@
             <item row="1" column="1">
              <widget class="QSpinBox" name="Spin_News_Year">
               <property name="minimum">
-               <number>1900</number>
+               <number>1800</number>
               </property>
               <property name="maximum">
                <number>9999</number>

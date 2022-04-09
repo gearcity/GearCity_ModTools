@@ -135,6 +135,12 @@ private slots:
 
     void on_Button_News_Import_clicked();
 
+    void on_Button_All_AddNew_clicked();
+
+    void on_Button_All_EditSelected_clicked();
+
+    void on_Button_All_RemoveSelected_clicked();
+
 private:
     Ui::TurnEventsEditor *ui;
     widgetContainerStorage cp_wsc;
@@ -162,6 +168,8 @@ private:
     void refreshVehiclePopTable();
     void refreshCityEventsTable();
     void refreshNewsPaperTable();
+
+    void allTableActions(bool remove);
 
 
 

@@ -519,56 +519,205 @@ void AIEditor::saveXML()
 
 
             xmlWriter.writeStartElement("Funds");
-               xmlWriter.writeAttribute("OnHand",QString::number((*it).funds));
-               xmlWriter.writeAttribute("Credit",QString::number((*it).credit));
-               xmlWriter.writeAttribute("Loans",QString::number((*it).loan));
+               if((*it).funds <= 0)
+                   xmlWriter.writeAttribute("OnHand","-1");
+               else
+                   xmlWriter.writeAttribute("OnHand",QString::number((*it).funds));
+
+               if((*it).credit <= 0)
+                   xmlWriter.writeAttribute("Credit","-1");
+               else
+                   xmlWriter.writeAttribute("Credit",QString::number((*it).credit));
+
+               if((*it).loan < 0)
+                   xmlWriter.writeAttribute("Loans","-1");
+               else
+                   xmlWriter.writeAttribute("Loans",QString::number((*it).loan));
+
             xmlWriter.writeEndElement(); //Funds
 
             xmlWriter.writeStartElement("Skills");
-               xmlWriter.writeAttribute("Manufactoring",QString::number((*it).manuSkills));
-               xmlWriter.writeAttribute("RnD",QString::number((*it).rndSkills));
-               xmlWriter.writeAttribute("Admin",QString::number((*it).adminSkills));
-               xmlWriter.writeAttribute("Marketing",QString::number((*it).marketingSkills));
-               xmlWriter.writeAttribute("Dealers",QString::number((*it).dealerSkills));
+
+                if((*it).manuSkills <= 0)
+                   xmlWriter.writeAttribute("Manufactoring","-1");
+                else
+                   xmlWriter.writeAttribute("Manufactoring",QString::number((*it).manuSkills));
+
+                if((*it).rndSkills <= 0)
+                   xmlWriter.writeAttribute("RnD","-1");
+                else
+                   xmlWriter.writeAttribute("RnD",QString::number((*it).rndSkills));
+
+                if((*it).adminSkills <= 0)
+                   xmlWriter.writeAttribute("Admin","-1");
+                else
+                   xmlWriter.writeAttribute("Admin",QString::number((*it).adminSkills));
+
+                if((*it).marketingSkills <= 0)
+                   xmlWriter.writeAttribute("Marketing","-1");
+                else
+                   xmlWriter.writeAttribute("Marketing",QString::number((*it).marketingSkills));
+
+                if((*it).dealerSkills <= 0)
+                   xmlWriter.writeAttribute("Dealers","-1");
+                else
+                   xmlWriter.writeAttribute("Dealers",QString::number((*it).dealerSkills));
             xmlWriter.writeEndElement(); //Skills
 
             xmlWriter.writeStartElement("Design");
-                xmlWriter.writeAttribute("Engine",QString::number((*it).engineDesign));
-                xmlWriter.writeAttribute("Chassis",QString::number((*it).chassisDesign));
-                xmlWriter.writeAttribute("Transmission",QString::number((*it).gearboxDesign));
-                xmlWriter.writeAttribute("Body",QString::number((*it).bodyDesign));
-                xmlWriter.writeAttribute("Lux",QString::number((*it).luxDesign));
-                xmlWriter.writeAttribute("safety",QString::number((*it).safeDesign));
+                if((*it).engineDesign <= 0)
+                    xmlWriter.writeAttribute("Engine","-1");
+                else
+                    xmlWriter.writeAttribute("Engine",QString::number((*it).engineDesign));
+
+                if((*it).chassisDesign <= 0)
+                    xmlWriter.writeAttribute("Chassis","-1");
+                else
+                    xmlWriter.writeAttribute("Chassis",QString::number((*it).chassisDesign));
+
+                if((*it).gearboxDesign <= 0)
+                    xmlWriter.writeAttribute("Transmission","-1");
+                else
+                    xmlWriter.writeAttribute("Transmission",QString::number((*it).gearboxDesign));
+
+                if((*it).bodyDesign <= 0)
+                    xmlWriter.writeAttribute("Body","-1");
+                else
+                    xmlWriter.writeAttribute("Body",QString::number((*it).bodyDesign));
+
+                if((*it).luxDesign <= 0)
+                    xmlWriter.writeAttribute("Lux","-1");
+                else
+                    xmlWriter.writeAttribute("Lux",QString::number((*it).luxDesign));
+
+                if((*it).safeDesign <= 0)
+                    xmlWriter.writeAttribute("safety","-1");
+                else
+                    xmlWriter.writeAttribute("safety",QString::number((*it).safeDesign));
             xmlWriter.writeEndElement(); //Design
 
             xmlWriter.writeStartElement("Image");
-                xmlWriter.writeAttribute("GeneralGlobal",QString::number((*it).globalImage));
-                xmlWriter.writeAttribute("Quality",QString::number((*it).qualityImage));
-                xmlWriter.writeAttribute("Racing",QString::number((*it).racingImage));
-                xmlWriter.writeAttribute("Work",QString::number((*it).workImage));
+                if((*it).globalImage <= 0)
+                    xmlWriter.writeAttribute("GeneralGlobal","-1");
+                else
+                    xmlWriter.writeAttribute("GeneralGlobal",QString::number((*it).globalImage));
+
+                if((*it).qualityImage <= 0)
+                    xmlWriter.writeAttribute("Quality","-1");
+                else
+                    xmlWriter.writeAttribute("Quality",QString::number((*it).qualityImage));
+
+                if((*it).racingImage <= 0)
+                    xmlWriter.writeAttribute("Racing","-1");
+                else
+                    xmlWriter.writeAttribute("Racing",QString::number((*it).racingImage));
+
+                if((*it).workImage <= 0)
+                    xmlWriter.writeAttribute("Work","-1");
+                else
+                    xmlWriter.writeAttribute("Work",QString::number((*it).workImage));
             xmlWriter.writeEndElement(); //Image
 
             xmlWriter.writeStartElement("Behavior");
-                xmlWriter.writeAttribute("GenericDesigner",QString::number((*it).genericDesigner));
-                xmlWriter.writeAttribute("Rating_Performance",QString::number((*it).performanceBehavoir));
-                xmlWriter.writeAttribute("Rating_Drivability",QString::number((*it).drivingBehavoir));
-                xmlWriter.writeAttribute("Rating_Luxury",QString::number((*it).luxuryBehavoir));
-                xmlWriter.writeAttribute("Rating_Safety",QString::number((*it).safetyBehavoir));
-                xmlWriter.writeAttribute("Rating_Fuel",QString::number((*it).fuelBehavoir));
-                xmlWriter.writeAttribute("Rating_Power",QString::number((*it).powerBehavoir));
-                xmlWriter.writeAttribute("Rating_Cargo",QString::number((*it).cargoBehavoir));
-                xmlWriter.writeAttribute("Rating_Dependability",QString::number((*it).dependabilityBehavoir));
-                xmlWriter.writeAttribute("DesignAggression",QString::number((*it).designAgression));
-                xmlWriter.writeAttribute("SellAggression",QString::number((*it).sellAgression));
-                xmlWriter.writeAttribute("BuildAggression",QString::number((*it).buildAgression));
-                xmlWriter.writeAttribute("MarketingAggression",QString::number((*it).marketingAgression));
-                xmlWriter.writeAttribute("CostAggression",QString::number((*it).costAgression));
-                xmlWriter.writeAttribute("QualityAggression",QString::number((*it).qualityAgression));
-                xmlWriter.writeAttribute("PriceAggression",QString::number((*it).priceAgression));
-                xmlWriter.writeAttribute("ExpansionAggression",QString::number((*it).expansionAgression));
-                xmlWriter.writeAttribute("ClusterSpace",QString::number((*it).clusting));
-                xmlWriter.writeAttribute("ExportDesigns",QString::number((*it).exportDesigns));
-                xmlWriter.writeAttribute("ImportDesigns",QString::number((*it).importDesigns));
+                if((*it).genericDesigner <= 0)
+                    xmlWriter.writeAttribute("GenericDesigner","-1");
+                else
+                    xmlWriter.writeAttribute("GenericDesigner",QString::number((*it).genericDesigner));
+
+                if((*it).performanceBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Performance","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Performance",QString::number((*it).performanceBehavoir));
+
+                if((*it).drivingBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Drivability","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Drivability",QString::number((*it).drivingBehavoir));
+
+                if((*it).luxuryBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Luxury","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Luxury",QString::number((*it).luxuryBehavoir));
+
+                if((*it).safetyBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Safety","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Safety",QString::number((*it).safetyBehavoir));
+
+                if((*it).fuelBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Fuel","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Fuel",QString::number((*it).fuelBehavoir));
+
+                if((*it).powerBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Power","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Power",QString::number((*it).powerBehavoir));
+
+                if((*it).cargoBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Cargo","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Cargo",QString::number((*it).cargoBehavoir));
+
+                if((*it).dependabilityBehavoir <= 0)
+                    xmlWriter.writeAttribute("Rating_Dependability","-1");
+                else
+                    xmlWriter.writeAttribute("Rating_Dependability",QString::number((*it).dependabilityBehavoir));
+
+                if((*it).designAgression <= 0)
+                    xmlWriter.writeAttribute("DesignAggression","-1");
+                else
+                    xmlWriter.writeAttribute("DesignAggression",QString::number((*it).designAgression));
+
+                if((*it).sellAgression <= 0)
+                    xmlWriter.writeAttribute("SellAggression","-1");
+                else
+                    xmlWriter.writeAttribute("SellAggression",QString::number((*it).sellAgression));
+
+                if((*it).buildAgression <= 0)
+                    xmlWriter.writeAttribute("BuildAggression","-1");
+                else
+                    xmlWriter.writeAttribute("BuildAggression",QString::number((*it).buildAgression));
+
+                if((*it).marketingAgression <= 0)
+                    xmlWriter.writeAttribute("MarketingAggression","-1");
+                else
+                    xmlWriter.writeAttribute("MarketingAggression",QString::number((*it).marketingAgression));
+
+                if((*it).costAgression <= 0)
+                    xmlWriter.writeAttribute("CostAggression","-1");
+                else
+                    xmlWriter.writeAttribute("CostAggression",QString::number((*it).costAgression));
+
+                if((*it).qualityAgression <= 0)
+                    xmlWriter.writeAttribute("QualityAggression","-1");
+                else
+                    xmlWriter.writeAttribute("QualityAggression",QString::number((*it).qualityAgression));
+
+                if((*it).priceAgression <= 0)
+                    xmlWriter.writeAttribute("PriceAggression","-1");
+                else
+                    xmlWriter.writeAttribute("PriceAggression",QString::number((*it).priceAgression));
+
+                if((*it).expansionAgression <= 0)
+                    xmlWriter.writeAttribute("ExpansionAggression","-1");
+                else
+                    xmlWriter.writeAttribute("ExpansionAggression",QString::number((*it).expansionAgression));
+
+                if((*it).clusting <= 0)
+                    xmlWriter.writeAttribute("ClusterSpace","-1");
+                else
+                    xmlWriter.writeAttribute("ClusterSpace",QString::number((*it).clusting));
+
+                if((*it).exportDesigns <= 0)
+                    xmlWriter.writeAttribute("ExportDesigns","-1");
+                else
+                    xmlWriter.writeAttribute("ExportDesigns",QString::number((*it).exportDesigns));
+
+                if((*it).importDesigns <= 0)
+                    xmlWriter.writeAttribute("ImportDesigns","-1");
+                else
+                    xmlWriter.writeAttribute("ImportDesigns",QString::number((*it).importDesigns));
             xmlWriter.writeEndElement(); //Behavior
 
          xmlWriter.writeEndElement(); //Company

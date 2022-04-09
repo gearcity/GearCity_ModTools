@@ -1303,7 +1303,8 @@ void MapDataTool::exportMap(QString parentFolder)
     QFile::copy(ui->LineEdit_MapTools_AiLogoZipLocation->text(),
                 logoArtFolder+"AILogos.zip");
 
-    saveLoaderForModToolsExport(mapFolder);
+    saveLoaderForModToolsExport(mapFolder, false);
+    saveLoaderForModToolsExport(mapFolder, true);
 
     //We Did it! Yay!
     QMessageBox::information(this,"Export Complete",
@@ -1489,11 +1490,24 @@ void MapDataTool::saveMapInfoBaseFile(QString mapFolder)
 
 
 
-void MapDataTool::saveLoaderForModToolsExport(QString folder)
+void MapDataTool::saveLoaderForModToolsExport(QString folder, bool localSave)
 {
-    QString pathFromModTools = "../media/Maps/"+ui->LineEdit_MapTools_MapName->text()+"/";
+    QString pathFromModTools = "";
+    QString saveLocation = "";
+
+    if(!localSave)
+    {
+        pathFromModTools = "../media/Maps/"+ui->LineEdit_MapTools_MapName->text()+"/";
+        saveLocation = folder+"MapFileForModTools.xml";
+    }
+    else
+    {
+        pathFromModTools = folder;
+        saveLocation = folder+"MapFileLocalSave.xml";
+    }
+
     //Open Save File
-    QFile saveMapFile(folder+"MapFileForModTools.xml");
+    QFile saveMapFile(saveLocation);
     if(!saveMapFile.open(QFile::WriteOnly | QFile::Text))
     {
        QMessageBox::critical(this,"Error",

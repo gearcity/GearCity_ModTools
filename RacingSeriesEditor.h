@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "BaseContainerStorage.h"
+#include "ComponentsManager.h"
 
 namespace Ui {
 class RacingSeriesEditor;
@@ -32,6 +33,8 @@ private slots:
     void on_button_return_clicked();
 
     void sectionDoubleClickedSlot(int index);
+
+    void on_button_OpenComponents_clicked();
 
 private:
     class seriesData

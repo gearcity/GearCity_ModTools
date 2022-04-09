@@ -181,7 +181,7 @@ void ContractInformationEditor::on_button_v_addFuelLimit_clicked()
 {
 
     QList<QListWidgetItem*> find = ui->listWidget_v_fuelLimit->findItems(
-                ui->lineEdit_v_fuelName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_fuelName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -200,7 +200,7 @@ void ContractInformationEditor::on_button_v_addFuelLimit_clicked()
 void ContractInformationEditor::on_button_v_vehicleTypeAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_vehicleTypeLimit->findItems(
-                ui->lineEdit_v_vehicleTypeName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_vehicleTypeName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -218,7 +218,7 @@ void ContractInformationEditor::on_button_v_vehicleTypeAdd_clicked()
 void ContractInformationEditor::on_button_v_removeFuelLimit_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_fuelLimit->findItems(
-                ui->lineEdit_v_fuelName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_fuelName->text(),Qt::MatchExactly);
     
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -230,7 +230,7 @@ void ContractInformationEditor::on_button_v_removeFuelLimit_clicked()
 void ContractInformationEditor::on_button_v_vehicleTypeRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_vehicleTypeLimit->findItems(
-                ui->lineEdit_v_vehicleTypeName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_vehicleTypeName->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -268,7 +268,7 @@ void ContractInformationEditor::on_listWidget_v_vehicleTypeLimit_itemClicked(QLi
 void ContractInformationEditor::on_button_v_addContract_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_vehicleContracts->findItems(
-                ui->lineEdit_v_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_ContractFor->text(),Qt::MatchExactly);
 
     if(find.size() != 0)
     {
@@ -320,7 +320,7 @@ void ContractInformationEditor::on_button_v_addContract_clicked()
 void ContractInformationEditor::on_pushButton_v_removeContract_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_vehicleContracts->findItems(
-                ui->lineEdit_v_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -344,7 +344,7 @@ void ContractInformationEditor::on_pushButton_v_removeContract_clicked()
 void ContractInformationEditor::on_button_v_editContract_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_v_vehicleContracts->findItems(
-                ui->lineEdit_v_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_v_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -430,7 +430,7 @@ void ContractInformationEditor::on_listWidget_v_vehicleContracts_itemClicked(QLi
 void ContractInformationEditor::on_pushButton_e_fuelLimitAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_FuelLimit->findItems(
-                ui->lineEdit_e_fuelLimit->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_fuelLimit->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -449,7 +449,7 @@ void ContractInformationEditor::on_pushButton_e_fuelLimitAdd_clicked()
 void ContractInformationEditor::on_button_e_layoutLimitAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_layoutLimit->findItems(
-                ui->lineEdit_e_layoutLimitsName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_layoutLimitsName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -467,7 +467,7 @@ void ContractInformationEditor::on_button_e_layoutLimitAdd_clicked()
 void ContractInformationEditor::on_button_e_cylinderLimitAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_cylinderLimit->findItems(
-                ui->lineEdit_e_cylinderLimitName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_cylinderLimitName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -485,7 +485,7 @@ void ContractInformationEditor::on_button_e_cylinderLimitAdd_clicked()
 void ContractInformationEditor::on_pushButton_e_fuelLimitRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_FuelLimit->findItems(
-                ui->lineEdit_e_fuelLimit->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_fuelLimit->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -497,7 +497,7 @@ void ContractInformationEditor::on_pushButton_e_fuelLimitRemove_clicked()
 void ContractInformationEditor::on_button_e_layoutLimitsRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_layoutLimit->findItems(
-                ui->lineEdit_e_layoutLimitsName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_layoutLimitsName->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -509,7 +509,7 @@ void ContractInformationEditor::on_button_e_layoutLimitsRemove_clicked()
 void ContractInformationEditor::on_button_e_cylinderLimitRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_cylinderLimit->findItems(
-                ui->lineEdit_e_cylinderLimitName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_cylinderLimitName->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -557,7 +557,7 @@ void ContractInformationEditor::on_listWidget_e_cylinderLimit_itemClicked(QListW
 void ContractInformationEditor::on_pushButton_e_contractAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_contracts->findItems(
-                ui->lineEdit_e_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_ContractFor->text(),Qt::MatchExactly);
 
     if(find.size() != 0)
     {
@@ -614,7 +614,7 @@ void ContractInformationEditor::on_pushButton_e_contractAdd_clicked()
 void ContractInformationEditor::on_pushButton_e_contractEdit_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_contracts->findItems(
-                ui->lineEdit_e_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -667,7 +667,7 @@ void ContractInformationEditor::on_pushButton_e_contractEdit_clicked()
 void ContractInformationEditor::on_pushButton_e_contractRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_e_contracts->findItems(
-                ui->lineEdit_e_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_e_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -735,7 +735,7 @@ void ContractInformationEditor::on_listWidget_e_contracts_itemClicked(QListWidge
 void ContractInformationEditor::on_pushButton_c_contractsAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_c_contracts->findItems(
-                ui->lineEdit_c_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_c_ContractFor->text(),Qt::MatchExactly);
 
     if(find.size() != 0)
     {
@@ -770,7 +770,7 @@ void ContractInformationEditor::on_pushButton_c_contractsAdd_clicked()
 void ContractInformationEditor::on_pushButton_c_contractsEdit_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_c_contracts->findItems(
-                ui->lineEdit_c_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_c_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -804,7 +804,7 @@ void ContractInformationEditor::on_pushButton_c_contractsEdit_clicked()
 void ContractInformationEditor::on_pushButton_c_contractsRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_c_contracts->findItems(
-                ui->lineEdit_c_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_c_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -853,7 +853,7 @@ void ContractInformationEditor::on_listWidget_c_contracts_itemClicked(QListWidge
 void ContractInformationEditor::on_button_g_GearLimitsAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_GearLimits->findItems(
-                ui->lineEdit_g_GearLimitsName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_GearLimitsName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -872,7 +872,7 @@ void ContractInformationEditor::on_button_g_GearLimitsAdd_clicked()
 void ContractInformationEditor::on_button_g_typeLimitAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_TypeLimit->findItems(
-                ui->lineEdit_g_typeLimitName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_typeLimitName->text(),Qt::MatchExactly);
 
     if(find.size() == 0)
     {
@@ -890,7 +890,7 @@ void ContractInformationEditor::on_button_g_typeLimitAdd_clicked()
 void ContractInformationEditor::on_button_g_GearLimitsRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_GearLimits->findItems(
-                ui->lineEdit_g_GearLimitsName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_GearLimitsName->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -902,7 +902,7 @@ void ContractInformationEditor::on_button_g_GearLimitsRemove_clicked()
 void ContractInformationEditor::on_button_g_typeLimitRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_TypeLimit->findItems(
-                ui->lineEdit_g_typeLimitName->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_typeLimitName->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -938,7 +938,7 @@ void ContractInformationEditor::on_listWidget_g_TypeLimit_itemClicked(QListWidge
 void ContractInformationEditor::on_button_g_contractsAdd_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_contracts->findItems(
-                ui->lineEdit_g_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_ContractFor->text(),Qt::MatchExactly);
 
     if(find.size() != 0)
     {
@@ -981,7 +981,7 @@ void ContractInformationEditor::on_button_g_contractsAdd_clicked()
 void ContractInformationEditor::on_button_g_contractsEdit_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_contracts->findItems(
-                ui->lineEdit_g_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {
@@ -1023,7 +1023,7 @@ void ContractInformationEditor::on_button_g_contractsEdit_clicked()
 void ContractInformationEditor::on_button_g_contractsRemove_clicked()
 {
     QList<QListWidgetItem*> find = ui->listWidget_g_contracts->findItems(
-                ui->lineEdit_g_ContractFor->text(),Qt::MatchFlag::MatchExactly);
+                ui->lineEdit_g_ContractFor->text(),Qt::MatchExactly);
 
     for(QList<QListWidgetItem*>::iterator it = find.begin(); it != find.end(); ++it )
     {

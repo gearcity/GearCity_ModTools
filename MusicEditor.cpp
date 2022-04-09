@@ -46,6 +46,7 @@ void MusicEditor::on_button_add_clicked()
     md.Name = ui->lineEdit_songName->text();
     md.use = ui->comboBox_playLocation->currentIndex();
     md.Artist = ui->lineEdit_artist->text();
+    md.Comments = ui->plainTextEdit_songComments->toPlainText();
 
     musicMap.insert(md.Name+"-"+ui->comboBox_playLocation->currentText(), md);
 
@@ -107,10 +108,16 @@ if(mapIT == musicMap.end())
     ui->lineEdit_songName->setText((*mapIT).Name);
 
     ui->comboBox_playLocation->setCurrentIndex((*mapIT).use);
-    ui->comboBox_songFile->setCurrentIndex(
-                ui->comboBox_songFile->findText((*mapIT).File));
+
+    if(ui->comboBox_songFile->findText((*mapIT).File) == -1)
+        ui->comboBox_songFile->addItem((*mapIT).File);
+
+    ui->comboBox_songFile->setCurrentIndex(ui->comboBox_songFile->findText((*mapIT).File));
 
     ui->lineEdit_artist->setText((*mapIT).Artist);
+
+    ui->plainTextEdit_songComments->clear();
+    ui->plainTextEdit_songComments->insertPlainText((*mapIT).Comments);
 }
 
 
@@ -187,6 +194,7 @@ void MusicEditor::on_button_openList_clicked()
           md.endYear = Element.attributeNode("EndYear").value().toInt();
           md.use = Element.attributeNode("Use").value().toInt();
           md.Artist = Element.attributeNode("Artist").value();
+          md.Comments = Element.attributeNode("Comments").value();
 
           musicMap.insert(KeyName,md);
 
@@ -285,6 +293,7 @@ void MusicEditor::on_button_saveList_clicked()
                xmlWriter.writeAttribute("StartYear",QString::number((*it).startYear));
                xmlWriter.writeAttribute("EndYear",QString::number((*it).endYear));
                xmlWriter.writeAttribute("Use",QString::number((*it).use));
+               xmlWriter.writeAttribute("Comments", (*it).Comments);
                xmlWriter.writeCharacters((*it).File);
         xmlWriter.writeEndElement();//Logo
     }

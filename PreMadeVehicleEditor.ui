@@ -82,7 +82,7 @@
        <item>
         <widget class="QSpinBox" name="spinBox_premade_StartYear">
          <property name="minimum">
-          <number>1900</number>
+          <number>1800</number>
          </property>
          <property name="maximum">
           <number>9999</number>
@@ -102,7 +102,7 @@
        <item>
         <widget class="QSpinBox" name="spinBox_premade_endYear">
          <property name="minimum">
-          <number>1901</number>
+          <number>1801</number>
          </property>
          <property name="maximum">
           <number>9999</number>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1280</width>
-    <height>763</height>
+    <height>764</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -151,7 +151,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_frame_year">
              <property name="minimum">
-              <number>1850</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -171,7 +171,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_frame_stopYear">
              <property name="minimum">
-              <number>1850</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -586,7 +586,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_suspension_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -606,7 +606,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_suspension_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1018,7 +1018,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_drivetrain_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1038,7 +1038,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_drivetrain_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1514,7 +1514,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_englayout_year">
              <property name="minimum">
-              <number>1850</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1531,7 +1531,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_englayout_EndYear">
              <property name="minimum">
-              <number>1851</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -1945,7 +1945,14 @@
          <item row="8" column="1">
           <layout class="QHBoxLayout" name="horizontalLayout_18">
            <item>
-            <widget class="QSpinBox" name="spinBox_englayout_valveGroup"/>
+            <widget class="QSpinBox" name="spinBox_englayout_valveGroup">
+             <property name="minimum">
+              <number>-999</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_178">
@@ -1957,7 +1964,10 @@
            <item>
             <widget class="QSpinBox" name="spinBox_englayout_layoutArangment">
              <property name="minimum">
-              <number>-99</number>
+              <number>-999</number>
+             </property>
+             <property name="maximum">
+              <number>999</number>
              </property>
             </widget>
            </item>
@@ -1993,7 +2003,7 @@
             </sizepolicy>
            </property>
            <property name="currentIndex">
-            <number>2</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="tab_16">
             <attribute name="title">
@@ -2184,7 +2194,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_cyl_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -2204,7 +2214,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_cyl_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -2693,7 +2703,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_fuel_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -2713,7 +2723,7 @@
            <item>
             <widget class="QSpinBox" name="spinner_fuel_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -3635,7 +3645,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_valve_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -3655,7 +3665,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_valve_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -3756,7 +3766,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_induct_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -3776,7 +3786,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_induct_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -4217,7 +4227,7 @@
            <item>
             <widget class="QSpinBox" name="spin_gearbox_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -4237,7 +4247,7 @@
            <item>
             <widget class="QSpinBox" name="spin_gearbox_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -4773,7 +4783,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_gears_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -4793,7 +4803,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_gears_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -5049,7 +5059,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_carType_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -5069,7 +5079,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_carType_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -5769,7 +5779,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_carmodel_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -5789,7 +5799,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_carmodel_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -6052,7 +6062,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_Accessory_year">
              <property name="minimum">
-              <number>1800</number>
+              <number>1700</number>
              </property>
              <property name="maximum">
               <number>9999</number>
@@ -6072,7 +6082,7 @@
            <item>
             <widget class="QSpinBox" name="spinBox_Accessory_endyear">
              <property name="minimum">
-              <number>1800</number>
+              <number>1701</number>
              </property>
              <property name="maximum">
               <number>9999</number>

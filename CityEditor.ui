@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1292</width>
-    <height>830</height>
+    <width>1370</width>
+    <height>950</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -893,7 +893,7 @@
              <item row="2" column="1">
               <widget class="QSpinBox" name="SpinBox_CE_CityListYear">
                <property name="minimum">
-                <number>1900</number>
+                <number>1700</number>
                </property>
                <property name="maximum">
                 <number>9999</number>
@@ -958,7 +958,7 @@
              <item row="4" column="1">
               <widget class="QSpinBox" name="SpinBox_CE_InterpolateYear">
                <property name="minimum">
-                <number>1900</number>
+                <number>1700</number>
                </property>
                <property name="maximum">
                 <number>9999</number>

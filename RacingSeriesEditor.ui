@@ -55,6 +55,19 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="button_OpenComponents">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>Open Components File</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item row="0" column="4">
@@ -493,7 +506,7 @@
         </size>
        </property>
        <property name="text">
-        <string>Add Racing Series</string>
+        <string>Add/Edit Racing Series</string>
        </property>
       </widget>
      </item>

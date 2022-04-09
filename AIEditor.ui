@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>720</height>
+    <width>1407</width>
+    <height>779</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -303,6 +303,12 @@
      </item>
      <item>
       <widget class="QTableWidget" name="table_AICompanyList">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <column>
         <property name="text">
          <string>ID</string>
@@ -366,7 +372,7 @@
    <item row="1" column="0" colspan="2">
     <widget class="QScrollArea" name="scrollArea">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -375,21 +381,21 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAsNeeded</enum>
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
      <property name="widgetResizable">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <widget class="QWidget" name="scrollAreaWidgetContents">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>450</width>
-        <height>900</height>
+        <width>667</width>
+        <height>679</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -403,8 +409,8 @@
         <rect>
          <x>0</x>
          <y>-2</y>
-         <width>431</width>
-         <height>851</height>
+         <width>585</width>
+         <height>876</height>
         </rect>
        </property>
        <layout class="QFormLayout" name="formLayout">
@@ -716,7 +722,7 @@
             <item>
              <widget class="QSpinBox" name="spin_ManuSkills">
               <property name="minimum">
-               <number>1</number>
+               <number>-1</number>
               </property>
               <property name="maximum">
                <number>100</number>
@@ -736,7 +742,7 @@
             <item>
              <widget class="QSpinBox" name="spin_RnDSkills">
               <property name="minimum">
-               <number>1</number>
+               <number>-1</number>
               </property>
               <property name="maximum">
                <number>100</number>
@@ -756,7 +762,7 @@
             <item>
              <widget class="QSpinBox" name="spin_AdminSkills">
               <property name="minimum">
-               <number>1</number>
+               <number>-1</number>
               </property>
               <property name="maximum">
                <number>100</number>
@@ -779,7 +785,7 @@
           <item>
            <widget class="QSpinBox" name="spin_MarketingSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -799,7 +805,7 @@
           <item>
            <widget class="QSpinBox" name="spin_DealershipSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -876,7 +882,7 @@
           <item>
            <widget class="QSpinBox" name="spin_EngineDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -896,7 +902,7 @@
           <item>
            <widget class="QSpinBox" name="spin_ChassisDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -916,7 +922,7 @@
           <item>
            <widget class="QSpinBox" name="spin_GearboxDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -937,7 +943,7 @@
           <item>
            <widget class="QSpinBox" name="spin_BodyDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -957,7 +963,7 @@
           <item>
            <widget class="QSpinBox" name="spin_LuxuryDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -977,7 +983,7 @@
           <item>
            <widget class="QSpinBox" name="spin_SafetyDesignSkills">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -1044,7 +1050,7 @@
           <item>
            <widget class="QSpinBox" name="spin_GlobalImage">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -1064,7 +1070,7 @@
           <item>
            <widget class="QSpinBox" name="spin_QualityImage">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -1085,7 +1091,7 @@
           <item>
            <widget class="QSpinBox" name="spin_RacingImage">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -1105,7 +1111,7 @@
           <item>
            <widget class="QSpinBox" name="spin_WorkmanImage">
             <property name="minimum">
-             <number>1</number>
+             <number>-1</number>
             </property>
             <property name="maximum">
              <number>100</number>
@@ -1257,7 +1263,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_PerformanceBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1280,7 +1286,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_DriveBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1303,7 +1309,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_LuxuryBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1327,7 +1333,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_SafetyBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1350,7 +1356,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_FuelBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1373,7 +1379,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_PowereBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1411,7 +1417,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_CargoBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1434,7 +1440,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_DependBehave">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1509,7 +1515,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_SalesAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1529,7 +1535,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_BuildAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1549,7 +1555,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_MarketingAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1580,7 +1586,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_CostsAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1600,7 +1606,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_QualityAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1620,7 +1626,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_PriceAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1637,7 +1643,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_ExpansionAggression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1660,7 +1666,7 @@
           <item>
            <widget class="QDoubleSpinBox" name="spin_DesignAgression">
             <property name="minimum">
-             <double>0.010000000000000</double>
+             <double>-1.000000000000000</double>
             </property>
             <property name="maximum">
              <double>1.000000000000000</double>
@@ -1675,7 +1681,17 @@
         <item row="26" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_20">
           <item>
-           <widget class="QDoubleSpinBox" name="spin_BuildingClustering"/>
+           <widget class="QDoubleSpinBox" name="spin_BuildingClustering">
+            <property name="minimum">
+             <double>-1.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_49">
@@ -1685,7 +1701,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QDoubleSpinBox" name="spin_DesignExport"/>
+           <widget class="QDoubleSpinBox" name="spin_DesignExport">
+            <property name="minimum">
+             <double>-1.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_50">
@@ -1695,7 +1718,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QDoubleSpinBox" name="spiner_ImportDesign"/>
+           <widget class="QDoubleSpinBox" name="spiner_ImportDesign">
+            <property name="minimum">
+             <double>-1.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>

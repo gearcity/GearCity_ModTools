@@ -134,7 +134,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_Intro_minVal"/>
+          <widget class="QSpinBox" name="spinBox_Intro_minVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_3">
@@ -146,7 +150,7 @@
          <item>
           <widget class="QSpinBox" name="spinBox_Intro_MaxVal">
            <property name="maximum">
-            <number>150</number>
+            <number>9999</number>
            </property>
           </widget>
          </item>
@@ -506,7 +510,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_Perf_MinVal"/>
+          <widget class="QSpinBox" name="spinBox_Perf_MinVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_6">
@@ -518,7 +526,7 @@
          <item>
           <widget class="QSpinBox" name="spinBox_Perf_MaxVal">
            <property name="maximum">
-            <number>150</number>
+            <number>9999</number>
            </property>
           </widget>
          </item>
@@ -711,7 +719,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_drive_minval"/>
+          <widget class="QSpinBox" name="spinBox_drive_minval">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_8">
@@ -723,7 +735,7 @@
          <item>
           <widget class="QSpinBox" name="spinBox_drive_maxval">
            <property name="maximum">
-            <number>999</number>
+            <number>9999</number>
            </property>
           </widget>
          </item>
@@ -903,7 +915,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_lux_minval"/>
+          <widget class="QSpinBox" name="spinBox_lux_minval">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_10">
@@ -1095,7 +1111,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_safe_minVal"/>
+          <widget class="QSpinBox" name="spinBox_safe_minVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_12">
@@ -1300,7 +1320,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_fuel_minVal"/>
+          <widget class="QSpinBox" name="spinBox_fuel_minVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_14">
@@ -1492,7 +1516,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_power_MinVal"/>
+          <widget class="QSpinBox" name="spinBox_power_MinVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_16">
@@ -1697,7 +1725,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_cargo_minVal"/>
+          <widget class="QSpinBox" name="spinBox_cargo_minVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_18">
@@ -1889,7 +1921,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_qual_minVal"/>
+          <widget class="QSpinBox" name="spinBox_qual_minVal">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_20">
@@ -2081,7 +2117,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_depend_minval"/>
+          <widget class="QSpinBox" name="spinBox_depend_minval">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_22">
@@ -2286,7 +2326,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="spinBox_overall_minval"/>
+          <widget class="QSpinBox" name="spinBox_overall_minval">
+           <property name="maximum">
+            <number>9999</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_24">

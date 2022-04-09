@@ -223,8 +223,8 @@ void TurnEventTreeGrower::addNewsLeafToTree(QTreeWidgetItem *parent, TurnData::T
     treeItem->setText(8,"body=");
     if(localManager != 0 && tene.localization)
     {
-        treeItem->setText(7,localManager->getWord(tene.headline.toInt()));
-        treeItem->setText(9,localManager->getWord(tene.body.toInt()));
+        treeItem->setText(7,tene.headline +"| "+localManager->getWord(tene.headline.toInt()));
+        treeItem->setText(9,tene.body +"| "+localManager->getWord(tene.body.toInt()));
     }
     else
     {

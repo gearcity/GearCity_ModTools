@@ -60,8 +60,9 @@ void RacingSeriesEditor::on_button_add_clicked()
     {
         if((*it).id == sd.id)
         {
-            QMessageBox::critical(this,"Error!","This ID already Exists!");
-            return;
+            //QMessageBox::critical(this,"Error!","This ID already Exists!");
+            //return;
+            (*it) = sd;
         }
         else if((*it).name == sd.name)
         {
@@ -86,6 +87,8 @@ void RacingSeriesEditor::on_button_add_clicked()
 
 
    seriesList.push_back(sd);
+
+
 
    fillTable();
 }
@@ -213,6 +216,10 @@ void RacingSeriesEditor::on_button_new_clicked()
     ui->checkBox_vehicleType_Localize->setChecked(0);
     ui->spin_funding->setValue(5);
     ui->spin_pop->setValue(5);
+    ui->comboBox_fuelTypeLimit->clear();
+    ui->comboBox_cylinderLimit->clear();
+    ui->comboBox_inductionTypeLimit->clear();
+
 
     seriesList.clear();
 
@@ -437,4 +444,53 @@ void RacingSeriesEditor::on_button_save_clicked()
 void RacingSeriesEditor::on_button_return_clicked()
 {
     cp_wsc.RacingCW->lower();
+}
+
+void RacingSeriesEditor::on_button_OpenComponents_clicked()
+{
+   QString componentsFileName =  QFileDialog::getOpenFileName(this, "Open Components File", "",
+                                                   "XML Files (*.xml)");
+
+
+    if (componentsFileName != "")
+    {
+        //if we have a file, create a components object, then send the combos over to be filled.
+        ComponentsManager cm(componentsFileName,cp_wsc.RacingCW);
+        ui->comboBox_cylinderLimit->clear();
+        ui->comboBox_fuelTypeLimit->clear();
+        ui->comboBox_inductionTypeLimit->clear();
+        ui->comboBox_vehicleTypeLimit->clear();
+
+
+        //If cm was not processed fine, then we shouldn't touch the combos
+        if(cm.isGood())
+        {
+            ComponentsManager::ComponentDataLists cdl = cm.returnDataList();
+            for(QList<ComponentsManager::EngineCylinderComps>::iterator it = cdl.engineCylinderList.begin();
+                it !=  cdl.engineCylinderList.end(); ++it)
+            {
+                    ui->comboBox_cylinderLimit->addItem((*it).name);
+            }
+
+            for(QList<ComponentsManager::EngineFuelComps>::iterator it = cdl.engineFuelList.begin();
+                it !=  cdl.engineFuelList.end(); ++it)
+            {
+                    ui->comboBox_fuelTypeLimit->addItem((*it).name);
+            }
+
+            for(QList<ComponentsManager::EngineInductionComps>::iterator it = cdl.engineInductionList.begin();
+                it !=  cdl.engineInductionList.end(); ++it)
+            {
+                    ui->comboBox_inductionTypeLimit->addItem((*it).name);
+            }
+
+            for(QList<ComponentsManager::CarTypes>::iterator it = cdl.cartypesList.begin();
+                it !=  cdl.cartypesList.end(); ++it)
+            {
+                    ui->comboBox_vehicleTypeLimit->addItem((*it).type);
+            }
+
+
+        }
+    }
 }

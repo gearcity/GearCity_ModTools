@@ -131,7 +131,7 @@ private:
     void openMapFile(QString openFileName);
     void exportMap(QString parentFolder);
     void saveMapInfoBaseFile(QString mapFolder);
-    void saveLoaderForModToolsExport(QString folder);
+    void saveLoaderForModToolsExport(QString folder, bool localSave);
     bool checkExportErrors();
 
 };

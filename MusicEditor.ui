@@ -170,10 +170,23 @@
       <widget class="QLineEdit" name="lineEdit_songName"/>
      </item>
      <item row="3" column="1">
-      <widget class="QComboBox" name="comboBox_songFile"/>
+      <widget class="QComboBox" name="comboBox_songFile">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </item>
      <item row="4" column="1">
       <widget class="QComboBox" name="comboBox_playLocation">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <item>
         <property name="text">
          <string>All States</string>
@@ -196,7 +209,7 @@
        </item>
       </widget>
      </item>
-     <item row="6" column="0" colspan="2">
+     <item row="7" column="0" colspan="2">
       <widget class="QPushButton" name="button_add">
        <property name="minimumSize">
         <size>
@@ -209,7 +222,7 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0" colspan="2">
+     <item row="8" column="0" colspan="2">
       <widget class="QPushButton" name="button_remove">
        <property name="minimumSize">
         <size>
@@ -231,6 +244,16 @@
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="lineEdit_artist"/>
+     </item>
+     <item row="6" column="1">
+      <widget class="QPlainTextEdit" name="plainTextEdit_songComments"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Comments:</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

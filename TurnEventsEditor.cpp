@@ -44,6 +44,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QXmlStreamWriter>
 #include <qmath.h>
 
+
 //Create TurnEvents Editor Tool
 TurnEventsEditor::TurnEventsEditor(widgetContainerStorage wsc, QWidget *parent) :
     QFrame(parent),
@@ -2896,6 +2897,7 @@ void TurnEventsEditor::on_Button_News_Remove_clicked()
     if(turnMap.contains(turn))
     {
         int row = ui->Table_News->currentRow();
+
         if(row == -1)
             return;
 
@@ -3473,5 +3475,581 @@ void TurnEventsEditor::on_Button_News_Import_clicked()
 
 
     }
+
+}
+
+void TurnEventsEditor::on_Button_All_AddNew_clicked()
+{
+    int month = 0;
+    int year = 0;
+
+
+    //Get the month and year of the selected entry.
+    QModelIndex parentID = ui->Tree_All_Everything->model()->parent(
+                ui->Tree_All_Everything->currentIndex());
+
+    QVariant treeData = ui->Tree_All_Everything->model()->data(parentID);
+
+    if(treeData.isNull())
+    {
+        treeData = ui->Tree_All_Everything->model()->data(ui->Tree_All_Everything->currentIndex());
+
+        if(treeData.isNull())
+        {
+
+            QModelIndex siblingID;
+
+             siblingID = ui->Tree_All_Everything->model()->sibling(
+                         ui->Tree_All_Everything->currentIndex().row(), 0, siblingID);
+
+             treeData = ui->Tree_All_Everything->model()->data(siblingID);
+
+
+        }
+
+    }
+
+    QStringList dateList = treeData.toString().split('/');
+    QString dateStr;
+
+    foreach(dateStr,dateList)
+    {
+        if(dateStr.toInt() > 13)
+            year = dateStr.toInt();
+        else
+            month = dateStr.toInt();
+    }
+
+
+
+    //Open the tab and set the date based on the combo selection
+    int allComboIndex = ui->ComboBox_All_NewWhat->currentIndex();
+
+    switch(allComboIndex)
+    {
+        case 0: //Office
+            ui->Spin_Office_Month->setValue(month);
+            ui->Spin_Office_Year->setValue(year);
+
+            //Open Office Tab
+            ui->tabWidget->setCurrentIndex(2);
+
+            break;
+
+        case 1: //Interest
+            ui->Spin_Interest_Month->setValue(month);
+            ui->Spin_Interest_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(3);
+
+            break;
+
+        case 2: //Car Prices
+            ui->Spin_CarPrice_Month->setValue(month);
+            ui->Spin_CarPrice_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(4);
+
+            break;
+
+        case 3: //Gas
+            ui->Spin_Gas_Month->setValue(month);
+            ui->Spin_Gas_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(5);
+
+            break;
+
+        case 4: //Buyer Rates
+            ui->Spin_Buy_Month->setValue(month);
+            ui->Spin_Buy_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(6);
+
+            break;
+
+        case 5: //Pension
+            ui->Spin_Pension_Month->setValue(month);
+            ui->Spin_Pension_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(7);
+
+            break;
+
+        case 6: //Stock
+            ui->Spin_Stock_Month->setValue(month);
+            ui->Spin_Stock_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(8);
+
+            break;
+
+        case 7: //Components
+            ui->Spin_Components_Month->setValue(month);
+            ui->Spin_Components_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(9);
+
+            break;
+
+        case 8: //City
+            ui->Spin_City_Month->setValue(month);
+            ui->Spin_City_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(11);
+
+            break;
+
+        case 9: //News
+            ui->Spin_News_Month->setValue(month);
+            ui->Spin_News_Year->setValue(year);
+
+            ui->tabWidget->setCurrentIndex(12);
+
+            break;
+
+    };
+
+
+
+
+}
+
+void TurnEventsEditor::on_Button_All_EditSelected_clicked()
+{
+    if(ui->Tree_All_Everything->currentItem()->parent() == 0)
+    {
+        return;
+    }
+
+
+    allTableActions(false);
+
+
+}
+
+void TurnEventsEditor::on_Button_All_RemoveSelected_clicked()
+{
+    if(ui->Tree_All_Everything->currentItem()->parent() == 0)
+    {
+        return;
+    }
+
+
+    allTableActions(true);
+
+
+}
+
+
+void TurnEventsEditor::allTableActions(bool remove)
+{
+
+    int month = 0;
+    int year = 0;
+
+
+    //Get the month and year of the selected entry.
+    QModelIndex parentID = ui->Tree_All_Everything->model()->parent(
+                ui->Tree_All_Everything->currentIndex());
+
+    QVariant treeData = ui->Tree_All_Everything->model()->data(parentID);
+
+    if(treeData.isNull())
+    {
+        treeData = ui->Tree_All_Everything->model()->data(ui->Tree_All_Everything->currentIndex());
+
+        if(treeData.isNull())
+        {
+
+            QModelIndex siblingID;
+
+             siblingID = ui->Tree_All_Everything->model()->sibling(
+                         ui->Tree_All_Everything->currentIndex().row(), 0, siblingID);
+
+             treeData = ui->Tree_All_Everything->model()->data(siblingID);
+
+
+        }
+
+    }
+
+    QStringList dateList = treeData.toString().split('/');
+    QString dateStr;
+
+    foreach(dateStr,dateList)
+    {
+        if(dateStr.toInt() > 13)
+            year = dateStr.toInt();
+        else
+            month = dateStr.toInt();
+    }
+
+
+    //Get what event happens on this row.
+
+     QModelIndex eventID = ui->Tree_All_Everything->model()->parent(
+                 ui->Tree_All_Everything->currentIndex()).child(
+                 ui->Tree_All_Everything->currentIndex().row(), 1);
+
+     QVariant eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+
+     if(eventData.toString() == "office")
+     {
+
+         for(int row = 0; row < ui->Table_Office->rowCount(); row++)
+         {
+             if(ui->Table_Office->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Office->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Office_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Office_Remove_clicked();
+                }
+                else //Open Office Tab
+                {
+                    ui->tabWidget->setCurrentIndex(2);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "interest")
+     {
+         for(int row = 0; row < ui->Table_Interest->rowCount(); row++)
+         {
+             if(ui->Table_Interest->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Interest->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Interest_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Interest_Remove_clicked();
+                }
+                else //Open Interest Tab
+                {
+                    ui->tabWidget->setCurrentIndex(3);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "carprice")
+     {
+         for(int row = 0; row < ui->Table_CarPrice->rowCount(); row++)
+         {
+             if(ui->Table_CarPrice->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_CarPrice->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_CarPrice_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_CarPrice_Remove_clicked();
+                }
+                else //Open Car Price Tab
+                {
+                    ui->tabWidget->setCurrentIndex(4);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "gas")
+     {
+         for(int row = 0; row < ui->Table_Gas->rowCount(); row++)
+         {
+             if(ui->Table_Gas->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Gas->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Gas_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Spin_Gas_Remove_clicked();
+                }
+                else //Open Gas Tab
+                {
+                    ui->tabWidget->setCurrentIndex(5);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "buyrate")
+     {
+         for(int row = 0; row < ui->Table_Buy->rowCount(); row++)
+         {
+             if(ui->Table_Buy->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Buy->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Buy_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Buy_Remove_clicked();
+                }
+                else //Open Buy Rate Tab
+                {
+                    ui->tabWidget->setCurrentIndex(6);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "pensionGrowth")
+     {
+         for(int row = 0; row < ui->Table_Pension->rowCount(); row++)
+         {
+             if(ui->Table_Pension->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Pension->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Pension_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Pension_Remove_clicked();
+                }
+                else //Open Pension Tab
+                {
+                    ui->tabWidget->setCurrentIndex(7);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "stockrate")
+     {
+         for(int row = 0; row < ui->Table_Stock->rowCount(); row++)
+         {
+             if(ui->Table_Stock->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Stock->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Stock_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Stock_Remove_clicked();
+                }
+                else //Open Stock Tab
+                {
+                    ui->tabWidget->setCurrentIndex(8);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "component")
+     {
+         int treeCol = ui->Tree_All_Everything->columnCount();
+
+         QString selectorText = "";
+
+         //Get the selector index text so we can match it with the entry.
+         for(int i = 0; i < treeCol; i++)
+         {
+             eventID = ui->Tree_All_Everything->model()->parent(
+                         ui->Tree_All_Everything->currentIndex()).child(
+                         ui->Tree_All_Everything->currentIndex().row(), i);
+
+             eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+             if(eventData.toString() == "selectedIndex=")
+             {
+                 eventID = ui->Tree_All_Everything->model()->parent(
+                             ui->Tree_All_Everything->currentIndex()).child(
+                             ui->Tree_All_Everything->currentIndex().row(), i+1);
+
+                 eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+                 selectorText = eventData.toString();
+             }
+        }
+
+         if(selectorText == "")
+             return;
+
+         //Loop through component rows to find the entry.
+
+         for(int row = 0; row < ui->Table_Components->rowCount(); row++)
+         {
+             if(ui->Table_Components->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Components->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)     )
+             {
+                on_Table_Components_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Components_Remove_clicked();
+                }
+                else //Open Components Tab
+                {
+                    ui->tabWidget->setCurrentIndex(9);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "vehicle")
+     {
+         int treeCol = ui->Tree_All_Everything->columnCount();
+
+         QString selectorText = "";
+
+         //Get the selector index text so we can match it with the entry.
+         for(int i = 0; i < treeCol; i++)
+         {
+             eventID = ui->Tree_All_Everything->model()->parent(
+                         ui->Tree_All_Everything->currentIndex()).child(
+                         ui->Tree_All_Everything->currentIndex().row(), i);
+
+             eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+             if(eventData.toString() == "selectedIndex=")
+             {
+                 eventID = ui->Tree_All_Everything->model()->parent(
+                             ui->Tree_All_Everything->currentIndex()).child(
+                             ui->Tree_All_Everything->currentIndex().row(), i+1);
+
+                 eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+                 selectorText = eventData.toString();
+             }
+        }
+
+         if(selectorText == "")
+             return;
+
+         //Loop through vehicle pop rows to find the entry.
+         for(int row = 0; row < ui->Table_Car->rowCount(); row++)
+         {
+             if((ui->Table_Car->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_Car->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month) )  &&
+                 ui->Table_Car->item(row,1)->text() +
+                     ui->Table_Car->item(row,2)->text() == selectorText )
+             {
+                on_Table_Car_cellClicked(row,0);
+
+                if(remove)
+                {
+                    on_Button_Car_Remove_clicked();
+                }
+                else //Open Car Pop Tab
+                {
+                    ui->tabWidget->setCurrentIndex(10);
+                }
+
+                break;
+             }
+         }
+
+     }
+     else if(eventData.toString() == "news comment")
+     {
+         int treeCol = ui->Tree_All_Everything->columnCount();
+
+         QString headlineText = "";
+
+         //Get the headline text so we can match it with news entry.
+         for(int i = 0; i < treeCol; i++)
+         {
+             eventID = ui->Tree_All_Everything->model()->parent(
+                         ui->Tree_All_Everything->currentIndex()).child(
+                         ui->Tree_All_Everything->currentIndex().row(), i);
+
+             eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+             if(eventData.toString() == "headline=")
+             {
+                 eventID = ui->Tree_All_Everything->model()->parent(
+                             ui->Tree_All_Everything->currentIndex()).child(
+                             ui->Tree_All_Everything->currentIndex().row(), i+1);
+
+                 eventData = ui->Tree_All_Everything->model()->data(eventID);
+
+                 headlineText = eventData.toString();
+             }
+        }
+
+
+         if(headlineText == "")
+             return;
+
+
+         //If modder loaded localized data, we'll need to get the ID of text
+         QStringList localizedSplitStr = headlineText.split("|");
+
+         if(localizedSplitStr.size() > 1)
+             headlineText = (*localizedSplitStr.begin());
+
+         //Loop through news table rows to find the entry
+         for(int row = 0; row < ui->Table_News->rowCount(); row++)
+         {
+
+             if((ui->Table_News->item(row,0)->text() ==
+                     QString::number(year)+"/"+QString::number(month) ||
+                ui->Table_News->item(row,0)->text() ==
+                     QString::number(year)+"/0"+QString::number(month)) &&
+                ui->Table_News->item(row,2)->text() == headlineText )
+             {
+
+
+                ui->Table_News->setCurrentCell(row,0);
+                on_Table_News_cellClicked(row,0);
+
+
+                if(remove)
+                {
+                    on_Button_News_Remove_clicked();
+                }
+                else //Open News Tab
+                {
+                    ui->tabWidget->setCurrentIndex(12);
+                }
+
+                break;
+             }
+         }
+
+     }
+
 
 }
