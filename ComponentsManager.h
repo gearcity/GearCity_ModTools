@@ -41,8 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #define COMPONENTSMANAGER_H
 #include <QString>
 #include <QList>
-#include <QWidget>
-#include <QComboBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QComboBox>
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 #include "LocalizationManager.h"

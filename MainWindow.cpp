@@ -39,7 +39,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QDesktopServices>
 #include <QUrl>
 #include <QProcess>
@@ -284,12 +284,12 @@ void MainWindow::on_button_NameListEditor_clicked()
 
 void MainWindow::on_button_ddsConverter_clicked()
 {
-#if defined(Q_WS_X11)
-    QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD."
+#if defined(Q_OS_UNIX)
+    QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD/macOS."
                           "\n\nPlease look into the DDS conversion plugin for GIMP "
                           "or use ImageMagick's commandline converter."
                           "\n\nYou may also be able to find webbased converters online as well.");
-#elif defined(Q_WS_WIN)
+#elif defined(Q_OS_WIN)
     QProcess *process = new QProcess(this);
     QString file = QDir::currentPath() + "/Aorta.exe";
     process->startDetached(file);

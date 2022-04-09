@@ -40,7 +40,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef MAPDATATOOL_H
 #define MAPDATATOOL_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include <QString>
 #include <QMap>

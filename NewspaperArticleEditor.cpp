@@ -1,9 +1,9 @@
 #include "NewspaperArticleEditor.h"
 #include "ui_NewspaperArticleEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 NewspaperArticleEditor::NewspaperArticleEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

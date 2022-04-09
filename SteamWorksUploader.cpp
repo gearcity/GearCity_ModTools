@@ -1,12 +1,12 @@
 #include "SteamWorksUploader.h"
 #include "ui_SteamWorksUploader.h"
-#include "QMessageBox"
+#include "QtWidgets/QMessageBox"
 #include "QDesktopServices"
 #include "QUrl"
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 #include <QDomNode>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 
 

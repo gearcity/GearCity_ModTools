@@ -1,7 +1,7 @@
 #include "MaterialMakerWindow.h"
 #include "ui_MaterialMakerWindow.h"
-#include <QMessageBox>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include <QTextStream>
 
 MaterialMakerWindow::MaterialMakerWindow(QWidget *parent) :

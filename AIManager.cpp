@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 #include <QFile>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 
 //AI Manager loads AI companies from XML file and puts them into the AI Map.

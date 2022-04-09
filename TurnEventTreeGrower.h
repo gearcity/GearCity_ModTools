@@ -40,11 +40,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef TURNEVENTTREEGROWER_H
 #define TURNEVENTTREEGROWER_H
 #include <QMap>
-#include <QTreeWidget>
+#include <QtWidgets/QTreeWidget>
 #include "TurnEventsData.h"
 #include <QString>
 #include "LocalizationManager.h"
-#include <QComboBox>
+#include <QtWidgets/QComboBox>
 #include "CityData.h"
 
 class TurnEventTreeGrower

@@ -1,7 +1,7 @@
 #include "ContractInformationEditor.h"
 #include "ui_ContractInformationEditor.h"
-#include "QFileDialog"
-#include "QMessageBox"
+#include "QtWidgets/QFileDialog"
+#include "QtWidgets/QMessageBox"
 
 ContractInformationEditor::ContractInformationEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

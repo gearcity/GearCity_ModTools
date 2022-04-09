@@ -39,8 +39,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include "MapDataTool.h"
 #include "ui_MapDataTool.h"
-#include <QFileDialog>
-#include <QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 
@@ -1162,7 +1162,7 @@ void MapDataTool::exportMap(QString parentFolder)
 {
     checkExportErrors();
 
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString mapFolder = parentFolder +"\\"+ ui->LineEdit_MapTools_MapName->text()+"\\";
     #else
         QString mapFolder = parentFolder +"/"+ ui->LineEdit_MapTools_MapName->text()+"/";
@@ -1180,7 +1180,7 @@ void MapDataTool::exportMap(QString parentFolder)
     QFile::copy(ui->LineEdit_MapTools_MapPicture->text(), mapFolder+"mapPicture.dds");
 
     //MapArt
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString mapArtFolder = mapFolder+"MapArt\\";
     #else
         QString mapArtFolder = mapFolder+"MapArt/";
@@ -1194,7 +1194,7 @@ void MapDataTool::exportMap(QString parentFolder)
     QFile::copy(ui->LineEdit_MapTools_MapArtZipLocation->text(), mapArtFolder+"MapArt.zip");
 
     //City Script Folder
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString scriptFolder = mapFolder+"scripts\\";
         QString baseCityScriptFolder = ui->LineEdit_MapTools_CityScriptFolder->text() +"\\";
     #else
@@ -1214,7 +1214,7 @@ void MapDataTool::exportMap(QString parentFolder)
     }
 
     //CityArt
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString cityArtFolder = mapFolder+"CityArt\\";
     #else
         QString cityArtFolder = mapFolder+"CityArt/";
@@ -1229,7 +1229,7 @@ void MapDataTool::exportMap(QString parentFolder)
 
 
     //FlagArt
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString flagArtFolder = mapFolder+"FlagArt\\";
     #else
         QString flagArtFolder = mapFolder+"FlagArt/";
@@ -1254,7 +1254,7 @@ void MapDataTool::exportMap(QString parentFolder)
 
 
     //NewspaperArt
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString newsArtFolder = mapFolder+"NewsArt\\";
     #else
         QString newsArtFolder = mapFolder+"NewsArt/";
@@ -1270,7 +1270,7 @@ void MapDataTool::exportMap(QString parentFolder)
 
 
     //AI Script Folder
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString baseAIScriptFolder = ui->LineEdit_MapTools_AIScriptFolder->text() +"\\";
     #else
         QString baseAIScriptFolder = ui->LineEdit_MapTools_AIScriptFolder->text() +"/";
@@ -1289,7 +1289,7 @@ void MapDataTool::exportMap(QString parentFolder)
 
 
     //AILogoArt
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString logoArtFolder = mapFolder+"AILogos\\";
     #else
         QString logoArtFolder = mapFolder+"AILogos/";

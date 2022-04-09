@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 #include <QFile>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 //Create localization manager
 LocalizationManager::LocalizationManager(QString fileName, QWidget *widget)

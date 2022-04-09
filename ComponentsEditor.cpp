@@ -1,9 +1,9 @@
 #include "ComponentsEditor.h"
 #include "ui_ComponentsEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 ComponentsEditor::ComponentsEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

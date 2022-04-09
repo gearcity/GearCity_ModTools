@@ -1,13 +1,13 @@
 #ifndef CONTRACTINFORMATIONEDITOR_H
 #define CONTRACTINFORMATIONEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include "LocalizationManager.h"
 #include "ComponentsManager.h"
 #include "ContractManager.h"
-#include "QList"
-#include "QListWidgetItem"
+#include "QtWidgets/QListWidget"
+#include "QtWidgets/QListWidgetItem"
 
 
 namespace Ui {

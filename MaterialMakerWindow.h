@@ -1,7 +1,7 @@
 #ifndef MATERIALMAKERWINDOW_H
 #define MATERIALMAKERWINDOW_H
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
 #include <QMap>
 
 namespace Ui {

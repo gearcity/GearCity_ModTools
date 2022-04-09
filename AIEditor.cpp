@@ -39,8 +39,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include "AIEditor.h"
 #include "ui_AIEditor.h"
-#include <QMessageBox>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include <QTextStream>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>

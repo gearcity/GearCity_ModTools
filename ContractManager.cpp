@@ -4,7 +4,7 @@
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 ContractManager::ContractManager()
 {

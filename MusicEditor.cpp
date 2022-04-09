@@ -1,9 +1,9 @@
 #include "MusicEditor.h"
 #include "ui_MusicEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 
 MusicEditor::MusicEditor(widgetContainerStorage wsc, QWidget *parent) :

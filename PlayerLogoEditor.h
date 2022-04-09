@@ -1,7 +1,7 @@
 #ifndef PLAYERLOGOEDITOR_H
 #define PLAYERLOGOEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include <QMap>
 

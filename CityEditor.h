@@ -40,8 +40,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef CITYEDITOR_H
 #define CITYEDITOR_H
 
-#include <QWidget>
-#include <QFrame>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QFrame>
 #include "BaseContainerStorage.h"
 #include "CityData.h"
 #include <QMap>

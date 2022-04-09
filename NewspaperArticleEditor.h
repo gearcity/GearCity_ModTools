@@ -1,7 +1,7 @@
 #ifndef NEWSPAPERARTICLEEDITOR_H
 #define NEWSPAPERARTICLEEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 
 namespace Ui {

@@ -38,8 +38,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include "ModEditor.h"
 #include "ui_ModEditor.h"
-#include <QFileDialog>
-#include <QMessageBox>
+#include <QtWidgets/QFileDialog>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 #include "OSXHelper.h"
@@ -56,12 +56,14 @@ ModEditor::ModEditor(widgetContainerStorage wsc, QWidget *parent) :
 
 
      //Get currently Installed Maps
-  #if defined(Q_WS_WIN)
+  #if defined(Q_OS_WIN)
    QString folderPath = "../media/Maps/";
-  #elif defined(Q_WS_X11)
-   QString folderPath = "../media/Maps/";
-  #elif defined(Q_WS_MACX)
+  #elif defined(Q_OS_MACX)
    QString folderPath = OSXHelper::getMacPath(0) + "/media/Maps/";
+  #elif defined(Q_OS_LINUX)
+   QString folderPath = "../media/Maps/";
+  #elif defined(Q_OS_UNIX)
+   QString folderPath = "../media/Maps/";
   #endif
 
 
@@ -1131,7 +1133,7 @@ void ModEditor::exportMod(QString parentFolder)
     if(!checkSaveErrors())
         return;
 
-    #if defined(Q_WS_WIN)
+    #if defined(Q_OS_WIN)
         QString modFolder = parentFolder +"\\"+ ui->lineEdit_ModName->text()+"\\";
     #else
         QString modFolder = parentFolder +"/"+ ui->lineEdit_ModName->text()+"/";

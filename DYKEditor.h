@@ -1,9 +1,9 @@
 #ifndef DYKEDITOR_H
 #define DYKEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
-#include <QListWidgetItem>
+#include <QtWidgets/QListWidgetItem>
 
 namespace Ui {
 class DYKEditor;

@@ -1,9 +1,9 @@
 #include "ReviewsEditor.h"
 #include "ui_ReviewsEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 ReviewsEditor::ReviewsEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

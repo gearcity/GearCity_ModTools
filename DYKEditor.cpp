@@ -1,9 +1,9 @@
 #include "DYKEditor.h"
 #include "ui_DYKEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 DYKEditor::DYKEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

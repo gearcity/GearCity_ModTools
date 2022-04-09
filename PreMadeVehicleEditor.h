@@ -1,8 +1,8 @@
 #ifndef PREMADEVEHICLEEDITOR_H
 #define PREMADEVEHICLEEDITOR_H
 
-#include <QWidget>
-#include <QMessageBox>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QMessageBox>
 #include "BaseContainerStorage.h"
 
 namespace Ui {

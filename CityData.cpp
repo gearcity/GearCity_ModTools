@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include <QFile>
 #include <QtXml/QDomDocument>
 #include <QDomNode>
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 
 
 //Read CityScript file and save information into a map of cities.

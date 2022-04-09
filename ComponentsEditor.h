@@ -1,7 +1,7 @@
 #ifndef COMPONENTSEDITOR_H
 #define COMPONENTSEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include "ComponentsManager.h"
 #include <QMap>

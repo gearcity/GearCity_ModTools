@@ -1,9 +1,9 @@
 #include "PlayerLogoEditor.h"
 #include "ui_PlayerLogoEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 #include <QProcess>
 
 PlayerLogoEditor::PlayerLogoEditor(widgetContainerStorage wsc, QWidget *parent) :
@@ -219,12 +219,12 @@ void PlayerLogoEditor::on_button_returntomain_clicked()
 void PlayerLogoEditor::on_button_DDSImageConverter_clicked()
 {
 
-    #if defined(Q_WS_X11)
-        QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD."
+    #if defined(Q_OS_UNIX)
+        QMessageBox::critical(this,"Sorry!","A DDS converter is not included with Linux/BSD/MacOS."
                               "\n\nPlease look into the DDS conversion plugin for GIMP "
                               "or use ImageMagick's commandline converter."
                               "\n\nYou may also be able to find webbased converters online as well.");
-    #elif defined(Q_WS_WIN)
+    #elif defined(Q_OS_WIN)
         QProcess *process = new QProcess(this);
         QString file = QDir::currentPath() + "/Aorta.exe";
         QMessageBox::critical(this,"Sorry!",file);

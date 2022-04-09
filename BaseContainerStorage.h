@@ -40,9 +40,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef BASECONTAINERSTORAGE_H
 #define BASECONTAINERSTORAGE_H
 
-#include <QWidget>
-#include <QGroupBox>
-#include <QMainWindow>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGroupBox>
+#include <QtWidgets/QMainWindow>
 
 
 class widgetContainerStorage

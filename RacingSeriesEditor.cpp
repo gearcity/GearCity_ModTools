@@ -1,10 +1,10 @@
 #include "RacingSeriesEditor.h"
 #include "ui_RacingSeriesEditor.h"
-#include "QMessageBox"
+#include "QtWidgets/QMessageBox"
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 #include <QDomNode>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 
 RacingSeriesEditor::RacingSeriesEditor(widgetContainerStorage wsc, QWidget *parent) :
     QWidget(parent),

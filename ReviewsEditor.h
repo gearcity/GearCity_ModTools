@@ -1,7 +1,7 @@
 #ifndef REVIEWSEDITOR_H
 #define REVIEWSEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include "LocalizationManager.h"
 #include "ComponentsManager.h"

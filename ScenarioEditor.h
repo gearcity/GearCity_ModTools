@@ -1,7 +1,7 @@
 #ifndef SCENARIOEDITOR_H
 #define SCENARIOEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 
 namespace Ui {

@@ -40,8 +40,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef TURNEVENTSEDITOR_H
 #define TURNEVENTSEDITOR_H
 
-#include <QWidget>
-#include <QFrame>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QFrame>
 #include "BaseContainerStorage.h"
 #include "TurnEventsData.h"
 #include <QMap>
@@ -49,7 +49,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "CityData.h"
 #include "ComponentsManager.h"
 #include "AIManager.h"
-#include <QTreeWidgetItem>
+#include <QtWidgets/QTreeWidgetItem>
 #include "TurnEventTreeGrower.h"
 
 

@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #define LOCALIZATIONMANAGER_H
 #include <QString>
 #include <QMap>
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 class LocalizationManager
 {

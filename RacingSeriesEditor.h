@@ -1,7 +1,7 @@
 #ifndef RACINGSERIESEDITOR_H
 #define RACINGSERIESEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include "ComponentsManager.h"
 

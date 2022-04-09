@@ -1,7 +1,7 @@
 #ifndef STEAMWORKSUPLOADER_H
 #define STEAMWORKSUPLOADER_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include "steam/steam_api.h"
 #include "steam/isteamugc.h"

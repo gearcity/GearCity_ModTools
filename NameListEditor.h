@@ -1,7 +1,7 @@
 #ifndef NAMELISTEDITOR_H
 #define NAMELISTEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 
 namespace Ui {

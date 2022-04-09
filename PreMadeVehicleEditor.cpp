@@ -3,7 +3,7 @@
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>
 #include <QDomNode>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 #include <QTextStream>
 #include <QDir>
 

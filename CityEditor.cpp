@@ -41,8 +41,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "ui_CityEditor.h"
 #include "QLongLongValidator.h"
 #include <QAbstractItemModel>
-#include <QMessageBox>
-#include <QFileDialog>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include <QTextStream>
 #include <QXmlStreamWriter>
 #include <QtXml/QDomDocument>

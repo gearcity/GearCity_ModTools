@@ -40,8 +40,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #ifndef AIEDITOR_H
 #define AIEDITOR_H
 
-#include <QWidget>
-#include <QFrame>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QFrame>
 #include "BaseContainerStorage.h"
 #include <QMap>
 #include <QModelIndex>

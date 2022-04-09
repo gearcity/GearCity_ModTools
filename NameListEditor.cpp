@@ -1,8 +1,8 @@
 #include "NameListEditor.h"
 #include "ui_NameListEditor.h"
-#include <QMessageBox>
+#include <QtWidgets/QMessageBox>
 #include <QFile>
-#include <QFileDialog>
+#include <QtWidgets/QFileDialog>
 #include <QTextStream>
 
 NameListEditor::NameListEditor(widgetContainerStorage wsc, QWidget *parent) :

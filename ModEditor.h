@@ -1,7 +1,7 @@
 #ifndef MODEDITOR_H
 #define MODEDITOR_H
 
-#include <QWidget>
+#include <QtWidgets/QWidget>
 #include "BaseContainerStorage.h"
 #include <QString>
 #include <QMap>

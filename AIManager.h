@@ -41,7 +41,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #define AIMANAGER_H
 #include <QString>
 #include <QMap>
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 class AIManager
 {

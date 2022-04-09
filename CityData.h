@@ -42,7 +42,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 
 #include <QString>
 #include <QMap>
-#include <QWidget>
+#include <QtWidgets/QWidget>
 
 class CityData
 {
