@@ -1388,41 +1388,73 @@ void ModEditor::on_button_SelectContractInfo_clicked()
 void ModEditor::on_button_ReturnToMain_clicked()
 {
    cp_wsc.MainMenuCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_Button_NounListEditor_clicked()
 {
     cp_wsc.NameListCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_Button_NewsPaperEditor_clicked()
 {
     cp_wsc.NewsPaperCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_button_ReviewsEditor_clicked()
 {
     cp_wsc.ReviewsCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_button_ComponentsEditor_clicked()
 {
     cp_wsc.ComponentsCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_button_AIEditor_clicked()
 {
     cp_wsc.AIEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_button_CitiesEditor_clicked()
 {
     cp_wsc.CityEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void ModEditor::on_button_turnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 

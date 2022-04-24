@@ -220,4 +220,8 @@ void NewspaperArticleEditor::on_button_SaveNewspaper_clicked()
 void NewspaperArticleEditor::on_button_ReturnToPrevious_clicked()
 {
     cp_wsc.NewsPaperCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }

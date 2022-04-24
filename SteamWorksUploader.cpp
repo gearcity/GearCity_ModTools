@@ -53,6 +53,10 @@ void SteamWorksUploader::on_button_SteamWorkshop_ReturnToMain_clicked()
 {
     //return to the main menu
      cp_wsc.SteamWorkshopCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 

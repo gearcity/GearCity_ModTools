@@ -84,24 +84,40 @@ TurnEventsEditor::~TurnEventsEditor()
 void TurnEventsEditor::on_Button_TE_ReturnToPrevious_clicked()
 {
     cp_wsc.TurnEventEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open Map Editor
 void TurnEventsEditor::on_Button_TE_MapEditor_clicked()
 {
     cp_wsc.MapToolCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open City Editor
 void TurnEventsEditor::on_Button_TE_CityEditor_clicked()
 {
     cp_wsc.CityEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open AI Editor
 void TurnEventsEditor::on_Button_TE_AIEditor_clicked()
 {
     cp_wsc.AIEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Change Turn Events starting year, alters minimum year for all year sliders

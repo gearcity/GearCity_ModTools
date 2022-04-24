@@ -180,6 +180,10 @@ void DYKEditor::on_listWidget_dyk_itemClicked(QListWidgetItem *item)
 void DYKEditor::on_button_ReturnToMain_clicked()
 {
     cp_wsc.DYKEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void DYKEditor::on_Button_NewDYK_clicked()

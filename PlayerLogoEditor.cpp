@@ -213,6 +213,10 @@ void PlayerLogoEditor::on_button_saveLogoFile_clicked()
 void PlayerLogoEditor::on_button_returntomain_clicked()
 {
     cp_wsc.LogoEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 

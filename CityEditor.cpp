@@ -89,12 +89,20 @@ CityEditor::~CityEditor()
 void CityEditor::on_Button_CE_ReturnToPrevious_clicked()
 {
     cp_wsc.CityEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open the Map Editor Tool
 void CityEditor::on_Button_CE_MapEditor_clicked()
 {
     cp_wsc.MapToolCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Create a new city list
@@ -1143,6 +1151,10 @@ void CityEditor::on_Button_CityEditor_CancelInterpolater_clicked()
 void CityEditor::on_Button_CE_AIEditor_clicked()
 {
     cp_wsc.AIEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 
@@ -1150,6 +1162,10 @@ void CityEditor::on_Button_CE_AIEditor_clicked()
 void CityEditor::on_Button_CE_TurnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void CityEditor::on_LineEdit_CE_PerCapita_editingFinished()

@@ -2770,6 +2770,10 @@ void ComponentsEditor::on_checkBox_accessory_decal_clicked()
 void ComponentsEditor::on_button_returnToMain_clicked()
 {
     cp_wsc.ComponentsCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Allows table to be sortable

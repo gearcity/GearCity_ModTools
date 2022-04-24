@@ -444,6 +444,10 @@ void RacingSeriesEditor::on_button_save_clicked()
 void RacingSeriesEditor::on_button_return_clicked()
 {
     cp_wsc.RacingCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void RacingSeriesEditor::on_button_OpenComponents_clicked()

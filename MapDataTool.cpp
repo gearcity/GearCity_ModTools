@@ -74,24 +74,40 @@ MapDataTool::~MapDataTool()
 void MapDataTool::on_Button_MapTools_ReturnToMain_clicked()
 {
     cp_wsc.MainMenuCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open City Editor
 void MapDataTool::on_Button_MapTool_CityEditor_clicked()
 {
     cp_wsc.CityEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open AI Editor
 void MapDataTool::on_Button_MapTool_AIEditor_clicked()
 {
     cp_wsc.AIEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Open Turn Events Editor
 void MapDataTool::on_Button_MapTool_TurnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Toggle Between the Dot City Format and the Dot Scene

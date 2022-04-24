@@ -299,6 +299,10 @@ void PreMadeVehicleEditor::on_Button_Premade_SaveList_clicked()
 void PreMadeVehicleEditor::on_Button_Premade_ReturnToMain_clicked()
 {
     cp_wsc.PreMadeEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 

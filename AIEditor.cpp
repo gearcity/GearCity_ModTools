@@ -88,6 +88,10 @@ void AIEditor::on_Button_AI_ReturnToPrevious_clicked()
 {
     //Lowers the AIEditor, making the previous container the top container.
     cp_wsc.AIEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 
@@ -95,6 +99,10 @@ void AIEditor::on_Button_AI_MapEditor_clicked()
 {
     //Raise the MapTool
     cp_wsc.MapToolCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 
@@ -102,6 +110,10 @@ void AIEditor::on_Button_AI_CityEditor_clicked()
 {
     //Raise the CityEditor
     cp_wsc.CityEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Assigns all values needed for the new AI node into the AIInfo class.
@@ -1497,6 +1509,10 @@ void AIEditor::on_button_RemoveAICompany_clicked()
 void AIEditor::on_Button_AI_TurnEventsEditor_clicked()
 {
     cp_wsc.TurnEventEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void AIEditor::setSaveFileNameExternally(QString tmpFileName)

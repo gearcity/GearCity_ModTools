@@ -307,6 +307,10 @@ void MusicEditor::on_button_saveList_clicked()
 void MusicEditor::on_button_ReturnToMain_clicked()
 {
     cp_wsc.MusicEditorCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void MusicEditor::sectionDoubleClickedSlot(int index)

@@ -2139,6 +2139,10 @@ void ReviewsEditor::on_button_SaveReviews_clicked()
 void ReviewsEditor::on_button_PreviousMenu_clicked()
 {
  cp_wsc.ReviewsCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 

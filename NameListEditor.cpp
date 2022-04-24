@@ -133,4 +133,8 @@ void NameListEditor::on_button_SaveNameList_clicked()
 void NameListEditor::on_button_ReturnToPrevious_clicked()
 {
     cp_wsc.NameListCW->lower();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }

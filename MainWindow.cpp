@@ -99,6 +99,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     //Raise up the main menu container widget.
     wsc.MainMenuCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 MainWindow::~MainWindow()
@@ -130,6 +134,10 @@ void MainWindow::on_Button_MapDataTools_clicked()
 {
    //Raise the MapTool
     wsc.MapToolCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //CityEditor Button
@@ -137,6 +145,10 @@ void MainWindow::on_Button_CityEditor_clicked()
 {
     //Raise the CityEditor
     wsc.CityEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //AIEditor Button
@@ -144,6 +156,10 @@ void MainWindow::on_Button_AIEditor_clicked()
 {
     //Raise the AIEditor
     wsc.AIEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //TurnEvents Editor
@@ -151,6 +167,10 @@ void MainWindow::on_Button_TurnEventsEditor_clicked()
 {
     //Raise the TurnEvents Editor
     wsc.TurnEventEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 //Do to some odd issue with how I attach forms to Widget Containers, auto resize is broke
@@ -202,6 +222,10 @@ void MainWindow::on_Button_ModDataTools_clicked()
 {
     //Raise the Mod Editor
     wsc.ModToolCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
@@ -225,48 +249,80 @@ void MainWindow::on_Button_LocalizationEditor_clicked()
 void MainWindow::on_Button_ComponentEditor_clicked()
 {
     wsc.ComponentsCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_NewsPaperEditor_clicked()
 {
     wsc.NewsPaperCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_MagazineEditor_clicked()
 {
     wsc.ReviewsCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_DYKEditor_clicked()
 {
     wsc.DYKEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_LogoEditor_clicked()
 {
     wsc.LogoEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_MusicEditor_clicked()
 {
     wsc.MusicEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_PreMadeVehicleLoader_clicked()
 {
     wsc.PreMadeEditorCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
 void MainWindow::on_Button_Racing_clicked()
 {
     wsc.RacingCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
 
@@ -275,11 +331,19 @@ void MainWindow::on_button_ContractEditor_clicked()
     /*QMessageBox::critical(this,"Sorry!","Sorry! This will be implemented after the contract"
                           "redesign coming in v1.23.");*/
     wsc.ContractsCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void MainWindow::on_button_NameListEditor_clicked()
 {
     wsc.NameListCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
 }
 
 void MainWindow::on_button_ddsConverter_clicked()
@@ -310,5 +374,9 @@ void MainWindow::on_pushButton_clicked()
                           "the forums! www.ventdev.com/forums/");
 #endif
     wsc.SteamWorkshopCW->raise();
+
+#if defined(Q_OS_MACX)
+    this->repaint();
+#endif
     return;
 }
