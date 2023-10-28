@@ -61,6 +61,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.")*/
 #include "ScenarioEditor.h"
 #include "SteamWorksUploader.h"
 #include "ContractInformationEditor.h"
+#include "GCVIEditor.h"
 
 
 
@@ -105,6 +106,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_Button_GCVIEditor_clicked();
+
 private:
      Ui::MainWindow *ui;
 
@@ -127,6 +130,8 @@ private:
      ReviewsEditor *reviewTool;
      ScenarioEditor *scenarioTool;
      SteamWorksUploader *steamworksTool;
+
+     GCVIEditor *gcviTool;
 
      //Widget Storage Container for all Editor containers
      //This is to be used to raise and lower various editors in the program.

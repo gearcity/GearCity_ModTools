@@ -70,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
     wsc.PreMadeEditorCW = ui->PreMadeVehicleWidgetContainer;
     wsc.ScenarioEditorCW = ui->ScenarioWidgetContainer;
     wsc.SteamWorkshopCW = ui->SteamworksWidgetContainer;
+    wsc.GCVIEditorCW = ui->GCVIContainer;
 
     //Create child windows/edits before creating editors
     wsc.MaterialEditorWindow = new MaterialMakerWindow(this);
@@ -93,7 +94,7 @@ MainWindow::MainWindow(QWidget *parent) :
     reviewTool = new ReviewsEditor(wsc, ui->ReviewsWidgetContainer);
     scenarioTool = new ScenarioEditor(wsc, ui->ScenarioWidgetContainer);
     steamworksTool = new SteamWorksUploader(wsc,ui->SteamworksWidgetContainer);
-
+    gcviTool = new GCVIEditor(wsc,ui->GCVIContainer);
 
 
 
@@ -196,6 +197,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     wsc.PreMadeEditorCW->resize(this->width(), this->height());
     wsc.ScenarioEditorCW->resize(this->width(), this->height());
     wsc.SteamWorkshopCW->resize(this->width(), this->height());
+    wsc.GCVIEditorCW->resize(this->width(),this->height());
 
     //Resize the object forms based on the Main Window size.
     mapTool->resize(this->width(), this->height());
@@ -214,6 +216,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     reviewTool->resize(this->width(), this->height());
     scenarioTool->resize(this->width(), this->height());
     steamworksTool->resize(this->width(), this->height());
+    gcviTool->resize(this->width(),this->height());
 
 
 }
@@ -380,3 +383,15 @@ void MainWindow::on_pushButton_clicked()
 #endif
     return;
 }
+
+void MainWindow::on_Button_GCVIEditor_clicked()
+{
+    wsc.GCVIEditorCW->raise();
+
+    #if defined(Q_OS_MACX)
+        this->repaint();
+    #endif
+        return;
+
+}
+

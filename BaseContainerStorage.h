@@ -68,6 +68,8 @@ class widgetContainerStorage
 
         QWidget *SteamWorkshopCW;
 
+        QWidget *GCVIEditorCW;
+
 
         QMainWindow *MaterialEditorWindow;
 

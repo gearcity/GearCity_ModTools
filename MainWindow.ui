@@ -33,7 +33,7 @@
     </sizepolicy>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <property name="margin">
+    <property name="margin" stdset="0">
      <number>0</number>
     </property>
     <property name="spacing">
@@ -601,6 +601,19 @@
         </property>
        </widget>
       </item>
+      <item row="8" column="2">
+       <widget class="QPushButton" name="Button_GCVIEditor">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>50</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>GCVI Editor</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>
@@ -700,6 +713,25 @@
     </property>
    </widget>
    <widget class="QWidget" name="DidYouKnowWidgetContainer" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1280</width>
+      <height>720</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="GCVIContainer" native="true">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -907,7 +939,8 @@
     <property name="autoFillBackground">
      <bool>true</bool>
     </property>
-   </widget>   
+   </widget>
+   <zorder>GCVIContainer</zorder>
    <zorder>SteamworksWidgetContainer</zorder>
    <zorder>PreMadeVehicleWidgetContainer</zorder>
    <zorder>ScenarioWidgetContainer</zorder>

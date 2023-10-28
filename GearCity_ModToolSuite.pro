@@ -18,6 +18,7 @@ DEFINES += STEAMSUPPORT
 
 
 SOURCES += main.cpp\
+    GCVIEditor.cpp \
         MainWindow.cpp \
     MapDataTool.cpp \
     CityEditor.cpp \
@@ -48,6 +49,7 @@ SOURCES += main.cpp\
 
 
 HEADERS  += MainWindow.h \
+    GCVIEditor.h \
     MapDataTool.h \
     BaseContainerStorage.h \
     CityEditor.h \
@@ -78,6 +80,7 @@ HEADERS  += MainWindow.h \
     ContractManager.h
 
 FORMS    += MainWindow.ui \
+    GCVIEditor.ui \
     MapDataTool.ui \
     CityEditor.ui \
     AIEditor.ui \
