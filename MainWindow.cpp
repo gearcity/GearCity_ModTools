@@ -241,10 +241,10 @@ void MainWindow::on_Button_ScenarioDataTools_clicked()
 
 void MainWindow::on_Button_LocalizationEditor_clicked()
 {
-    if(!QDesktopServices::openUrl(QUrl("http://185.52.1.98")))
+    if(!QDesktopServices::openUrl(QUrl("https://translator.ventdev.com")))
     {
         QMessageBox::critical(this,"Sorry!","Sorry! We were unable to open your web browser."
-                              "Please visit http://185.52.1.98/ to use our translation system.");
+                              "Please visit https://translator.ventdev.com to use our translation system.");
     }
     return;
 }
