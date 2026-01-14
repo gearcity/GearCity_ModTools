@@ -7,7 +7,8 @@
 #include <QtXml/QDomDocument>
 #include <QDomNode>
 #include <QtWidgets/QFileDialog>
-
+#include <QFileInfo>
+#include <QDir>
 
 
 SteamWorksUploader::SteamWorksUploader(widgetContainerStorage wsc, QWidget *parent) :
@@ -270,11 +271,33 @@ void SteamWorksUploader::on_button_SubmitWorkshopItem_clicked()
         QMessageBox::critical(this, "Error", "No Item Preview Image Selected");
         return;
     }
+    else if(!QDir(workshopItemFolderPath).exists())
+    {
+        QMessageBox::critical(this, "Error", "Items Folder does not exist.");
+        return;
+    }
+    else if(!QFileInfo::exists(workshopItemImage))
+    {
+        QMessageBox::critical(this, "Error", "Preview image file does not exist.");
+        return;
+    }
+    else
+    {
+        QFileInfo imageInfo(workshopItemImage);
+        if(imageInfo.size() > 1024 * 1024)
+        {
+            QMessageBox::critical(this, "Error", "Preview image must be less than 1 MB.");
+            return;
+        }
+    }
 
     QMessageBox::information(this, "Workshop Manifest!", "You must save the Workshop Item Manifest."
                              "\n\nDo not save this in the same folder as your map or mods."
                              "\n\nKeep this file in a safe location as it contains your publisher ID number,"
                              " and it is what you will use to update your workshop item.");
+
+    if(ui->line_WorkshopItemTags->text().trimmed().isEmpty())
+            QMessageBox::warning(this, "Warning", "No tags entered. Consider adding tags to help users find your item.");
 
 
     if(!saveItemManifest())
@@ -304,19 +327,22 @@ void SteamWorksUploader::on_button_SubmitWorkshopItem_clicked()
     QVector<const char *> tagVector;
     QStringList tagList = ui->line_WorkshopItemTags->text().split(",");
 
-    if(!tagVector.isEmpty())
+    if(!tagList.isEmpty())
     {
 
         foreach(QString tag, tagList)
         {
-            tagVector.push_back(tag.toUtf8().data());
+            QString trimmedTag = tag.trimmed();
+            if(!trimmedTag.isEmpty())
+                tagVector.push_back(trimmedTag.toUtf8().data());
         }
 
         SteamParamStringArray_t steamTags;
         steamTags.m_ppStrings = tagVector.data();
-        steamTags.m_nNumStrings = tagVector.size()+1;
+        steamTags.m_nNumStrings = tagVector.size();
 
-        SteamUGC()->SetItemTags(UpdateHandle,&steamTags);
+        if(!tagVector.isEmpty())
+                    SteamUGC()->SetItemTags(UpdateHandle,&steamTags);
     }
 
     SteamUGC()->SetItemUpdateLanguage(UpdateHandle,ui->combo_WorkshopItem_Language->currentText().toUtf8());
@@ -353,6 +379,13 @@ void SteamWorksUploader::itemUpdateResults(SubmitItemUpdateResult_t* callBack, b
     ui->progressBar_WorkshopUpload->hide();
     ui->label_Steamworkshop_UploadStatus->hide();
 
+    if(!callBack)
+    {
+        QMessageBox::critical(this, "Error", "Upload Failed (no response from Steam).");
+        return;
+    }
+
+
     if(failure || callBack->m_eResult == k_EResultFail)
     {
         QMessageBox::critical(this, "Error", "Upload Failed");        
@@ -369,6 +402,12 @@ void SteamWorksUploader::itemUpdateResults(SubmitItemUpdateResult_t* callBack, b
                              " The user doesn't own a license for the provided app ID.");
         return;
     }
+    else if(callBack->m_eResult == k_EResultBanned)
+    {
+        QMessageBox::warning(this, "Error", "k_EResultBanned\n"
+                             " The user is banned or limited.");
+        return;
+    }
     else if(callBack->m_eResult == k_EResultFileNotFound  )
     {
         QMessageBox::warning(this, "Error", "k_EResultFileNotFound \n"
@@ -381,13 +420,13 @@ void SteamWorksUploader::itemUpdateResults(SubmitItemUpdateResult_t* callBack, b
                              "  Failed to aquire UGC Lock.");
         return;
     }
-    else if(callBack->m_eResult == k_EResultFileNotFound  )
+    else if(callBack->m_eResult == k_EResultServiceUnavailable)
     {
-        QMessageBox::warning(this, "Error", "k_EResultFileNotFound \n"
-                             " The provided content folder is not valid.");
-        return;
+        QMessageBox::warning(this, "Error", "k_EResultServiceUnavailable \n"
+                                     " Steam service is unavailable. Please try again later.");
+         return;
     }
-    else if(callBack->m_eResult == k_EResultFileNotFound  )
+    else if(callBack->m_eResult == k_EResultLimitExceeded  )
     {
         QMessageBox::warning(this, "Error", "k_EResultLimitExceeded \n"
                              " The preview image is too large, it must be less than 1 Megabyte;"
@@ -399,7 +438,10 @@ void SteamWorksUploader::itemUpdateResults(SubmitItemUpdateResult_t* callBack, b
     if(callBack->m_eResult == k_EResultOK )
     {
         QMessageBox::information(this, "Success!", "You have successfully uploaded the files.");
+        return;
     }
+
+    QMessageBox::warning(this, "Error", QString("Steam upload failed with result code %1.").arg(callBack->m_eResult));
 
 }
 
@@ -552,10 +594,20 @@ bool SteamWorksUploader::loadItemManifest()
         Element = rootNode.firstChildElement("title");
         if(!Element.isNull())
             ui->line_WorkshopItemTitle->setText(Element.text());
+        if(Element.isNull() || Element.text().trimmed().isEmpty())
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing a valid title.");
+            return false;
+        }
 
         Element = rootNode.firstChildElement("description");
         if(!Element.isNull())
             ui->textbox_WorkshopItemDescription->setPlainText(Element.text());
+        if(Element.isNull() || Element.text().trimmed().isEmpty())
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing a valid description.");
+            return false;
+        }
 
         Element = rootNode.firstChildElement("type");
         if(!Element.isNull())
@@ -566,6 +618,16 @@ bool SteamWorksUploader::loadItemManifest()
                 ui->radio_WorkshopItem_Type_Map->setChecked(true);
             else if(Element.text() == "2")
                 ui->radio_WorkshopItem_Type_Mod->setChecked(true);
+            else
+            {
+                QMessageBox::critical(this,"Error","Manifest has an invalid type value.");
+                return false;
+            }
+        }
+        else
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing a type value.");
+            return false;
         }
 
         Element = rootNode.firstChildElement("itemPath");
@@ -575,11 +637,42 @@ bool SteamWorksUploader::loadItemManifest()
             ui->label_WorkshopItem_SelectedFolder->setText(Element.text());
         }
 
+        if(Element.isNull() || workshopItemFolderPath.trimmed().isEmpty())
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing an item path.");
+            return false;
+        }
+        else if(!QDir(workshopItemFolderPath).exists())
+        {
+            QMessageBox::critical(this,"Error","Manifest item path does not exist.");
+            return false;
+        }
+
         Element = rootNode.firstChildElement("itemImage");
         if(!Element.isNull())
         {
             workshopItemImage = Element.text();
             ui->label_WorkshopItem_SelectedImage->setText(Element.text());
+        }
+
+        if(Element.isNull() || workshopItemImage.trimmed().isEmpty())
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing a preview image path.");
+            return false;
+        }
+        else if(!QFileInfo::exists(workshopItemImage))
+        {
+            QMessageBox::critical(this,"Error","Manifest preview image file does not exist.");
+            return false;
+        }
+        else
+        {
+            QFileInfo imageInfo(workshopItemImage);
+            if(imageInfo.size() > 1024 * 1024)
+            {
+                QMessageBox::critical(this,"Error","Manifest preview image is larger than 1 MB.");
+                return false;
+            }
         }
 
         Element = rootNode.firstChildElement("tags");
@@ -589,6 +682,22 @@ bool SteamWorksUploader::loadItemManifest()
         Element = rootNode.firstChildElement("language");
         if(!Element.isNull())
             ui->combo_WorkshopItem_Language->setCurrentIndex(Element.text().toInt());
+
+        if(Element.isNull())
+       {
+           QMessageBox::critical(this,"Error","Manifest is missing a language value.");
+           return false;
+       }
+       else
+       {
+           bool ok = false;
+           int languageIndex = Element.text().toInt(&ok);
+           if(!ok || languageIndex < 0 || languageIndex >= ui->combo_WorkshopItem_Language->count())
+           {
+               QMessageBox::critical(this,"Error","Manifest has an invalid language index.");
+               return false;
+           }
+       }
 
 
         Element = rootNode.firstChildElement("visibility");
@@ -600,6 +709,16 @@ bool SteamWorksUploader::loadItemManifest()
                 ui->radio_WorkshopItem_Visibility_Friends->setChecked(true);
             else if(Element.text() == "2")
                 ui->radio_WorkshopItem_Visibility_You->setChecked(true);
+            else
+            {
+                QMessageBox::critical(this,"Error","Manifest has an invalid visibility value.");
+                return false;
+            }
+        }
+        else
+        {
+            QMessageBox::critical(this,"Error","Manifest is missing a visibility value.");
+            return false;
         }
 
         Element = rootNode.firstChildElement("PublishID");
